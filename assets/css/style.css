@@ -1,0 +1,12 @@
+#land {
+  width: 100%;
+  height: 1000px;
+  background: #ccc;
+  text-align: center;
+}
+
+#content {
+  width: 100%;
+  height: 1000px;
+  background: #999;
+}
