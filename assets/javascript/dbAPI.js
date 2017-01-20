@@ -163,50 +163,74 @@ $(document).on('ready', function(){
   }
 
 
-//MEETUPS
+  //MEETUPS
 
-$('#meetups').on('click', function(){
-    getMeetups();
-});
+  $('#meetups').on('click', function(){
+      getMeetups();
+  });
 
-//TODO
-function getMeetups(){
+  //TODO
+  function getMeetups(){
 
-  console.log('getMeetups() - zipcode', localStorage.getItem("userZip"));
-  userZip = localStorage.getItem("userZip");
+    console.log('getMeetups() - zipcode', localStorage.getItem("userZip"));
+    userZip = localStorage.getItem("userZip");
 
-  // var meetupsAPIKey = "32246d5033476b30277fe2c671b1b";
- 
-  var URL = "https://api.meetup.com/find/groups?photo-host=public&zip=" +
-  userZip + "&page=25&sig_id=215984186&radius=10&topic_id=10333&category=25&sig=1136ea8f75e616421d23203df6988a0e83546ef7";
+    // var meetupsAPIKey = "32246d5033476b30277fe2c671b1b";
+   
+    var URL = "https://api.meetup.com/find/groups?photo-host=public&zip=" +
+    userZip + "&page=25&sig_id=215984186&radius=10&topic_id=10333&category=25&sig=1136ea8f75e616421d23203df6988a0e83546ef7";
 
-   $.ajax({    
-        url: URL,
-        method: "GET",
-        dataType: 'jsonp'
+     $.ajax({    
+          url: URL,
+          method: "GET",
+          dataType: 'jsonp'
 
-    }).done(function(response) {
-      console.log("getMeetups() ", response);
+      }).done(function(response) {
+        console.log("getMeetups() ", response);
 
-      //TODO- proper display/CSS and pull other required data
+        //TODO- proper display/CSS and pull other required data
 
-      for( var i = 0; i < 15; i++){
-        if(response.data[i] != undefined && response.data[i] != null){
-         var tableRowResults = $("<div>");
-          tableRowResults.append(
-          '<tr><td>'+ "Name :" + response.data[i].name + 
-          bookmarkIcon + '<br>' +
-          "City : " + response.data[i].city + '<br>' +
-          "URL : <a href= '" + response.data[i].link + "'>Click here for details </a><br>" +
-          "</td></tr><br><br><br><hr>");
-          console.log(tableRowResults);
-          // tableRowResults.setAttribute('data-bkmark', response.data[i].link);
-          $("#results-table").append(tableRowResults);
-          // console.log(response.data[i].city, response.data[i].name, response.data[i].link);
-        }
-      }    
+        for( var i = 0; i < 15; i++){
+          if(response.data[i] != undefined && response.data[i] != null){
+           var tableRowResults = $("<div>");
+            tableRowResults.attr('data-itemnum', i);
+            tableRowResults.append(
+            '<tr><td>'+ "Name :" + response.data[i].name + 
+            bookmarkIcon + '<br>' +
+            "City : " + response.data[i].city + '<br>' +
+            "URL : <a href= '" + response.data[i].link + "'>Click here for details </a><br>" +
+            "</td></tr><br><br><br><hr>");
+            // console.log(tableRowResults);
+            // tableRowResults.setAttribute('data-bkmark', response.data[i].link);
+            $("#results-table").append(tableRowResults);
+            // console.log(response.data[i].city, response.data[i].name, response.data[i].link);
+          }
+
+
+          console.log($('div').data('itemnum'));
+        }    
+
+      });
+  }
+
+  //bookmark items 
+  $('#results-table').on('click', '.bookmark',function(){
+
+      var currentUser = firebase.auth().currentUser;        
+      console.log("Bookmark an Item for currentUser=", currentUser.displayName);
+      
+      if(!jQuery.isEmptyObject(currentUser)){ //check for null condition
+        $(this).html("<i class='fa fa-bookmark' aria-hidden='true'></i>");
+      }else{
+        console.log("The user is not logged in to favorite!");
+      }
+
+      var bookmarks = {};
+
+      //get the div 
 
     });
-}
+
+    
 
 });

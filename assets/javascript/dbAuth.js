@@ -3,6 +3,7 @@
 var config = {
 	apiKey: "AIzaSyCRfzoY76tvHoB3RUbvU5pJoHylG4L3hI8",
 	authDomain: "fam-app-94e72.firebaseapp.com",
+	// authDomain: "http://127.0.0.1:8080", // this should match the one on your firebase console
 	databaseURL: "https://fam-app-94e72.firebaseio.com",
 	storageBucket: "fam-app-94e72.appspot.com",
 	messagingSenderId: "665693601471"
@@ -119,7 +120,7 @@ $(document).ready(function() {
 			$('#status').html("Not logged in");
 		}
 
-		// setCurrentUser(); 
+		setCurrentUser(); //todo: this is a better
 	});
 
 	//keep track of number of users
@@ -155,13 +156,31 @@ $(document).ready(function() {
 
 		membersRef.child(displayName).set(member);
 
-		// updateUserInfo(user);
+		updateUserInfo(user);
 		setCurrentUser(); 		   
 
 	}
 
+	function updateUserInfo(user){
+		
+		if(user){ 
+	    	console.log("updateUserInfo(), User logged in ", user.displayName);
+	    	
+	    	user.updateProfile({
+			  displayName: $("#txtSignupUserName").val().trim()		  
+			}).then(function() {
+			   console.log("updateUserInfo(), User updated successfully with " + user.displayName);
+			}, function(error) {
+			   console.log(error.message);	
+			});
+	    }else{
+	    	console.log('updateUserInfo(), No user logged in');
+   		}
 
-	//setting global variable of current user
+	}
+
+
+	//setting global variable of current user (why do I lose scope while bookmarking)
 
 	function setCurrentUser(){
 		
@@ -171,13 +190,13 @@ $(document).ready(function() {
    		if(currentUser){ 
 	    	console.log("setCurrentUser(), User logged in ", currentUser.displayName);
 	    	
-	    	currentUser.updateProfile({
-			  displayName: $("#txtSignupUserName").val().trim()		  
-			}).then(function() {
-			   console.log("setCurrentUser(), User updated successfully with " + currentUser.displayName);
-			}, function(error) {
-			   console.log(error.message);	
-			});
+	  //   	currentUser.updateProfile({
+			//   displayName: $("#txtSignupUserName").val().trim()		  
+			// }).then(function() {
+			//    console.log("setCurrentUser(), User updated successfully with " + currentUser.displayName);
+			// }, function(error) {
+			//    console.log(error.message);	
+			// });
 	    }else{
 	    	console.log('setCurrentUser(), No user logged in');
    		}
@@ -220,9 +239,8 @@ $(document).ready(function() {
 		//TODO 
 	function fetchUserProfile(){
 
-		console.log('In fetchUserProfile');
 		var user = firebase.auth().currentUser;
-		console.log("user=", user);
+		console.log("fetchUserProfile(), user=", user);
 
 		  user.providerData.forEach(function (profile) {
 		    console.log("  Sign-in provider: "+profile.providerId);
