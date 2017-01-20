@@ -57,6 +57,8 @@
         </div>
         <!-- find a place for this -->
       <div><span id="connected-viewers"></span> users online! </div> 
+      <!-- //for testing only -->
+      <div id="zip"></div> 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <!-- left nav: categories-->
@@ -64,7 +66,7 @@
           <li><a href="#">Outdoors</a></li>
           <li><a href="#">Indoors</a></li>
           <li><a href="#">Restaurants</a></li>
-          <li><a href="#">Meet ups</a></li>
+          <li><a href="#" id="meetups">Meet ups</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">category <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -123,12 +125,21 @@
           <div class="row">
 
             <!-- Places API display -->
-            <div class="col-md-6">
-              <div class="well" >
+           <!--  <div class="col-md-6">
+              <div class="well" id="results-table">
                 <h1 class="text-center">Depending on the selected link, APIs get called
                 and information displayed here.</h1>
               </div>
+            </div> -->
+          <!-- TODO: Modify the div below for API display /temporary div-->
+          <div class="col-md-6">
+            <div class="well" id="resultsAPI" style= "overflow-y:auto;
+            overflow-x:hidden;">
+              <h5>
+                <table id="results-table" width="100%"></table>                
+              </h5>
             </div>
+          </div>
             
             <!-- Map and Weather API display -->
             <div class="row col-md-6">
@@ -274,10 +285,11 @@
 </div> <!--content div closing--> 
 
 <!-- JS files-->
+<script src="./assets/javascript/famapp.js"></script>
 <script src="assets/javascript/dbAuth.js"></script>
 <script src="assets/javascript/dbAPI.js"></script>
 <script src="assets/javascript/googleAPI.js"></script> 
-<script src="./assets/javascript/famapp.js"></script>
+
 
 </body>
 

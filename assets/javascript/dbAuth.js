@@ -191,7 +191,7 @@ $(document).ready(function() {
 		var provider = new firebase.auth.GoogleAuthProvider();
 		var result = firebase.auth().signInWithPopup(provider);
 
-		console.log("google ", result);
+		console.log("firebaseGoogleSignin() ", result);
 
 		result.then(function(result) {
 		  // This gives you a Google Access Token. You can use it to access the Google API.

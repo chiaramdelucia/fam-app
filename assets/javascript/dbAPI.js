@@ -1,5 +1,35 @@
 $(document).on('ready', function(){
 
+  var userZip;
+  var bookmarkIcon = '<span class="bookmark"><a href="#"><i class="fa fa-bookmark-o" aria-hidden="true"></i></a></span>';
+
+  $('#user-add-zip').on('click', function(){
+    userZip = $('#user-input-zip').val();   //set as global variable  
+    console.log("dbAPI.js, User input Zip =" , userZip);
+    localStorage.setItem("userZip", userZip);
+
+    // populate googlemaps API with zipcode
+    $('#google-input-zip').val(userZip);
+
+    //display map
+    getGoogleCoordinates();
+    getWeather();
+
+  });  
+
+  //if value is changed
+  $('#google-add-zip').on('click', function(){
+
+    //change global variable
+    userZip = $("#google-input-zip").val();
+    console.log("Google map Zip =" , userZip);
+    localStorage.setItem("userZip", userZip);
+
+    //display map
+    getGoogleCoordinates();
+    getWeather();
+  }); 
+
   function initMap() {
     var uluru = {lat: 37.09024, lng: -95.712891};
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -15,7 +45,7 @@ $(document).on('ready', function(){
   function getGoogleCoordinates(){
 
     var addressZip = $("#google-input-zip").val();
-    console.log("Input address/zip = " + addressZip);
+    console.log("getGoogleCoordinates()-Input address/zip = " + addressZip);
 
     $.ajax({    
       url: 'https://maps.googleapis.com/maps/api/geocode/json?address='+ 
@@ -23,8 +53,8 @@ $(document).on('ready', function(){
       method: "POST"
     }).done(function(response){
     
-    console.log(response);
-    console.log(response.results[0].formatted_address);
+    console.log("getGoogleCoordinates()- response", response);
+    console.log("getGoogleCoordinates()- address",  response.results[0].formatted_address);
 
     var latitude = response.results[0].geometry.location.lat;
     var longitude = response.results[0].geometry.location.lng;
@@ -62,7 +92,7 @@ $(document).on('ready', function(){
       
   function performSearch() {
     var choices = $(".choices").val();
-    console.log(choices);
+    console.log("performSearch()- choices", choices);
 
     var request = {
       bounds: map.getBounds(),
@@ -75,7 +105,7 @@ $(document).on('ready', function(){
 
   function callback(results, status) {
     if (status !== google.maps.places.PlacesServiceStatus.OK) {
-      console.error(status);
+      console.error("callback()", status);
     return;
     }
     for (var i = 0, result; result = results[i]; i++) {
@@ -85,6 +115,7 @@ $(document).on('ready', function(){
 
 
   function addMarker(place) {
+    console.log("In addMarker()", place);
     var marker = new google.maps.Marker({
       map: map,
       position: place.geometry.location,
@@ -113,15 +144,15 @@ $(document).on('ready', function(){
 
   // //weather api
   function getWeather(){
-    var address= $("#google-input-zip").val();
-    console.log("weather "+ address)
+    var addressZip = $("#google-input-zip").val();
+    console.log("getWeather() "+ addressZip)
     $.ajax({
-        url:'https://api.wunderground.com/api/7d4c2ccc48b6acd9/conditions/q/'+ address + '.json',
+        url:'https://api.wunderground.com/api/7d4c2ccc48b6acd9/conditions/q/'+ addressZip + '.json',
         method:'GET',
         datatype: "json"
         }).done(function(wonder){
-          console.log(wonder);
-          console.log(wonder.current_observation.icon);
+          console.log("getWeather(), done ", wonder);
+          console.log("getWeather(), done ", wonder.current_observation.icon);
           var icon_url = wonder.current_observation.icon_url;
           var icon = wonder.current_observation.icon;
           var degrees = wonder.current_observation.temp_f;
@@ -131,32 +162,51 @@ $(document).on('ready', function(){
     });
   }
 
-var userZip;
 
-$('#user-add-zip').on('click', function(){
-  userZip = $('#user-input-zip').val();   //set as global variable  
-  console.log("userZip =" , userZip);
+//MEETUPS
 
-  // populate googlemaps API with zipcode
-  $('#google-input-zip').val(userZip);
+$('#meetups').on('click', function(){
+    getMeetups();
+});
 
-  //display map
-    getGoogleCoordinates();
-    getWeather();
+//TODO
+function getMeetups(){
 
-});  
+  console.log('getMeetups() - zipcode', localStorage.getItem("userZip"));
+  userZip = localStorage.getItem("userZip");
+
+  // var meetupsAPIKey = "32246d5033476b30277fe2c671b1b";
  
- //if value is changed
-$('#google-add-zip').on('click', function(){
-  
-  //change global variable
-  userZip = $("#google-input-zip").val();
-  console.log("userZip =" , userZip);
+  var URL = "https://api.meetup.com/find/groups?photo-host=public&zip=" +
+  userZip + "&page=25&sig_id=215984186&radius=10&topic_id=10333&category=25&sig=1136ea8f75e616421d23203df6988a0e83546ef7";
 
-  //display map
-  getGoogleCoordinates();
-  getWeather();
-}); 
+   $.ajax({    
+        url: URL,
+        method: "GET",
+        dataType: 'jsonp'
 
+    }).done(function(response) {
+      console.log("getMeetups() ", response);
+
+      //TODO- proper display/CSS and pull other required data
+
+      for( var i = 0; i < 15; i++){
+        if(response.data[i] != undefined && response.data[i] != null){
+         var tableRowResults = $("<div>");
+          tableRowResults.append(
+          '<tr><td>'+ "Name :" + response.data[i].name + 
+          bookmarkIcon + '<br>' +
+          "City : " + response.data[i].city + '<br>' +
+          "URL : <a href= '" + response.data[i].link + "'>Click here for details </a><br>" +
+          "</td></tr><br><br><br><hr>");
+          console.log(tableRowResults);
+          // tableRowResults.setAttribute('data-bkmark', response.data[i].link);
+          $("#results-table").append(tableRowResults);
+          // console.log(response.data[i].city, response.data[i].name, response.data[i].link);
+        }
+      }    
+
+    });
+}
 
 });
