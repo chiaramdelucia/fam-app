@@ -1,7 +1,7 @@
 $(document).on('ready', function(){
 
   var userZip;
-  var bookmarkIcon = '<span class="bookmark"><a href="#"><i class="fa fa-bookmark-o" aria-hidden="true"></i></a></span>';
+  var bookmarkIcon = '<span class="bookmark" style="float: right"><a href="#"><i class="fa fa-bookmark-o fa-lg" aria-hidden="true" style="color:blue"></i></a></span>';
 
   $('#user-add-zip').on('click', function(){
     userZip = $('#user-input-zip').val();   //set as global variable  
@@ -188,39 +188,41 @@ $(document).on('ready', function(){
       }).done(function(response) {
         console.log("getMeetups() ", response);
 
-        //TODO- proper display/CSS and pull other required data
+        for(var i=0; i< 15; i++){
 
-        for( var i = 0; i < 15; i++){
-          if(response.data[i] != undefined && response.data[i] != null){
-           var tableRowResults = $("<div>");
-            tableRowResults.attr('data-itemnum', i);
-            tableRowResults.append(
-            '<tr><td>'+ "Name :" + response.data[i].name + 
-            bookmarkIcon + '<br>' +
-            "City : " + response.data[i].city + '<br>' +
-            "URL : <a href= '" + response.data[i].link + "'>Click here for details </a><br>" +
-            "</td></tr><br><br><br><hr>");
-            // console.log(tableRowResults);
-            // tableRowResults.setAttribute('data-bkmark', response.data[i].link);
-            $("#results-table").append(tableRowResults);
-            // console.log(response.data[i].city, response.data[i].name, response.data[i].link);
-          }
+          var outPutDivSection = $('<div>');
 
+          outPutDivSection.attr("class", "search-result");
+          outPutDivSection.attr("id", "search-item" + i);
+          outPutDivSection.css("background-color", "#e9e9e9");
+          outPutDivSection.css("padding", "15px");
+          outPutDivSection.css("margin-top", "10px");
 
-          console.log($('div').data('itemnum'));
-        }    
+          var outPutInformation =
+
+          '<h3>' + response.data[i].name  + '    '+ bookmarkIcon + '</h3>'+ 
+          '<p>' + 'City : ' + response.data[i].city + '</p>'+ 
+          '<p>' + 'Meant for : ' + response.data[i].who + '</p>'+  
+          '<p><a href="' + response.data[i].link + '" >' + response.data[i].link + '</a></p>';
+
+          outPutDivSection.html(outPutInformation);
+
+          $("#results-div").append(outPutDivSection);
+
+      }
+  
 
       });
   }
 
   //bookmark items 
-  $('#results-table').on('click', '.bookmark',function(){
+  $('#results-div').on('click', '.bookmark',function(){
 
       var currentUser = firebase.auth().currentUser;        
       console.log("Bookmark an Item for currentUser=", currentUser.displayName);
       
       if(!jQuery.isEmptyObject(currentUser)){ //check for null condition
-        $(this).html("<i class='fa fa-bookmark' aria-hidden='true'></i>");
+        $(this).html("<i class='fa fa-bookmark fa-lg' aria-hidden='true' style='color:red'></i>");
       }else{
         console.log("The user is not logged in to favorite!");
       }

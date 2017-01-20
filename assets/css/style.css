@@ -27,3 +27,9 @@ input.parsley-error:focus {
 	height: 400px;
 	width: 100%;
 }
+
+#resultsAPI{
+	height: 900px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
