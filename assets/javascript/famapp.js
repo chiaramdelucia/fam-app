@@ -1,4 +1,4 @@
-$(".btn1").click(function() {
+$("#user-add-zip").click(function() {
     $('html,body').animate({
         scrollTop: $("#content").offset().top},
         'slow');
@@ -9,3 +9,6 @@ $(".scrollTop").click(function() {
         scrollTop: $("#land").offset().top},
         'slow');
 });
+
+
+//todo: Persist zipcode values
