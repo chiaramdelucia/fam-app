@@ -203,7 +203,7 @@ $(document).on('ready', function(){
           '<h3>' + response.data[i].name  + '    '+ bookmarkIcon + '</h3>'+ 
           '<p>' + 'City : ' + response.data[i].city + '</p>'+ 
           '<p>' + 'Meant for : ' + response.data[i].who + '</p>'+  
-          '<p><a href="' + response.data[i].link + '" >' + response.data[i].link + '</a></p>';
+          '<p class="link"><a href="' + response.data[i].link + '" >' + response.data[i].link + '</a></p>';
 
           outPutDivSection.html(outPutInformation);
 
@@ -211,7 +211,6 @@ $(document).on('ready', function(){
 
       }
   
-
       });
   }
 
@@ -219,17 +218,25 @@ $(document).on('ready', function(){
   $('#results-div').on('click', '.bookmark',function(){
 
       var currentUser = firebase.auth().currentUser;        
-      console.log("Bookmark an Item for currentUser=", currentUser.displayName);
+      var displayName = currentUser.displayName;
+
+      console.log("Bookmark an Item for currentUser=", currentUser);
+
+      var bookmarkLink = $(this).parent().siblings(".link").html();
       
       if(!jQuery.isEmptyObject(currentUser)){ //check for null condition
         $(this).html("<i class='fa fa-bookmark fa-lg' aria-hidden='true' style='color:red'></i>");
+
+        if(displayName != null && bookmarksRef != null){          
+            bookmarksRef.child(displayName).push(bookmarkLink);
+        }else{
+            console.log("User displayname is Null");
+        }
+
       }else{
         console.log("The user is not logged in to favorite!");
       }
 
-      var bookmarks = {};
-
-      //get the div 
 
     });
 
