@@ -1,6 +1,5 @@
 .navbar {
-	height: 50px;
-	background-color: #1E90FF;
+	height: 80px;
 	
 }
 
@@ -13,6 +12,7 @@
 h3 {
     font-family: LillyBelle;
     font-size: 30px;
+    text-align: center;
 }
 
 .text-center{
@@ -35,4 +35,11 @@ a{
 	color: black;
 	text-align: left;
 	size: 20px;
+}
+
+.sticky {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 0;
 }

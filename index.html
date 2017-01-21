@@ -1,318 +1,230 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fam APP </title>
-    <!-- jQuery Library -->
-    <script src="https://code.jquery.com/jquery-2.2.3.js"
-    integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4="
-    crossorigin="anonymous"></script>
-    <!-- parsleyjs library -->
-    <script src="http://parsleyjs.org/dist/parsley.min.js"></script>
-    <!-- Bootstrap-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <!--CSS file-->
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="./assets/css/content.css">
-    <!--Google Fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two" rel="stylesheet">
-    <!-- Bootstrap js -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <!-- Firebase Reference -->
-    <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
-    <!-- JS files-->
-    <script src="dbAuth.js"></script>
-    <script src="dbAPI.js"></script>
-  </head>
-  <body>
-    <!--Landing page-->
-    <div class ="row" id="land">
-      <div class="col-md-12">
-        <h1>The Family App:</h1>
-        <h2>A website dedicated to helping families find spaces in their communities.</h2>
-      </div>
+<head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Got Bored?</title>    
+  <!-- jQuery Library -->
+  <script src="https://code.jquery.com/jquery-2.2.3.js" 
+  integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" 
+  crossorigin="anonymous"></script> 
+  
+  <!-- parsleyjs library -->
+  <script src="http://parsleyjs.org/dist/parsley.min.js"></script>
+  <!-- Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <!--CSS file-->
+  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/content.css">
+
+  <!-- Bootstrap js -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="./assets/javascript/famapp.js"></script>
+  <script type="text/javascript" src="./assets/javascript/initmap.js"></script>
+  <!-- Firebase Reference -->
+  <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+  <!-- JS files-->
+<!--   <script src="dbAuth.js"></script>
+  <script src="dbAPI.js"></script>  -->
+
+</head>
+
+
+
+<body>
+
+  <!--Landing page-->
+  <div class ="row" id="land">
+        <div class="col-md-12">
+          <h1>Got Bored?</h1>
+          <h2>Don't sit around. Find a place to bring the family!</h2>
+        </div>
+        <div class="row">
+          <h4>Enter your zip code to find the fun</h4>
+          <input type="text" name="zip code" id="address" placeholder="Enter Your Zip Code">
+          <input id="add-address" type="submit" value="submit">
+        </div>
+        <div class="row">
+            
+        </div>  
+  </div> <!--/#land-->
+
+
+
+
+ 
+  <div id="content"> 
+  <div id="wrapper">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+
+      <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">
+          <!-- <img alt="Logo" src="..."> -->
+        </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <!-- left nav: categories-->
+        <ul class="nav navbar-nav">
+          <li><a href="#">Outdoors</a></li>
+          <li><a href="#">Indoors</a></li>
+          <li><a href="#">Restaurants</a></li>
+          <li><a href="#">Meet ups</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">category <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">subCategory</a></li>
+              <li><a href="#">subCategory</a></li>
+              <li><a href="#">subCategory</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <!-- right nav: accounts -->
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#" id='btnSignUp' data-toggle="modal" data-target="#signupModal">
+            Join</a></li>
+          <li><a href="#" id='btnSignIn' data-toggle="modal" data-target="#signinModal">
+            Sign in</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Profile</a></li>
+              <li><a href="#" id='btnSignOut' data-toggle="modal">Sign out</a></li>
+            </ul>
+          </li>
+          <li><div class="weather-widget"></div></li>
+        </ul>
+
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    </div>
+
+    <!--Main Content Area-->
+    <div class="container">
+
       <div class="row">
-        <h4>enter your zip code</h4>
-        <input type="text" name="zip code" id="address" placeholder="Zip Code">
-      </div>
-      <div class="row">
-        <button class="btn btn-default btn1" type="submit" value="submit">Submit</button>
-      </div>
-      </div> <!--/#land-->
-      
-      <div id="content">
-        <nav class="navbar navbar-default navbar-fixed-top">
-          <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#">
-                <img alt="Logo" src="...">
+        <!--Helpful Resources Section-->
+        <div class="col-md-2">
+          <h3>Helpful Resources</h3> 
+          <ul style="list-style-type:none">
+            <li><a href="#">Commonsensemedia</a></li>
+            <li><a href="#">Yelp</a></li>
+            <li><a href="#">URL</a></li> 
+          </ul>  
+        </div>
+        
+        <!--Content Well and Map/Weather Well -->
+        <div class="col-md-10" style ="padding-right:20px; border-left: 1px solid black;background">
+
+          <div class="row">
+
+            <!-- Places API display -->
+            <div class="col-md-6">
+              <div class="well places">
+                <h3>Search Results</h3>
+             
               </div>
-              <!-- Collect the nav links, forms, and other content for toggling -->
-              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <!-- left nav: categories-->
-                <ul class="nav navbar-nav navbar-fixed top">
-                  <li><a href="#">Outdoors</a></li>
-                  <li><a href="#">Indoors</a></li>
-                  <li><a href="#">Restaurants</a></li>
-                  <li><a href="#">Meet ups</a></li>
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">category <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">subCategory</a></li>
-                      <li><a href="#">subCategory</a></li>
-                      <li><a href="#">subCategory</a></li>
-                      <li role="separator" class="divider"></li>
-                      <li><a href="#">Separated link</a></li>
-                      <li role="separator" class="divider"></li>
-                      <li><a href="#">One more separated link</a></li>
-                    </ul>
-                  </li>
-                </ul>
-                <!-- right nav: accounts -->
-                <ul class="nav navbar-nav navbar-right">
-                  <li><a href="#" id='btnSignUp' data-toggle="modal" data-target="#signupModal">
-                  Join</a></li>
-                  <li><a href="#" id='btnSignIn' data-toggle="modal" data-target="#signinModal">
-                  Sign in</a></li>
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Profile</a></li>
-                      <li><a href="#" id='btnSignOut' data-toggle="modal">Sign out</a></li>
-                    </ul>
-                  </li>
-                </ul>
-                </div><!-- /.navbar-collapse -->
-                </div><!-- /.container-fluid -->
-              </nav>
-              <!--Main Content Area-->
+            </div>
+
+
+            <!-- Map and Weather API display -->
+           <div class="row col-md-6">
+  <div class="well" id="googleAPI">
+    <h1 class="text-center">Google Maps</h1>
+    <div id="map"></div>
+    <div>
+      <p>Input your address</p>
+      <input type="text" name="enter address" id="address">
+      <input id="add-address" type="submit" value="submit">
+    </div>
+    <p>Select interest</p>
+    <select class="form-control choices">
+      <option value="park">Parks</option>
+      <option value="restaurant">Restaurants</option>
+      <option value="movie_theater">Movie Theaters</option>
+      <option value="museum">Museums</option>
+      <option value="book_store">Book Stores</option>
+      <option value="library">Library</option>
+      <option value="cafe">Cafes</option>
+    </select>
+    <table id="address-table" width="100%">
+      <th>Formatted Address</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+    </table>
+  </div>
+</div>
+</div>
+    </div> <!--/ Main Content Area container -->
+
+    <!--Footer -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12" style="border-top-style: solid;">
+          <footer class="footer">
               <div class="container">
-                <div class="row">
-                  <!--Helpful Resources Section-->
-                  <div class="col-md-2">
-                    <h3>Helpful Resources</h3>
-                    <ul style="list-style-type:none;">
-                      <li><a href="#">Commonsensemedia</a></li>
-                      <li><a href="#">Yelp</a></li>
-                      <li><a href="#">URL</a></li>
-                    </ul>
-                  </div>
-                  
-                  <!--Content Well and Map/Weather Well -->
-                  <div class="col-md-10" style ="padding-right:20px; border-left: 1px solid black;background">
-                    <div class="row">
-                      <!-- Places API display -->
-                      <div class="col-md-6">
-                        <div class="well" >
-                          <h1 class="text-center">Search Results</h1>
-                        </div>
-                      </div>
-                      <!-- Map Diplay -->
-                      <div class="row col-md-6">
-                        <div class="well" id="googleAPI">
-                          <h1 class="text-center">Google Maps</h1>
-                          <div id="map"></div>
-                          <div>
-                            <p>Input your address</p>
-                            <input type="text" name="enter address" id="address">
-                            <input id="add-address" type="submit" value="submit">
-                          </div>
-                          <p>Select interest</p>
-                          <select class="form-control choices">
-                            <option value="park">Parks</option>
-                            <option value="restaurant">Restaurants</option>
-                            <option value="movie_theater">Movie Theaters</option>
-                            <option value="museum">Museums</option>
-                            <option value="book_store">Book Stores</option>
-                            <option value="library">Library</option>
-                            <option value="cafe">Cafes</option>
-                          </select>
-                          <table id="address-table" width="100%">
-                            <th>Formatted Address</th>
-                            <th>Latitude</th>
-                            <th>Longitude</th>
-                          </table>
-                        </div>
-                      </div>
-                      
-                      <!--Footer -->
-                      <div class="container">
-                        <div class="row">
-                          <div class="col-md-12" style="border-top-style: solid;">
-                            <footer class="footer">
-                              <div class="container">
-                                <p class="text-muted" style ="text-align: center;">Got Bored? © 2017</p>
-                                <button class="btn btn-default scrollTop" type="submit">Scroll to Top</button>
-                              </div>
-                            </footer>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- Sign up Modal: UN + Email -->
-                      <div id="signupModal" class="modal fade" role="dialog">
-                        <div class="modal-dialog modal-sm">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                              <h4 class="modal-title">Create a new account</h4>
-                            </div>
-                            <div class="modal-body">
-                              <div id="signupDiv">
-                                <input id="txtSignupUserName" type="text" placeholder="User Name" required>
-                                <input id="txtSignupZipcode" type="text" placeholder="Zip code" data-parsley-type="number" data-parsley-length="[5, 5]" data-parsley-trigger="keyup">
-                                <input id="txtSignupEmail" type="email" placeholder="email" required data-parsley-type="email" data-parsley-trigger="keyup">
-                                <input id="txtSignupPassword"  type="password" placeholder="password" required data-parsley-length="[6, 10]" data-parsley-trigger="keyup">
-                              </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                              <button type="button" class="btn btn-default" id="btnReset">Reset</button>
-                              <button type="button" id='btnSignupSubmit' class="btn btn-primary">Sign Up</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!--Sign Up Modal: Google Acct-->
-                      <div id="signinModal" class="modal fade" role="dialog">
-                        <div class="modal-dialog modal-sm">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                              <h4 class="modal-title">Sign In to your Account</h4>
-                              <button type="button" class="btn btn-default" id="btnGoogleSignin">Google sign in</button>
-                            </div>
-                            <div class="modal-body">
-                              <div id="signinDiv">
-                                <input id="txtSigninEmail" type="email" placeholder="Enter email" required data-parsley-type="email" data-parsley-trigger="keyup">
-                                <input id="txtSigninPassword" type="password" placeholder="Enter password" required data-parsley-length="[6, 10]" data-parsley-trigger="keyup">
-                              </div>
-                              <div id="errorStatus" style="color:red"></div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                              <button type="button" id='btnSigninSubmit' class="btn btn-primary">Sign In</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      </div> <!--content div closing-->
-                    </body>
-                  </html>
-                  <script src="./assets/javascript/famapp.js"></script>
-                  
-                  <script>
-                  function initMap() {
-                  var uluru = {lat: 37.09024, lng: -95.712891};
-                  var map = new google.maps.Map(document.getElementById('map'), {
-                  zoom: 4,
-                  center: uluru
-                  });
-                  var marker = new google.maps.Marker({
-                  position: uluru,
-                  map: map
-                  });
-                  }
-                  </script>
-                  <script async defer
-                  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtUUj6f_bVbHbWpCow6r5pktW8QVcwXp8&callback=initMap&libraries=places">
-                  </script>
-                  
-                  <script>
-                  function getAddress(){
-                  var address = $("#address").val();
-                  console.log("maps "+ address)
-                  $.ajax({
-                  
-                  url: 'https://maps.googleapis.com/maps/api/geocode/json?address='+ address +'&key=AIzaSyBtUUj6f_bVbHbWpCow6r5pktW8QVcwXp8',
-                  method: "POST"
-                  }).done(function(response) {
-                  console.log(response);
-                  console.log(response.results[0].formatted_address)
-                  var latitude = response.results[0].geometry.location.lat
-                  var longitude = response.results[0].geometry.location.lng
-                  var tableRowMaps = $("<tr>")
-                    tableRowMaps.append('<td>'+ response.results[0].formatted_address+ '</td>' + '<td>'+ latitude + '</td>' + '<td>' + longitude + '</td>');
-                    $("#address-table").append(tableRowMaps);
-                    // function initMap() {
-                    //     var uluru = {lat: latitude, lng: longitude};
-                    //     var map = new google.maps.Map(document.getElementById('map'), {
-                    //       zoom: 15,
-                    //       center: uluru
-                    //     });
-                    //     var marker = new google.maps.Marker({
-                    //       position: uluru,
-                    //       map: map
-                    //     });
-                    //   }
-                    var map;
-                    var infoWindow;
-                    var service;
-                    
-                    function initMap() {
-                    map = new google.maps.Map(document.getElementById('map'), {
-                    center: {lat: latitude, lng: longitude},
-                    zoom: 15,
-                    styles: [{
-                    stylers: [{ visibility: 'simplified' }]
-                    }, {
-                    elementType: 'labels',
-                    stylers: [{ visibility: 'off' }]
-                    }]
-                    });
-                    infoWindow = new google.maps.InfoWindow();
-                    service = new google.maps.places.PlacesService(map);
-                    // The idle event is a debounced event, so we can query & listen without
-                    // throwing too many requests at the server.
-                    map.addListener('idle', performSearch);
-                    }
-                    function performSearch() {
-                    var choices = $(".choices").val();
-                    console.log(choices)
-                    var request = {
-                    bounds: map.getBounds(),
-                    type: choices,
-                    openNoW: true,
-                    };
-                    service.radarSearch(request, callback);
-                    }
-                    function callback(results, status) {
-                    if (status !== google.maps.places.PlacesServiceStatus.OK) {
-                    console.error(status);
-                    return;
-                    }
-                    for (var i = 0, result; result = results[i]; i++) {
-                    addMarker(result);
-                    }
-                    }
-                    function addMarker(place) {
-                    var marker = new google.maps.Marker({
-                    map: map,
-                    position: place.geometry.location,
-                    icon: {
-                    url: 'https://developers.google.com/maps/documentation/javascript/images/circle.png',
-                    anchor: new google.maps.Point(10, 10),
-                    scaledSize: new google.maps.Size(10, 17)
-                    }
-                    });
-                    google.maps.event.addListener(marker, 'click', function() {
-                    service.getDetails(place, function(result, status) {
-                    if (status !== google.maps.places.PlacesServiceStatus.OK) {
-                    console.error(status);
-                    return;
-                    }
-                    infoWindow.setContent(result.name);
-                    infoWindow.open(map, marker);
-                    });
-                    });
-                    }
-                    initMap();
-                    });
-                    
-                    };
+                  <p class="text-muted" style ="text-align: center; color: black;">Got Bored © 2017</p>  
+              </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Sign up Modal: UN + Email -->
+    <div id="signupModal" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Create a new account</h4>
+          </div>
+
+          <div class="modal-body">
+            <div id="signupDiv">
+              <input id="txtSignupUserName" type="text" placeholder="User Name" required>
+              <input id="txtSignupZipcode" type="text" placeholder="Zip code" data-parsley-type="number" data-parsley-length="[5, 5]" data-parsley-trigger="keyup">
+              <input id="txtSignupEmail" type="email" placeholder="email" required data-parsley-type="email" data-parsley-trigger="keyup">
+              <input id="txtSignupPassword"  type="password" placeholder="password" required data-parsley-length="[6, 10]" data-parsley-trigger="keyup">
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-default" id="btnReset">Reset</button>
+            <button type="button" id='btnSignupSubmit' class="btn btn-primary">Sign Up</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!--Sign Up Modal: Google Acct-->
+    <div id="signinModal" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Sign In to your Account</h4>
+            <button type="button" class="btn btn-default" id="btnGoogleSignin">Google sign in</button>
+          </div>
+
+          <div class="modal-body">
+            <div id="signinDiv">
