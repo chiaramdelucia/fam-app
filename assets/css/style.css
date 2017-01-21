@@ -33,3 +33,14 @@ input.parsley-error:focus {
 	overflow-y: auto;
 	overflow-x: hidden;
 }
+
+.profileTable td{
+	padding: 10px 20px;
+}
+
+.capitalize{
+    text-transform: capitalize;
+    padding-right: 30px;
+    font-weight: bold;
+}
+

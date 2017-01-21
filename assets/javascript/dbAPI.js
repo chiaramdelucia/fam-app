@@ -144,24 +144,25 @@ $(document).on('ready', function(){
 
   // //weather api
   function getWeather(){
-    var addressZip = $("#google-input-zip").val();
-    console.log("getWeather() "+ addressZip)
+    var address= $("#address").val();
+    console.log("weather "+ address)
     $.ajax({
-        url:'https://api.wunderground.com/api/7d4c2ccc48b6acd9/conditions/q/'+ addressZip + '.json',
-        method:'GET',
-        datatype: "json"
-        }).done(function(wonder){
-          console.log("getWeather(), done ", wonder);
-          console.log("getWeather(), done ", wonder.current_observation.icon);
-          var icon_url = wonder.current_observation.icon_url;
-          var icon = wonder.current_observation.icon;
-          var degrees = wonder.current_observation.temp_f;
-          var tableRowWeather = $("<tr>");
-          tableRowWeather.append('<td>'+icon+'</td><td>'+degrees +'</td><td><img src="'+icon_url+'"/></td>');
-          $("#weather-table").append(tableRowWeather);
-    });
-  }
+      url:'https://api.wunderground.com/api/7d4c2ccc48b6acd9/conditions/q/'+ address + '.json',
+      method:'GET',
+      datatype: "json"
+    }).done(function(wonder){
+      console.log(wonder);
+      console.log(wonder.current_observation.icon);
+      var icon_url = wonder.current_observation.icon_url;
+      var icon = wonder.current_observation.icon;
+      var degrees = Math.floor(wonder.current_observation.temp_f);
+      var city = wonder.current_observation.display_location.city;
+  
+      $(".weather-widget").html('<span><img src="'+icon_url+'"></span><span>'+degrees+'°F</span><br><span>'+city+'<span>');
 
+    });
+
+  }
 
   //MEETUPS
 
@@ -231,7 +232,7 @@ $(document).on('ready', function(){
             bookmarksRef.child(displayName).push(bookmarkLink);
         }else{
             console.log("User displayname is Null");
-        }
+        }       
 
       }else{
         console.log("The user is not logged in to favorite!");

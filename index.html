@@ -99,6 +99,7 @@
             </li>
             </ul>
           </li>
+          <li><div class="weather-widget">++</div></li>
         </ul>
 
         </div><!-- /.navbar-collapse -->
@@ -124,12 +125,6 @@
 
           <div class="row">
             <!-- Places API display -->
-           <!--  <div class="col-md-6">
-              <div class="well" id="results-table">
-                <h1 class="text-center">Depending on the selected link, APIs get called
-                and information displayed here.</h1>
-              </div>
-            </div> -->
           <!-- TODO: Modify the div below for API display /temporary div-->
           <div class="col-md-7">
             <div class="well" id="resultsAPI">
@@ -163,16 +158,6 @@
                   <th>Latitude</th>
                   <th>Longitude</th>
                 </table>
-              </div>
-              <div class="row col-md-5">
-                <div class="well" id="weatherAPI">
-                  <h1 class="text-center">Weather</h1>
-                  <table id="weather-table" width="100%">
-                    <th>Current Weather</th>
-                    <th>Degrees (F)</th>
-                    <th>Image</th>
-                  </table>
-                </div>
               </div>
             </div> <!--/ Map and Weather API columns--> 
 
@@ -258,22 +243,19 @@
 
 <!-- profile modal-->
 <div id="profileModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Profile</h4>
+        <h4 class="modal-title">Your Profile Information</h4>
       </div>
       <div class="modal-body">
-        <div id="profileDiv">
-          some content here
-        </div>
+        <div id="profileDiv"></div>
+        
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
-        </button>
-        <button type="button" id='' class="btn btn-primary">Submit
-        </button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        
       </div>
     </div>
   </div>
