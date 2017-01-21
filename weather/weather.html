@@ -1,9 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>weather widget</title>
+	 <!-- jQuery Library -->
+  <script src="https://code.jquery.com/jquery-2.2.3.js" 
+  integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" 
+  crossorigin="anonymous"></script> 
+  <!-- parsleyjs library -->
+  <script src="http://parsleyjs.org/dist/parsley.min.js"></script>
+  <!-- Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <!--CSS file-->
+  <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+  <!-- Bootstrap js -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>    
+  <!-- Firebase Reference -->
+  <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+  
+ 
 </head>
 <body>
+      <div id="content"> 
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+
+      <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">
+          <img alt="Logo" src="...">
+        </div>
+
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <!-- left nav: categories-->
@@ -39,11 +72,47 @@
               <li><a href="#" id='btnSignOut' data-toggle="modal">Sign out</a></li>
             </ul>
           </li>
+          <li><div class="weather-widget"></div></li>
         </ul>
 
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
-
+      <p>Input your address</p>
+      <input type="text" name="enter address" id="address">
+      <input id="add-address" type="submit" value="submit">
+    </div>
 </body>
+<script>
+	function getWeather(){
+  var address= $("#address").val();
+  console.log("weather "+ address)
+  $.ajax({
+    
+    url:'https://api.wunderground.com/api/7d4c2ccc48b6acd9/conditions/q/'+ address + '.json',
+    method:'GET',
+    datatype: "json"
+  }).done(function(wonder){
+    console.log(wonder)
+    console.log(wonder.current_observation.icon)
+    var icon_url = wonder.current_observation.icon_url
+    var icon = wonder.current_observation.icon
+    var degrees = Math.floor(wonder.current_observation.temp_f)
+    var city = wonder.current_observation.display_location.city
+    $(".weather-widget").append('<span><img src="'+icon_url+'"></span><span>'+degrees+'°F</span><br><span>'+city+'<span>')
+    // var tableRowWeather = $("<tr>")
+    // tableRowWeather.append('<td>'+icon+'</td><td>'+degrees +'</td><td><img src="'+icon_url+'"/></td>');
+    // $("#weather-table").append(tableRowWeather)
+  });
+  
+};
+
+$("#add-address").on("click", function(){
+	event.preventDefault();
+	getWeather();
+})
+
+
+
+</script>
 </html>
