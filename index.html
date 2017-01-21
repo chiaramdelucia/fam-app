@@ -4,7 +4,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Fam APP </title>    
+  <title>Got Bored?</title>    
   <!-- jQuery Library -->
   <script src="https://code.jquery.com/jquery-2.2.3.js" 
   integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" 
@@ -20,8 +20,8 @@
   <!-- Firebase Reference -->
   <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
   <!-- JS files-->
-  <script src="dbAuth.js"></script>
-  <script src="dbAPI.js"></script> 
+<!--   <script src="dbAuth.js"></script>
+  <script src="dbAPI.js"></script>  -->
 
 </head>
 
@@ -32,16 +32,17 @@
   <!--Landing page-->
   <div class ="row" id="land">
         <div class="col-md-12">
-          <h1>The Family App:</h1>
-          <h2>A website dedicated to helping families find spaces in their communities.</h2>
+          <h1>Got Bored?</h1>
+          <h2>Don't sit around. Find a place to bring the family!</h2>
         </div>
         <div class="row">
-          <h4>enter your zip code</h4>
-          <input type="text" name="zip code" id="address" placeholder="Zip Code">
+          <h4>Enter your zip code to find the fun</h4>
+          <input type="text" name="zip code" id="address" placeholder="Enter Your Zip Code">
+          <input id="add-address" type="submit" value="submit">
         </div>
         <div class="row">
-            <button class="btn btn-default btn1" type="submit" value="submit">Submit</button>
-        </div>
+            
+        </div>  
   </div> <!--/#land-->
 
 
@@ -49,6 +50,7 @@
 
  
   <div id="content"> 
+  <div id="wrapper">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
 
@@ -61,7 +63,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="#">
-          <img alt="Logo" src="...">
+          <!-- <img alt="Logo" src="..."> -->
         </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -99,11 +101,13 @@
               <li><a href="#" id='btnSignOut' data-toggle="modal">Sign out</a></li>
             </ul>
           </li>
+          <li><div class="weather-widget"></div></li>
         </ul>
 
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
+    </div>
 
     <!--Main Content Area-->
     <div class="container">
@@ -126,9 +130,21 @@
 
             <!-- Places API display -->
             <div class="col-md-6">
-              <div class="well" >
-                <h1 class="text-center">Depending on the selected link, APIs get called
+              <div class="well places">
+                <h1>Depending on the selected link, APIs get called
                 and information displayed here.</h1>
+                <ul>
+                  <li>test</li>
+                  <li>test</li>
+                  <li>test</li>
+                  <li>test</li>
+                  <li>test</li>
+                  <li>test</li>
+                  <li>test</li>
+                  <li>test</li>
+                  <li>test</li>
+                  <li>test</li>
+                </ul>
               </div>
             </div>
 
@@ -149,15 +165,6 @@
                     <th>Longitude</th>
                   </table>
               </div>
-              <!--weather-->
-              <div class="well" id="weather API">
-                  <h1 class="text-center">Weather</h1>
-                  <table id="weather-table" width="100%">
-                    <th>Current Weather</th>
-                    <th>Degrees (F)</th>
-                    <th>Image</th>
-                  </table>
-              </div>
             </div> <!--/ Map and Weather API columns--> 
 
           </div> <!--/ Places API, Map, Weather API row-->    
@@ -171,8 +178,7 @@
         <div class="col-md-12" style="border-top-style: solid;">
           <footer class="footer">
               <div class="container">
-                  <p class="text-muted" style ="text-align: center;">Family App © 2017</p>
-                  <button class="btn btn-default scrollTop" type="submit">Scroll to Top</button>  
+                  <p class="text-muted" style ="text-align: center;">Family App © 2017</p>  
               </div>
           </footer>
         </div>
@@ -240,6 +246,7 @@
   </div> <!--content div closing--> 
 
 </body>
+
 
 </html>
 
