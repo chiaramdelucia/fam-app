@@ -6,6 +6,12 @@ You wouldn't actually want to expose your access token secret like this in a rea
 <html>
 <head>
 <title>Yelp Test</title>
+<style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 <script
@@ -26,14 +32,16 @@ You wouldn't actually want to expose your access token secret like this in a rea
     <p>Select interest</p>
     <select class="form-control choices">
       <option value="park">Parks</option>
-      <option value="restaurant">Restaurants</option>
+      <option value="Good for Kids, restaurants">Restaurants</option>
       <option value="movie_theater">Movie Theaters</option>
       <option value="museum">Museums</option>
       <option value="book_store">Book Stores</option>
       <option value="library">Library</option>
-      <option value="cafe">Cafes</option>
+      <option value="Good for Kids, cafe">Cafes</option>
     </select>
   </div>
+  <div id="map"></div>
+  <div class="searchResults"></div>
 
 </body>
 <script>
@@ -42,10 +50,8 @@ You wouldn't actually want to expose your access token secret like this in a rea
       var address = $("#address").val();
       var choices = $(".choices").val();
       console.log(address)
+      console.log(choices)
       var auth = {
-        //
-        // Update with your auth tokens.
-        //
         consumerKey: "N79ok2kTPQxglbRUEq6nKg",
         consumerSecret: "bj6U9j64nKyEqBbCRvfm5eAcOYQ",
         accessToken: "U0Ya5mK-gWYd0w1f-qnv3hC_NJwB60KB",
@@ -56,7 +62,6 @@ You wouldn't actually want to expose your access token secret like this in a rea
           signatureMethod: "HMAC-SHA1"
         }
       };
-
       var terms = choices;
       console.log(choices)
 
@@ -70,6 +75,8 @@ You wouldn't actually want to expose your access token secret like this in a rea
       parameters = [];
       parameters.push(['term', terms]);
       parameters.push(['location', near]);
+       parameters.push(['radius', 5]);
+        parameters.push(['limit_filter', 15]);
       parameters.push(['callback', 'cb']);
       parameters.push(['oauth_consumer_key', auth.consumerKey]);
       parameters.push(['oauth_consumer_secret', auth.consumerSecret]);
@@ -98,36 +105,57 @@ You wouldn't actually want to expose your access token secret like this in a rea
         'dataType': 'jsonp',
         'jsonpCallback': 'cb',
         'success': function(data, textStats, XMLHttpRequest) {
+          var i;
           console.log(data);
 
-
-      $("body").append("<h1>The best brunch spots are listed below: </h1>");
-      $("body").append("<h1>");
-      $("body").append(near);
-      $("body").append("</h1>");
-      var i;
-      //var imgsrc = "\<img src \=";
-      //var imgcl = "\">";
-      for(i=0; i<=9; i= i+1){
-                  $("body").append("<p>");  
-                  $("body").append('<a href ="' + data.businesses[i].url + '">' + data.businesses[i].name +'</a>');
-                  $("body").append("      ");
-                  $("body").append('<img src="' + data.businesses[i].rating_img_url +'" />');
-                  $("body").append(" Phone: ");
-                  $("body").append(data.businesses[i].phone);
-                  $("body").append("<p>");  
-                  $("body").append(" Yelp Reviews: ");
-                  $("body").append(data.businesses[i].review_count);
-                  $("body").append("      ");
-                  $("body").append("</p>");  
-         }
-
-        }
-      });
-};
-
+       
+     
+        for(i=0; i<=9; i= i+1){
+                    $(".searchResults").append("<p>");  
+                    $(".searchResults").append('<a href ="' + data.businesses[i] + '">' + data.businesses[i].name +'</a>');
+                    $(".searchResults").append("      ");
+                    $(".searchResults").append('<img src="' + data.businesses[i].rating_img_url +'" />');
+                    $(".searchResults").append(" Phone: ");
+                    $(".searchResults").append(data.businesses[i].phone);
+                    $(".searchResults").append("<p>");  
+                    $(".searchResults").append(" Yelp Reviews: ");
+                    $(".searchResults").append(data.businesses[i].review_count);
+                    $(".searchResults").append("      ");
+                    $(".searchResults").append("</p>");  
+                    var busLat = data.businesses[i].location.coordinate.latitude
+                    var busLong = data.businesses[i].location.coordinate.longitude
+                    console.log(busLat + "   "+busLong)
+          function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: busLat, lng: busLong},
+              zoom: 15,
+              styles: [{
+                stylers: [{ visibility: 'simplified' }]
+              }, {
+                elementType: 'labels',
+                stylers: [{ visibility: 'off' }]
+              }]
+            }); 
+          };
+          function addMarker() {
+            var marker = new google.maps.Marker({
+              map: map,
+              position: {lat: busLat, lng: busLong},
+              icon: {
+                url: 'https://developers.google.com/maps/documentation/javascript/images/circle.png',
+                anchor: new google.maps.Point(10, 10),
+                scaledSize: new google.maps.Size(10, 17)
+              }
+            });
+          };
+          initMap();
+          }; //for
+        }//success
+      });//ajax
+};// what the yelp
 $("#add-address").on("click", function(){
   event.preventDefault();
+  $(".searchResults").empty();
   whatTheYelp();
   var address = $("#address").val();
    console.log(address)
@@ -135,5 +163,21 @@ $("#add-address").on("click", function(){
 
 
 </script>
+<script>
+      function initMap() {
+        var uluru = {lat: 37.09024, lng: -95.712891};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtUUj6f_bVbHbWpCow6r5pktW8QVcwXp8&callback=initMap&libraries=places">
+    </script>
 
 </html>
