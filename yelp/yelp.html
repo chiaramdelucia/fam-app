@@ -1,0 +1,139 @@
+<!--
+This example is a proof of concept, for how to use the Yelp v2 API with javascript.
+You wouldn't actually want to expose your access token secret like this in a real application.
+-->
+
+<html>
+<head>
+<title>Yelp Test</title>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.1.1.js"
+  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="./oauth.js"></script>
+<script type="text/javascript" src="./sha1.js"></script>
+</head> 
+
+<body>
+  <div>
+    <div>
+      <p>Input your address</p>
+      <input type="text" name="enter address" id="address">
+      <input id="add-address" type="submit" value="submit">
+    </div>
+    <p>Select interest</p>
+    <select class="form-control choices">
+      <option value="park">Parks</option>
+      <option value="restaurant">Restaurants</option>
+      <option value="movie_theater">Movie Theaters</option>
+      <option value="museum">Museums</option>
+      <option value="book_store">Book Stores</option>
+      <option value="library">Library</option>
+      <option value="cafe">Cafes</option>
+    </select>
+  </div>
+
+</body>
+<script>
+
+  function whatTheYelp(){
+      var address = $("#address").val();
+      var choices = $(".choices").val();
+      console.log(address)
+      var auth = {
+        //
+        // Update with your auth tokens.
+        //
+        consumerKey: "N79ok2kTPQxglbRUEq6nKg",
+        consumerSecret: "bj6U9j64nKyEqBbCRvfm5eAcOYQ",
+        accessToken: "U0Ya5mK-gWYd0w1f-qnv3hC_NJwB60KB",
+        // This example is a proof of concept, for how to use the Yelp v2 API with javascript.
+        // You wouldn't actually want to expose your access token secret like this in a real application.
+        accessTokenSecret: "6AUtdcwquIItxXKO4DErbyZbb6I",
+        serviceProvider: {
+          signatureMethod: "HMAC-SHA1"
+        }
+      };
+
+      var terms = choices;
+      console.log(choices)
+
+      var near = address;
+      console.log(address)
+      var accessor = {
+        consumerSecret: auth.consumerSecret,
+        tokenSecret: auth.accessTokenSecret
+      };
+
+      parameters = [];
+      parameters.push(['term', terms]);
+      parameters.push(['location', near]);
+      parameters.push(['callback', 'cb']);
+      parameters.push(['oauth_consumer_key', auth.consumerKey]);
+      parameters.push(['oauth_consumer_secret', auth.consumerSecret]);
+      parameters.push(['oauth_token', auth.accessToken]);
+      parameters.push(['oauth_signature_method', 'HMAC-SHA1']);
+
+      var message = {
+        'action': 'https://api.yelp.com/v2/search',
+        'method': 'GET',
+        'parameters': parameters
+      };
+
+      OAuth.setTimestampAndNonce(message);
+      OAuth.SignatureMethod.sign(message, accessor);
+
+      var parameterMap = OAuth.getParameterMap(message.parameters);
+      parameterMap.oauth_signature = OAuth.percentEncode(parameterMap.oauth_signature)
+      console.log(parameterMap);
+
+      var bestRestaurant = "Some random restaurant";
+
+      $.ajax({
+        'url': message.action,
+        'data': parameterMap,
+        'cache': true,
+        'dataType': 'jsonp',
+        'jsonpCallback': 'cb',
+        'success': function(data, textStats, XMLHttpRequest) {
+          console.log(data);
+
+
+      $("body").append("<h1>The best brunch spots are listed below: </h1>");
+      $("body").append("<h1>");
+      $("body").append(near);
+      $("body").append("</h1>");
+      var i;
+      //var imgsrc = "\<img src \=";
+      //var imgcl = "\">";
+      for(i=0; i<=9; i= i+1){
+                  $("body").append("<p>");  
+                  $("body").append('<a href ="' + data.businesses[i].url + '">' + data.businesses[i].name +'</a>');
+                  $("body").append("      ");
+                  $("body").append('<img src="' + data.businesses[i].rating_img_url +'" />');
+                  $("body").append(" Phone: ");
+                  $("body").append(data.businesses[i].phone);
+                  $("body").append("<p>");  
+                  $("body").append(" Yelp Reviews: ");
+                  $("body").append(data.businesses[i].review_count);
+                  $("body").append("      ");
+                  $("body").append("</p>");  
+         }
+
+        }
+      });
+};
+
+$("#add-address").on("click", function(){
+  event.preventDefault();
+  whatTheYelp();
+  var address = $("#address").val();
+   console.log(address)
+});
+
+
+</script>
+
+</html>
