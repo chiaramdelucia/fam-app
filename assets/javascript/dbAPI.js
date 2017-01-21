@@ -27,7 +27,7 @@ $(document).on('ready', function(){
 
     //display map
     getGoogleCoordinates();
-    getWeather();
+    // getWeather();
   }); 
 
   function initMap() {
@@ -141,28 +141,25 @@ $(document).on('ready', function(){
     initMap();
   }
 
+//weather
+   function getWeather() {
+        var address = $("#user-input-zip").val();
+        console.log("weather " + address)
+        $.ajax({
+            url: 'https://api.wunderground.com/api/7d4c2ccc48b6acd9/conditions/q/' + address + '.json',
+            method: 'GET',
+            datatype: "json"
+        }).done(function(wonder) {
+            console.log(wonder)
+            console.log(wonder.current_observation.icon)
+            var icon_url = wonder.current_observation.icon_url
+            var icon = wonder.current_observation.icon
+            var degrees = Math.floor(wonder.current_observation.temp_f)
+            var city = wonder.current_observation.display_location.city
+            $(".weather-widget").html('<span><img src="' + icon_url + '"></span><span>' + degrees + '°F</span><br><span>' + city + '<span>')
+        });
 
-  // //weather api
-  function getWeather(){
-    var address= $("#address").val();
-    console.log("weather "+ address)
-    $.ajax({
-      url:'https://api.wunderground.com/api/7d4c2ccc48b6acd9/conditions/q/'+ address + '.json',
-      method:'GET',
-      datatype: "json"
-    }).done(function(wonder){
-      console.log(wonder);
-      console.log(wonder.current_observation.icon);
-      var icon_url = wonder.current_observation.icon_url;
-      var icon = wonder.current_observation.icon;
-      var degrees = Math.floor(wonder.current_observation.temp_f);
-      var city = wonder.current_observation.display_location.city;
-  
-      $(".weather-widget").html('<span><img src="'+icon_url+'"></span><span>'+degrees+'°F</span><br><span>'+city+'<span>');
-
-    });
-
-  }
+    };
 
   //MEETUPS
 

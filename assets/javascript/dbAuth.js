@@ -86,7 +86,7 @@ $(document).ready(function() {
         newUserPromise.then(function(user) {
             console.log("firebaseSignup(), Signed up successfully", user);
             $('#signupModal').hide('hide');
-            // location.reload();
+            location.reload();
             // add user info to database
             addToDatabase(user);
         });
@@ -105,7 +105,7 @@ $(document).ready(function() {
         userObjPromise.then(function(user) {
             console.log("firebaseSignin(), Signed in successfully", user);
             $('#signinModal').hide('hide');
-            // location.reload();
+            location.reload();
         });
     }
 

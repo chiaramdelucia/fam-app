@@ -2,7 +2,13 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fam APP </title>    
+  <title>Got Bored?</title>    
+  <!-- jQuery Library -->
+  <script src="https://code.jquery.com/jquery-2.2.3.js" 
+  integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" 
+  crossorigin="anonymous"></script> 
+  <!-- parsleyjs library -->
+  <script src="http://parsleyjs.org/dist/parsley.min.js"></script>
   <!-- Bootstrap-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
    <!-- Font awesome -->
@@ -20,14 +26,14 @@
   <!-- parsleyjs library -->
   <script src="http://parsleyjs.org/dist/parsley.min.js"></script>    
   <!-- Firebase Reference -->
-  <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>  
 
+  <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
 </head>
 
 <body>
 
-<!--Landing page-->
-<div class ="row" id="land">
+<!-- <!-Landing page-->
+<!-- <div class ="row" id="land">
     <div class="col-md-12">
       <h1>The Family App:</h1>
       <h2>A website dedicated to helping families find spaces in their communities.</h2>
@@ -38,10 +44,27 @@
     </div>
     <div class="row">
         <button class="btn btn-default btn1" id="user-add-zip" type="submit" value="submit">Submit</button>
-    </div>
-</div> <!--/#land-->
+    </div> -->
+<!--</div> <!-/#land--> 
+
+  <!--Landing page-->
+  <div class ="row" id="land">
+        <div class="col-md-12">
+          <h1>Got Bored?</h1>
+          <h2>Don't sit around. Find a place to bring the family!</h2>
+        </div>
+        <div class="row">
+          <h4>Enter your zip code to find the fun</h4>
+           <input type="text" name="zip code" id="user-input-zip" placeholder="Zip Code" required  data-parsley-type="number" data-parsley-length="[5, 5]">
+         </div>
+        <div class="row">
+          <button class="btn btn-default btn1" id="user-add-zip" type="submit" value="submit">Submit</button>
+        </div>
+        </div>  
+  </div> <!--/#land-->
 
   <div id="content"> 
+  <div id="wrapper">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -97,14 +120,16 @@
                 Sign out</a></li>
               </ul>
             </li>
+            <li><div class="weather-widget"></div></li>
             </ul>
           </li>
-          <li><div class="weather-widget">++</div></li>
+          
         </ul>
 
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
+    </div>
 
     <!--Main Content Area-->
     <div class="container">
@@ -127,7 +152,7 @@
             <!-- Places API display -->
           <!-- TODO: Modify the div below for API display /temporary div-->
           <div class="col-md-7">
-            <div class="well" id="resultsAPI">
+            <div class="well places" id="resultsAPI">
               <h5>
                 <div id="results-div" width="100%"></div>                
               </h5>
@@ -172,8 +197,7 @@
         <div class="col-md-12" style="border-top-style: solid;">
           <footer class="footer">
               <div class="container">
-                  <p class="text-muted" style ="text-align: center;">Family App © 2017</p>
-                  <button class="btn btn-default scrollTop" type="submit">Scroll to Top</button>  
+                  <p class="text-muted" style ="text-align: center;">Family App © 2017</p>  
               </div>
           </footer>
         </div>
@@ -265,11 +289,11 @@
 </div> <!--content div closing--> 
 
 <!-- JS files-->
-<script src="./assets/javascript/famapp.js"></script>
+
 <script src="assets/javascript/dbAuth.js"></script>
 <script src="assets/javascript/dbAPI.js"></script>
+<script src="./assets/javascript/famapp.js"></script>
 <!-- <script src="assets/javascript/googleAPI.js"></script>  -->
-
 
 </body>
 
