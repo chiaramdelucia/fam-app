@@ -99,7 +99,7 @@
     var icon = wonder.current_observation.icon
     var degrees = Math.floor(wonder.current_observation.temp_f)
     var city = wonder.current_observation.display_location.city
-    $(".weather-widget").append('<span><img src="'+icon_url+'"></span><span>'+degrees+'°F</span><br><span>'+city+'<span>')
+    $(".weather-widget").html('<span><img src="'+icon_url+'"></span><span>'+degrees+'°F</span><br><span>'+city+'<span>')
     // var tableRowWeather = $("<tr>")
     // tableRowWeather.append('<td>'+icon+'</td><td>'+degrees +'</td><td><img src="'+icon_url+'"/></td>');
     // $("#weather-table").append(tableRowWeather)
