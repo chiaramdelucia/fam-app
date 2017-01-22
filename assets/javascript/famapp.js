@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+
 	$("#user-add-zip").click(function() {
 	    $('html,body').animate({
 	        scrollTop: $("#content").offset().top},
@@ -10,17 +11,13 @@ $(document).ready(function() {
 
 	});
 
-	$(".scrollTop").click(function() {
-	    $('html,body').animate({
-	        scrollTop: $("#land").offset().top},
-	        'slow');
-	});
 
 
     function getWeather() {
-        var address = $("#user-input-zip").val();
+        var address = $("#address").val();
         console.log("weather " + address)
         $.ajax({
+
             url: 'https://api.wunderground.com/api/7d4c2ccc48b6acd9/conditions/q/' + address + '.json',
             method: 'GET',
             datatype: "json"
@@ -32,10 +29,10 @@ $(document).ready(function() {
             var degrees = Math.floor(wonder.current_observation.temp_f)
             var city = wonder.current_observation.display_location.city
             $(".weather-widget").html('<span><img src="' + icon_url + '"></span><span>' + degrees + '°F</span><br><span>' + city + '<span>')
+
         });
 
     };
-
 
     var win = $(window),
             nav = $('nav'),
@@ -50,5 +47,4 @@ $(document).ready(function() {
     win.scroll(sticky)
 
    
-
 });
