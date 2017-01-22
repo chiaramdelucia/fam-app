@@ -228,7 +228,6 @@ $(document).ready(function() {
         } else {
             console.log('updateUserInfo(), User info not updated');
         }
-
     }
 
     //setting global variable of current user (why do I lose scope while bookmarking)
@@ -242,7 +241,6 @@ $(document).ready(function() {
         } else {
             console.log('setCurrentUser(), No user logged in');
         }
-
     }
 
     //TODO 
@@ -309,7 +307,6 @@ $(document).ready(function() {
                     console.log("No bookmarks for the user");
                 }
         });
-
 
     }
 
