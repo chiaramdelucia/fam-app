@@ -91,17 +91,17 @@ $(document).ready(function() {
 
      
         for(i=0; i<=9; i= i+1) {
-                    $(".resultsAPI").append("<p>");  
-                    $(".resultsAPI").append('<a href ="' + data.businesses[i] + '">' + data.businesses[i].name +'</a>');
-                    $(".resultsAPI").append("      ");
-                    $(".resultsAPI").append('<img src="' + data.businesses[i].rating_img_url +'" />');
-                    $(".resultsAPI").append(" Phone: ");
-                    $(".resultsAPI").append(data.businesses[i].phone);
-                    $(".resultsAPI").append("<p>");  
-                    $(".resultsAPI").append(" Yelp Reviews: ");
-                    $(".resultsAPI").append(data.businesses[i].review_count);
-                    $(".resultsAPI").append("      ");
-                    $(".resultsAPI").append("</p>");  
+                    $("#resultsAPI").append("<p>");  
+                    $("#resultsAPI").append('<a href ="' + data.businesses[i] + '">' + data.businesses[i].name +'</a>');
+                    $("#resultsAPI").append("      ");
+                    $("#resultsAPI").append('<img src="' + data.businesses[i].rating_img_url +'" />');
+                    $("#resultsAPI").append(" Phone: ");
+                    $("#resultsAPI").append(data.businesses[i].phone);
+                    $("#resultsAPI").append("<p>");  
+                    $("#resultsAPI").append(" Yelp Reviews: ");
+                    $("#resultsAPI").append(data.businesses[i].review_count);
+                    $("#resultsAPI").append("      ");
+                    $("#resultsAPI").append("</p>");  
 
                     var busLat = data.businesses[i].location.coordinate.latitude;
                     var busLong = data.businesses[i].location.coordinate.longitude;
@@ -119,7 +119,7 @@ $(document).ready(function() {
 //main process
 $("#google-add-zip").on("click", function(){
   event.preventDefault();
-  $(".resultsAPI").empty();
+  $("#resultsAPI").empty();
   whatTheYelp();
   
 });
