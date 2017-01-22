@@ -89,10 +89,11 @@ $(document).ready(function() {
 
         newUserPromise.then(function(user) {
             console.log("firebaseSignup(), Signed up successfully", user);
-            $('#signupModal').hide('hide');
-            // location.reload(); //refreshes before other actions are done??
+            $('#signupModal').hide('hide');           
             // add user info to database
             addToDatabase(user);
+
+            // location.reload(); //refreshes before other actions are done??
         });
     }
 
@@ -220,6 +221,7 @@ $(document).ready(function() {
                 displayName: $("#txtSignupUserName").val().trim()
             }).then(function() {
                 console.log("updateUserInfo(), User updated successfully with ",  $("#txtSignupUserName").val().trim());
+                location.reload();
             }, function(error) {
                 console.log(error.message);
             });
