@@ -125,20 +125,19 @@ You wouldn't actually want to expose your access token secret like this in a rea
             map = new google.maps.Map(document.getElementById('map'), {
               center: {lat: busLat, lng: busLong},
               zoom: 15,
-              styles: [{
-                stylers: [{ visibility: 'simplified' }]
-              }, {
-                elementType: 'labels',
-                stylers: [{ visibility: 'off' }]
-              }]
+              mapTypeId: 'roadmap',
+              
             }); 
 
             // addMarker()
           };
 
-
+          var initlat = data.region.center.latitude
+          var initlong = data.region.center.longitude
+          console.log("initlat "+initlat + "  initlong "+initlong)
           // start "here"
-          initMap(40.7128, -74.0059);
+          initMap(initlat, initlong);
+
      
         for(i=0; i<=9; i= i+1) {
                     $(".searchResults").append("<p>");  
