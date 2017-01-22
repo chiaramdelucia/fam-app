@@ -31,7 +31,7 @@ $(document).ready(function() {
       parameters.push(['location', near]);
       parameters.push(['radius', 5]);
       parameters.push(['limit_filter', 15]);
-      parameters.push(['sort', 1])
+      parameters.push(['sort', 0])
       parameters.push(['callback', 'cb']);
       parameters.push(['oauth_consumer_key', auth.consumerKey]);
       parameters.push(['oauth_consumer_secret', auth.consumerSecret]);
