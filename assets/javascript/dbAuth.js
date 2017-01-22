@@ -31,12 +31,15 @@ $(document).ready(function() {
         var email = $('#txtSignupEmail').val().trim();
         var password = $('#txtSignupPassword').val().trim();
         firebaseSignup(email, password);
+        console.log("Hello")
     });
 
     $('#btnSigninSubmit').on('click', function() {
         var email = $('#txtSigninEmail').val().trim();
         var password = $('#txtSigninPassword').val().trim();
         firebaseSignin(email, password);
+        console.log("Hello");
+        alert("Hello");
     });
 
     $("#btnSignout").on('click', function() {
@@ -59,10 +62,12 @@ $(document).ready(function() {
 
     $("#btnGoogleSignup").click(function() {
         firebaseGoogleSignin();
+        alert("Hello");
     });
 
     $("#btnProfile").click(function() {
         fetchUserProfile();
+        alert("Hello");
     });
 
 
