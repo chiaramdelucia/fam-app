@@ -2,6 +2,7 @@ $(document).ready(function() {
 
 
 	$("#user-add-zip").click(function() {
+        console.log("hello")
 	    $('html,body').animate({
 	        scrollTop: $("#content").offset().top},
 	        'slow');    
