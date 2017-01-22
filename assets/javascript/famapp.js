@@ -6,6 +6,7 @@ $(document).ready(function() {
 	        scrollTop: $("#content").offset().top},
 	        'slow');    
             getWeather();
+            getAddress();
 	});
 
     //review this
@@ -16,7 +17,7 @@ $(document).ready(function() {
     });
 
     function getWeather() {
-        var address = $("#address").val();
+        var address = $("#user-input-zip").val();
         console.log("weather " + address)
         $.ajax({
 
@@ -35,6 +36,35 @@ $(document).ready(function() {
         });
 
     };
+    function getAddress(){
+    var address = $("#user-input-zip").val();
+    console.log("maps "+ address)
+      $.ajax({
+    
+        url: 'https://maps.googleapis.com/maps/api/geocode/json?address='+ address +'&key=AIzaSyBtUUj6f_bVbHbWpCow6r5pktW8QVcwXp8',
+        method: "GET"
+      }).done(function(response) {
+        console.log(response);
+        console.log(response.results[0].formatted_address)
+
+        var latitude = response.results[0].geometry.location.lat
+        var longitude = response.results[0].geometry.location.lng
+    
+        function initMap() {
+          var map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: latitude, lng: longitude},
+            zoom: 15,
+            mapTypeId: 'roadmap',
+            });//var map
+           var marker = new google.maps.Marker({
+            position: {lat: latitude, lng: longitude},
+            map: map
+        });//var marker
+        };//initMap
+        initMap();
+      });//ajax
+
+  }//get Address
 
     var win = $(window),
             nav = $('nav'),
