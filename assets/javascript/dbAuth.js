@@ -257,7 +257,7 @@ $(document).ready(function() {
 
                 var profileDivSection = $("<div>");
                 profileDivSection.attr("class", "profileClass");
-                profileDivSection.css("background-color", "#e9e9e9");
+                // profileDivSection.css("background-color", "#e9e9e9");
                 profileDivSection.css("padding", "15px");
                 profileDivSection.css("color", "#000000");
                 profileDivSection.css("font-size", "20px");
@@ -271,7 +271,7 @@ $(document).ready(function() {
                 });
 
                 profileDivSection.html(userProfile);
-                $("#profileDiv").append(profileDivSection);
+                // $("#profileDiv").append(profileDivSection);
 
             });
 
@@ -297,7 +297,7 @@ $(document).ready(function() {
             });
             bookmarkDivSection.html(bookmarkP);
 
-            $("#profileDiv").append(bookmarkDivSection);
+            // $("#profileDiv").append(bookmarkDivSection);
         });
 
     }
