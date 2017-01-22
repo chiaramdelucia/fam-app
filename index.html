@@ -9,9 +9,6 @@
   <script src="https://code.jquery.com/jquery-2.2.3.js" 
   integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" 
   crossorigin="anonymous"></script> 
-  
-  <!-- parsleyjs library -->
-  <script src="http://parsleyjs.org/dist/parsley.min.js"></script>
 
   <!-- Bootstrap-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -27,12 +24,17 @@
   integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" 
   crossorigin="anonymous"></script>
   
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>     
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>  
+
+  <!-- parsleyjs library -->
+  <script src="http://parsleyjs.org/dist/parsley.js"></script>
 
   <!-- Firebase Reference -->
   <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
 
    <!--CSS file-->
+  <link href="https://fonts.googleapis.com/css?family=Eczar" rel="stylesheet">
+  <!-- TODO: font above for testing only, remove -->
   <link rel="stylesheet" type="text/css" href="./assets/css/content.css">
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 
@@ -143,7 +145,7 @@
           <div class="row">
             <!-- Places API display -->
           <!-- TODO: Modify the div below for API display /temporary div-->
-          <div class="col-md-6">
+          <div class="col-md-7">
             <div class="well places">
               <h3 id="results-div" width="100%">Search Results</h3>
               <div id="resultsAPI"></div>
@@ -190,13 +192,13 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Create a new account</h4>     
+          <h4 class="modal-title">CREATE A NEW ACCOUNT</h4>     
         </div> <!--modal header -->
         <div class="modal-body">
           <div id="signupDiv">
             <div style="margin: 10px;">
               <button type="button" class="btn btn-default" id="btnGoogleSignup">
-              Sign Up With Google
+              Sign up with Google
               </button>
             </div> 
             <div> OR </div> 
@@ -214,7 +216,7 @@
             </button>
             <button type="button" class="btn btn-default" id="btnReset">Reset
             </button>
-            <button type="button" id='btnSignupSubmit' class="btn btn-primary">Sign Up
+            <button type="button" id='btnSignupSubmit' class="btn btn-primary">Sign up
             </button>
         </div> <!-- modal footer -->
       </div><!--modal content-->
@@ -227,7 +229,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Sign In to your Account</h4>        
+          <h4 class="modal-title">SIGN INTO YOUR ACCOUNT</h4>        
         </div>
         <div class="modal-body">
           <div id="signinDiv">
@@ -260,7 +262,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" id="profile-close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Your Profile Information</h4>
+          <h3 class="modal-title">YOUR PROFILE INFORMATION</h3>
         </div> <!--modal header -->
         <div class="modal-body">
           <div id="profileDiv"></div>

@@ -1,3 +1,4 @@
+
 #land {
 	width: 100%;
 	height: 700px;
@@ -10,7 +11,6 @@
 	/*background-attachment: fixed;*/
 	overflow-y: hidden;
 }
-
 
 #content {
 	width: 100%;
@@ -82,6 +82,7 @@ input:focus {
 #btnGoogleSignin
 {
 	background-color: #2C3E50;
+	width: 200px;
 	border-radius: 8px;
 	color: #ffffff;
 	padding: 15px 25px;
@@ -92,4 +93,11 @@ input:focus {
 	background-color: #e9e9e9;
 	padding : 15px;
 	border : 2px solid #000000;
+}
+
+#signinModal,
+#signupModal,
+#profileModal{
+	font-family: 'Eczar', serif; /* temporary */
+	font-size: 16px;
 }
