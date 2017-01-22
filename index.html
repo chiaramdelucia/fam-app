@@ -37,8 +37,8 @@
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 
 <!--yelp oauth files-->
-<script type="text/javascript" src="./api/yelp/oauth.js"></script>
-<script type="text/javascript" src="./api/yelp/sha1.js"></script>
+<script type="text/javascript" src="./assets/javascript/yelp/oauth.js"></script>
+<script type="text/javascript" src="./assets/javascript/yelp/sha1.js"></script>
 
 
 </head>
@@ -155,8 +155,9 @@
 
           <!-- TODO: Modify the div below for API display /temporary div-->
           <div class="col-md-6">
-            <div class="well places" id="resultsAPI">
+            <div class="well places">
               <h3 id="results-div" width="100%">Search Results</h3>
+              <div id="resultsAPI"></div>
             </div>
           </div>
             
@@ -172,12 +173,12 @@
                 <p>Select interest</p>
                 <select class="form-control choices">
                   <option value="park">Parks</option>
-                  <option value="restaurant">Restaurants</option>
+                  <option value="Good for Kids, restaurants">Restaurants</option>
                   <option value="movie_theater">Movie Theaters</option>
-                  <option value="museum">Museums</option>
+                  <option value="Good for Kids, museum">Museums</option>
                   <option value="book_store">Book Stores</option>
                   <option value="library">Library</option>
-                  <option value="cafe">Cafes</option>
+                  <option value="Good for Kids, cafes">Cafes</option>
                 </select>
                 <table id="address-table" width="100%">
                   <th>Formatted Address</th>
@@ -296,7 +297,7 @@
 <script src="./assets/javascript/dbAPI.js"></script>
 <script src="./assets/javascript/famapp.js"></script>
 <script src="./assets/javascript/yelp/yelp.js"></script>
-  <script async defer
+<script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtUUj6f_bVbHbWpCow6r5pktW8QVcwXp8&callback=initMap"></script>
 
 

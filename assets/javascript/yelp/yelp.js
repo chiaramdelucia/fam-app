@@ -91,17 +91,17 @@ $(document).ready(function() {
 
      
         for(i=0; i<=9; i= i+1) {
-                    $(".searchResults").append("<p>");  
-                    $(".searchResults").append('<a href ="' + data.businesses[i] + '">' + data.businesses[i].name +'</a>');
-                    $(".searchResults").append("      ");
-                    $(".searchResults").append('<img src="' + data.businesses[i].rating_img_url +'" />');
-                    $(".searchResults").append(" Phone: ");
-                    $(".searchResults").append(data.businesses[i].phone);
-                    $(".searchResults").append("<p>");  
-                    $(".searchResults").append(" Yelp Reviews: ");
-                    $(".searchResults").append(data.businesses[i].review_count);
-                    $(".searchResults").append("      ");
-                    $(".searchResults").append("</p>");  
+                    $(".resultsAPI").append("<p>");  
+                    $(".resultsAPI").append('<a href ="' + data.businesses[i] + '">' + data.businesses[i].name +'</a>');
+                    $(".resultsAPI").append("      ");
+                    $(".resultsAPI").append('<img src="' + data.businesses[i].rating_img_url +'" />');
+                    $(".resultsAPI").append(" Phone: ");
+                    $(".resultsAPI").append(data.businesses[i].phone);
+                    $(".resultsAPI").append("<p>");  
+                    $(".resultsAPI").append(" Yelp Reviews: ");
+                    $(".resultsAPI").append(data.businesses[i].review_count);
+                    $(".resultsAPI").append("      ");
+                    $(".resultsAPI").append("</p>");  
 
                     var busLat = data.businesses[i].location.coordinate.latitude;
                     var busLong = data.businesses[i].location.coordinate.longitude;
@@ -119,7 +119,7 @@ $(document).ready(function() {
 //main process
 $("#google-add-zip").on("click", function(){
   event.preventDefault();
-  $(".searchResults").empty();
+  $(".resultsAPI").empty();
   whatTheYelp();
   
 });

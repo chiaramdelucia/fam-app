@@ -12,7 +12,7 @@ $(document).on('ready', function(){
     $('#google-input-zip').val(userZip);
 
     //display map
-    getGoogleCoordinates();
+    //getGoogleCoordinates();
 
   });  
 
