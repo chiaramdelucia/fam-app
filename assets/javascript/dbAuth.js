@@ -65,6 +65,10 @@ $(document).ready(function() {
         fetchUserProfile();
     });
 
+    $('#profile-close').on('click', function(){
+        $("#profileDiv").empty();
+    })
+
 
     function firebaseSignup(email, password) {
         var newUserPromise =
@@ -174,10 +178,8 @@ $(document).ready(function() {
     });
 
     currentUsersRef.on("value", function(snapshot) {
-
         console.log("Number of connections", snapshot.numChildren());
         $("#connected-viewers").html(snapshot.numChildren());
-
     });
 
 
@@ -205,7 +207,6 @@ $(document).ready(function() {
 
         updateUserInfo(user);
         setCurrentUser();
-
     }
 
 
@@ -231,7 +232,6 @@ $(document).ready(function() {
     //setting global variable of current user (why do I lose scope while bookmarking)
 
     function setCurrentUser() {
-
         currentUser = firebase.auth().currentUser; //set the global variable;   
         console.log("setCurrentUser(), current user=", currentUser);
 
@@ -261,13 +261,10 @@ $(document).ready(function() {
                 profileDivSection.css("padding", "15px");
                 profileDivSection.css("color", "#000000");
                 profileDivSection.css("font-size", "20px");
+                profileDivSection.css("border", "2px solid #000000");
                 profileDivSection.css("margin-top", "10px");
 
                 var userProfile = "<table class='profileTable'>";
-
-                // Object.keys(profileObj).forEach(function(key) {
-                //     userProfile += '<span class="capitalize">' + key + "</span>:<span style='margin-left: 20px'>" + profileObj[key] + '</span><br>';
-                // });
 
                  Object.keys(profileObj).forEach(function(key) {
                     userProfile += '<tr><td class="capitalize">' + key + "</td><td>" + profileObj[key] + '</td></tr>';
@@ -275,11 +272,12 @@ $(document).ready(function() {
 
                 profileDivSection.html(userProfile);
                 $("#profileDiv").append(profileDivSection);
+
             });
 
         //reading  bookmarks from database
 
-        bookmarksRef.child(user.displayName).on('value', function(bookmarksSnapshot) {
+        bookmarksRef.child(user.displayName).once('value', function(bookmarksSnapshot) {
             var bookmarksObj = bookmarksSnapshot.val();
             console.log("bookmarks snapshot", bookmarksObj);
 
@@ -289,9 +287,10 @@ $(document).ready(function() {
                 bookmarkDivSection.css("padding", "15px");
                 bookmarkDivSection.css("color", "#000000");
                 bookmarkDivSection.css("font-size", "20px");
+                bookmarkDivSection.css("border", "2px solid #000000");
                 bookmarkDivSection.css("margin-top", "10px");
 
-            var bookmarkP = '<p style="font-weight: bold"> Your Bookmarks  </p>';
+            var bookmarkP = '<p style="font-size: 24px; font-weight: bold;font-decoration: underline"> Your Bookmarks  </p>';
 
             Object.keys(bookmarksObj).forEach(function(key) {
                 bookmarkP += '<p>' + bookmarksObj[key] + '</p>';
@@ -302,6 +301,5 @@ $(document).ready(function() {
         });
 
     }
-
 
 });

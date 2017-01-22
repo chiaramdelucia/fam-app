@@ -13,7 +13,6 @@ $(document).on('ready', function(){
 
     //display map
     getGoogleCoordinates();
-    getWeather();
 
   });  
 
@@ -234,7 +233,6 @@ $(document).on('ready', function(){
       }else{
         console.log("The user is not logged in to favorite!");
       }
-
 
     });
 

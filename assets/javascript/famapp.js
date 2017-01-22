@@ -4,9 +4,7 @@ $(document).ready(function() {
 	    $('html,body').animate({
 	        scrollTop: $("#content").offset().top},
 	        'slow');    
-
             getWeather();
-
 
 	});
 
@@ -16,6 +14,12 @@ $(document).ready(function() {
 	        'slow');
 	});
 
+    //review this
+    $(window).on('load', function(){
+        userZip = localStorage.getItem('userZip');
+        $('#user-input-zip').val(userZip);
+        $('#google-input-zip').val(userZip);
+    });
 
     function getWeather() {
         var address = $("#user-input-zip").val();
@@ -35,7 +39,6 @@ $(document).ready(function() {
         });
 
     };
-
 
     var win = $(window),
             nav = $('nav'),

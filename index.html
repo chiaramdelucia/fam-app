@@ -31,22 +31,6 @@
 </head>
 
 <body>
-
-<!-- <!-Landing page-->
-<!-- <div class ="row" id="land">
-    <div class="col-md-12">
-      <h1>The Family App:</h1>
-      <h2>A website dedicated to helping families find spaces in their communities.</h2>
-    </div>
-    <div class="row">
-      <h4>enter your zip code</h4>
-      <input type="text" name="zip code" id="user-input-zip" placeholder="Zip Code" required  data-parsley-type="number" data-parsley-length="[5, 5]">
-    </div>
-    <div class="row">
-        <button class="btn btn-default btn1" id="user-add-zip" type="submit" value="submit">Submit</button>
-    </div> -->
-<!--</div> <!-/#land--> 
-
   <!--Landing page-->
   <div class ="row" id="land">
         <div class="col-md-12">
@@ -222,7 +206,7 @@
         data-parsley-type="number" data-parsley-length="[5, 5]" data-parsley-trigger="keyup">
         <input id="txtSignupEmail" type="email" placeholder="email" required data-parsley-type="email" data-parsley-trigger="keyup">
         <input id="txtSignupPassword"  type="password" placeholder="password" required data-parsley-length="[6, 10]" data-parsley-trigger="keyup">
-    </div>
+      </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
@@ -270,16 +254,14 @@
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" id="profile-close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Your Profile Information</h4>
       </div>
       <div class="modal-body">
         <div id="profileDiv"></div>
-        
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        
+        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>    -->
       </div>
     </div>
   </div>
