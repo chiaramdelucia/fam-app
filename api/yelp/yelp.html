@@ -31,7 +31,7 @@ You wouldn't actually want to expose your access token secret like this in a rea
     </div>
     <p>Select interest</p>
     <select class="form-control choices">
-      <option value="park">Parks</option>
+      <option value="public park">Parks</option>
       <option value="Good for Kids, restaurants">Restaurants</option>
       <option value="movie_theater">Movie Theaters</option>
       <option value="museum">Museums</option>
@@ -77,6 +77,7 @@ You wouldn't actually want to expose your access token secret like this in a rea
       parameters.push(['location', near]);
        parameters.push(['radius', 5]);
         parameters.push(['limit_filter', 15]);
+        parameters.push(['sort', 1])
       parameters.push(['callback', 'cb']);
       parameters.push(['oauth_consumer_key', auth.consumerKey]);
       parameters.push(['oauth_consumer_secret', auth.consumerSecret]);
@@ -108,9 +109,38 @@ You wouldn't actually want to expose your access token secret like this in a rea
           var i;
           console.log(data);
 
-       
+          function addMarker(business_latitude, busLong) {
+            var marker = new google.maps.Marker({
+              map: map,
+              position: {lat: business_latitude, lng: busLong},
+              icon: {
+                url: 'https://developers.google.com/maps/documentation/javascript/images/circle.png',
+                anchor: new google.maps.Point(10, 10),
+                scaledSize: new google.maps.Size(10, 17)
+              }
+            });
+          };
+
+          function initMap(busLat, busLong) {
+            map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: busLat, lng: busLong},
+              zoom: 15,
+              styles: [{
+                stylers: [{ visibility: 'simplified' }]
+              }, {
+                elementType: 'labels',
+                stylers: [{ visibility: 'off' }]
+              }]
+            }); 
+
+            // addMarker()
+          };
+
+
+          // start "here"
+          initMap(40.7128, -74.0059);
      
-        for(i=0; i<=9; i= i+1){
+        for(i=0; i<=9; i= i+1) {
                     $(".searchResults").append("<p>");  
                     $(".searchResults").append('<a href ="' + data.businesses[i] + '">' + data.businesses[i].name +'</a>');
                     $(".searchResults").append("      ");
@@ -122,33 +152,15 @@ You wouldn't actually want to expose your access token secret like this in a rea
                     $(".searchResults").append(data.businesses[i].review_count);
                     $(".searchResults").append("      ");
                     $(".searchResults").append("</p>");  
-                    var busLat = data.businesses[i].location.coordinate.latitude
-                    var busLong = data.businesses[i].location.coordinate.longitude
+
+                    var busLat = data.businesses[i].location.coordinate.latitude;
+                    var busLong = data.businesses[i].location.coordinate.longitude;
+                    var business = data.businesses[i];
+
+                    addMarker(busLat, busLong);
+
                     console.log(busLat + "   "+busLong)
-          function initMap() {
-            map = new google.maps.Map(document.getElementById('map'), {
-              center: {lat: busLat, lng: busLong},
-              zoom: 15,
-              styles: [{
-                stylers: [{ visibility: 'simplified' }]
-              }, {
-                elementType: 'labels',
-                stylers: [{ visibility: 'off' }]
-              }]
-            }); 
-          };
-          function addMarker() {
-            var marker = new google.maps.Marker({
-              map: map,
-              position: {lat: busLat, lng: busLong},
-              icon: {
-                url: 'https://developers.google.com/maps/documentation/javascript/images/circle.png',
-                anchor: new google.maps.Point(10, 10),
-                scaledSize: new google.maps.Size(10, 17)
-              }
-            });
-          };
-          initMap();
+          
           }; //for
         }//success
       });//ajax
