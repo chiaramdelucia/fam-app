@@ -1,53 +1,7 @@
-<!--
-This example is a proof of concept, for how to use the Yelp v2 API with javascript.
-You wouldn't actually want to expose your access token secret like this in a real application.
--->
+$(document).ready(function() {
 
-<html>
-<head>
-<title>Yelp Test</title>
-<style>
-       #map {
-        height: 400px;
-        width: 100%;
-       }
-    </style>
-
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-<script
-  src="https://code.jquery.com/jquery-3.1.1.js"
-  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
-  crossorigin="anonymous"></script>
-  <script type="text/javascript" src="./oauth.js"></script>
-<script type="text/javascript" src="./sha1.js"></script>
-</head> 
-
-<body>
-  <div>
-    <div>
-      <p>Input your address</p>
-      <input type="text" name="enter address" id="address">
-      <input id="add-address" type="submit" value="submit">
-    </div>
-    <p>Select interest</p>
-    <select class="form-control choices">
-      <option value="public park">Parks</option>
-      <option value="Good for Kids, restaurants">Restaurants</option>
-      <option value="movie_theater">Movie Theaters</option>
-      <option value="museum">Museums</option>
-      <option value="book_store">Book Stores</option>
-      <option value="library">Library</option>
-      <option value="Good for Kids, cafe">Cafes</option>
-    </select>
-  </div>
-  <div id="map"></div>
-  <div class="searchResults"></div>
-
-</body>
-<script>
-
-  function whatTheYelp(){
-      var address = $("#address").val();
+	function whatTheYelp(){
+      var address = $("#google-input-zip").val();
       var choices = $(".choices").val();
       console.log(address)
       console.log(choices)
@@ -75,9 +29,9 @@ You wouldn't actually want to expose your access token secret like this in a rea
       parameters = [];
       parameters.push(['term', terms]);
       parameters.push(['location', near]);
-       parameters.push(['radius', 5]);
-        parameters.push(['limit_filter', 15]);
-        parameters.push(['sort', 1])
+      parameters.push(['radius', 5]);
+      parameters.push(['limit_filter', 15]);
+      parameters.push(['sort', 1])
       parameters.push(['callback', 'cb']);
       parameters.push(['oauth_consumer_key', auth.consumerKey]);
       parameters.push(['oauth_consumer_secret', auth.consumerSecret]);
@@ -96,8 +50,6 @@ You wouldn't actually want to expose your access token secret like this in a rea
       var parameterMap = OAuth.getParameterMap(message.parameters);
       parameterMap.oauth_signature = OAuth.percentEncode(parameterMap.oauth_signature)
       console.log(parameterMap);
-
-      var bestRestaurant = "Some random restaurant";
 
       $.ajax({
         'url': message.action,
@@ -124,19 +76,18 @@ You wouldn't actually want to expose your access token secret like this in a rea
           function initMap(busLat, busLong) {
             map = new google.maps.Map(document.getElementById('map'), {
               center: {lat: busLat, lng: busLong},
-              zoom: 15,
+              zoom: 14,
               mapTypeId: 'roadmap',
               
             }); 
 
-            // addMarker()
           };
-
           var initlat = data.region.center.latitude
           var initlong = data.region.center.longitude
           console.log("initlat "+initlat + "  initlong "+initlong)
-          // start "here"
-          initMap(initlat, initlong);
+          //start "here"
+		initMap(initlat, initlong);
+         
 
      
         for(i=0; i<=9; i= i+1) {
@@ -164,31 +115,13 @@ You wouldn't actually want to expose your access token secret like this in a rea
         }//success
       });//ajax
 };// what the yelp
-$("#add-address").on("click", function(){
+
+//main process
+$("#google-add-zip").on("click", function(){
   event.preventDefault();
   $(".searchResults").empty();
   whatTheYelp();
-  var address = $("#address").val();
-   console.log(address)
+  
 });
 
-
-</script>
-<script>
-      function initMap() {
-        var uluru = {lat: 37.09024, lng: -95.712891};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-      }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtUUj6f_bVbHbWpCow6r5pktW8QVcwXp8&callback=initMap&libraries=places">
-    </script>
-
-</html>
+});
