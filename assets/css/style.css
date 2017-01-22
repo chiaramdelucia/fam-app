@@ -8,16 +8,18 @@
 	background-size: 70% 550px;
 	text-align: center;
 	/*background-attachment: fixed;*/
-	overflow-y: hidden;
+	overflow-y: hidden;	
 }
 
 
 #content {
 	width: 100%;
 	height: 1000px;
-	background: #999;
+	background: #2C3E50; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #2C3E50 , #4CA1AF); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #2C3E50 , #4CA1AF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	
 }
-
 input.parsley-error {   
 	color: red; 
 	border-color:#843534;
@@ -51,19 +53,10 @@ input.parsley-error:focus {
     font-weight: bold;
 }
 
-
 .places {
 	max-height: 300px;
 	overflow: auto;
 }
-
-/*#wrapper {
-    width: 100%;
-    margin: 0 auto;
-    position: -webkit-sticky;
-    top: 0;
-    z-index: 1;
-}*/
 
 .sticky {
 	position: fixed;
@@ -71,21 +64,29 @@ input.parsley-error:focus {
 	z-index: 1;
 	top: 0;
 }
-/*.navbar-default {
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 1;
-	width: 100%;
-	border-bottom: 5px solid #ffffff;
-}*/
 
-#signinModal,
-#signupModal,
-#profileModal
+#signupModal, #signinModal {
+	text-align: center;
+}
 
-.modal-title{
-	font-size: 24px;
-	font-weight: bold;
-	background-color: #
+input{
+	padding: 5px 20px;
+	margin : 5px;
+	border:2px solid #dadada;
+    border-radius:7px;
+}
+
+input:focus { 
+    outline:none;
+    border-color:#9ecaed;
+    box-shadow:0 0 10px #9ecaed;
+}
+
+#btnGoogleSignup,
+#btnGoogleSignin
+{
+	background-color: #2C3E50;
+	border-radius: 8px;
+	color: #ffffff;
+	padding: 15px 25px;
 }

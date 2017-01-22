@@ -195,18 +195,22 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Create a new account</h4>
-        <button type="button" class="btn btn-default" id="btnGoogleSignup">Google sign in
-        </button>
+        <h4 class="modal-title">Create a new account</h4>     
       </div>
       <div class="modal-body">
-      <div id="signupDiv">
-        <input id="txtSignupUserName" type="text" placeholder="Name" required>
-        <input id="txtSignupZipcode" type="text" placeholder="Zip code" required
-        data-parsley-type="number" data-parsley-length="[5, 5]" data-parsley-trigger="keyup">
-        <input id="txtSignupEmail" type="email" placeholder="email" required data-parsley-type="email" data-parsley-trigger="keyup">
-        <input id="txtSignupPassword"  type="password" placeholder="password" required data-parsley-length="[6, 10]" data-parsley-trigger="keyup">
-      </div>
+        <div style="margin-bottom: 10px;">
+           <button type="button" class="btn btn-default" id="btnGoogleSignup">
+           Sign Up With Google
+          </button>
+        </div> 
+        <div> OR </div> 
+        <div id="signupDiv">
+          <input id="txtSignupUserName" type="text" placeholder="Name" required>
+          <input id="txtSignupZipcode" type="text" placeholder="Zip code" required
+          data-parsley-type="number" data-parsley-length="[5, 5]" data-parsley-trigger="keyup">
+          <input id="txtSignupEmail" type="email" placeholder="email" required data-parsley-type="email" data-parsley-trigger="keyup">
+          <input id="txtSignupPassword"  type="password" placeholder="password" required data-parsley-length="[6, 10]" data-parsley-trigger="keyup">
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
@@ -228,22 +232,28 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Sign In to your Account</h4>
-        <button type="button" class="btn btn-default" id="btnGoogleSignin">Google sign in
-        </button>
+        
       </div>
       <div class="modal-body">
         <div id="signinDiv">
-          <input id="txtSigninEmail" type="email" placeholder="Enter email" required data-parsley-type="email" data-parsley-trigger="keyup">
-          <input id="txtSigninPassword" type="password" placeholder="Enter password" required data-parsley-length="[6, 10]" data-parsley-trigger="keyup">
+          <div style="margin-bottom: 10px;">
+            <button type="button" class="btn btn-default" id="btnGoogleSignin">
+             Sign in with Google
+            </button>
+          </div>
+          <div> OR </div> 
+          <div>
+            <input id="txtSigninEmail" type="email" placeholder="Enter email" required data-parsley-type="email" data-parsley-trigger="keyup">
+            <input id="txtSigninPassword" type="password" placeholder="Enter password" required data-parsley-length="[6, 10]" data-parsley-trigger="keyup">
+          </div>
+          <div id="errorStatus" style="color:red"></div>
         </div>
-        <div id="errorStatus" style="color:red"></div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
-        </button>
-        <button type="button" id='btnSigninSubmit' class="btn btn-primary">Sign In
-        </button>
-      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
+          </button>
+          <button type="button" id='btnSigninSubmit' class="btn btn-primary">Sign In
+          </button>
+        </div>
     </div>
 
   </div>
@@ -271,6 +281,10 @@
 </div> <!--content div closing--> 
 
 <!-- JS files-->
+
+<script async defer
+   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtUUj6f_bVbHbWpCow6r5pktW8QVcwXp8&callback=initMap&libraries=places">
+</script>
 
 <script src="assets/javascript/dbAuth.js"></script>
 <script src="assets/javascript/dbAPI.js"></script>
