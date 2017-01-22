@@ -1,12 +1,70 @@
 #land {
-  width: 100%;
-  height: 1000px;
-  background: #ccc;
-  text-align: center;
+	width: 100%;
+	height: 700px;
+	background-color: black;
+	background: url(./images/kids.png);
+	background-repeat: no-repeat;
+	background-position: bottom right;
+	background-size: 70% 550px;
+	text-align: center;
+	/*background-attachment: fixed;*/
+	overflow-y: hidden;
+	
+
 }
 
+
 #content {
-  width: 100%;
-  height: 1000px;
-  background: #999;
+	width: 100%;
+	height: 1000px;
+	background: #2C3E50; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #2C3E50 , #4CA1AF); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #2C3E50 , #4CA1AF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	
 }
+
+input.parsley-error {   
+	color: red; 
+	border-color:#843534;
+	box-shadow: none;
+}
+
+input.parsley-error:focus { 
+	color: red;   
+	border-color:#843534;
+	box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #ce8483
+}
+
+
+#resultsAPI{
+	height: 900px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.profileTable td{
+	padding: 10px 20px;
+}
+
+.capitalize{
+    text-transform: capitalize;
+    padding-right: 30px;
+    font-weight: bold;
+}
+
+
+.places {
+	max-height: 300px;
+	overflow: auto;
+}
+
+
+
+.sticky {
+	position: fixed;
+	width: 100%;
+	z-index: 1;
+	top: 0;
+}
+
+
