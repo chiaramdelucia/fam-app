@@ -33,20 +33,20 @@
 <body>
   <!--Landing page-->
   <div class ="row" id="land">
-        <div class="col-md-12">
-          <h1>Got Bored?</h1>
-          <h2>Don't sit around. Find a place to bring the family!</h2>
-        </div>
-        <div class="row">
-          <h4>Enter your zip code to find the fun</h4>
-           <input type="text" name="zip code" id="user-input-zip" placeholder="Zip Code" required  data-parsley-type="number" data-parsley-length="[5, 5]">
-         </div>
-        <div class="row">
-          <button class="btn btn-default btn1" id="user-add-zip" type="submit" value="submit">Submit</button>
-        </div>
-        </div>  
+    <div class="col-md-12">
+      <h1>Got Bored?</h1>
+      <h2>Don't sit around. Find a place to bring the family!</h2>
+    </div>
+    <div class="row">
+      <h4>Enter your zip code to find the fun</h4>
+       <input type="text" name="zip code" id="user-input-zip" placeholder="Zip Code" required  data-parsley-type="number" data-parsley-length="[5, 5]">
+     </div>
+    <div class="row">
+      <button class="btn btn-default btn1" id="user-add-zip" type="submit" value="submit">Submit</button>
+    </div>
   </div> <!--/#land-->
 
+  <!--Main content -->
   <div id="content"> 
   <div id="wrapper">
     <nav class="navbar navbar-default">
@@ -63,61 +63,59 @@
           <!-- <img alt="Logo" src= "..."> -->
         </div>
         <!-- find a place for this -->
-      <div><span id="connected-viewers"></span> users online! </div> 
-      <!-- //for testing only -->
-      <div id="zip"></div> 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <!-- left nav: categories-->
-        <ul class="nav navbar-nav">
-          <li><a href="#">Outdoors</a></li>
-          <li><a href="#">Indoors</a></li>
-          <li><a href="#">Restaurants</a></li>
-          <li><a href="#" id="meetups">Meet ups</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">category <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">subCategory</a></li>
-              <li><a href="#">subCategory</a></li>
-              <li><a href="#">subCategory</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">One more separated link</a></li>
-            </ul>
-          </li>
-        </ul>
+        <div><span id="connected-viewers"></span> users online! </div> 
 
-        <!-- right nav: accounts -->
-        <ul class="nav navbar-nav navbar-right">
-           <li><a href="#" id='btnSignUp' data-toggle="modal" data-target="#signupModal">
-            Join</a></li>
-           <li><a href="#" id='btnSignIn' data-toggle="modal" data-target="#signinModal">
-            Sign in</a></li>
-           
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <!-- left nav: categories-->
+          <ul class="nav navbar-nav">
+            <li><a href="#">Outdoors</a></li>
+            <li><a href="#">Indoors</a></li>
+            <li><a href="#">Restaurants</a></li>
+            <li><a href="#" id="meetups">Meet ups</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">category <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">subCategory</a></li>
+                <li><a href="#">subCategory</a></li>
+                <li><a href="#">subCategory</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+          <!-- right nav: accounts -->
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="#" id='btnSignUp' data-toggle="modal" data-target="#signupModal">Join</a>    
+            </li>
+            <li>
+              <a href="#" id='btnSignIn' data-toggle="modal" data-target="#signinModal">Sign in</a>
+            </li>             
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="status">Account 
               <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#" id='btnProfile' data-toggle="modal" data-target="#profileModal">Profile</a></li>
+                <li><a href="#" id='btnProfile' data-toggle="modal" data-target=" #profileModal">Profile</a>
+                </li>
                 <li><a href="#" id='btnSignout' data-toggle="modal">
-                Sign out</a></li>
+                  Sign out</a>
+                </li>
               </ul>
             </li>
             <li><div class="weather-widget"></div></li>
-            </ul>
-          </li>
-          
-        </ul>
-
+          </ul>
+         <!--  </li>          
+          </ul> -->
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
-    </div>
+  </div> <!---div wrapper????? -- >
 
     <!--Main Content Area-->
     <div class="container">
-
       <div class="row">
         <!--Helpful Resources Section-->
         <div class="col-md-2">
@@ -134,41 +132,41 @@
 
           <div class="row">
             <!-- Places API display -->
-          <!-- TODO: Modify the div below for API display /temporary div-->
-          <div class="col-md-7">
-            <div class="well places" id="resultsAPI">
-              <h5>
-                <div id="results-div" width="100%"></div>                
-              </h5>
+            <!-- TODO: Modify the div below for API display /temporary div-->
+            <div class="col-md-7">
+              <div class="well places" id="resultsAPI">
+                <h5>
+                  <div id="results-div" width="100%"></div>                
+                </h5>
+              </div>
             </div>
-          </div>
             
             <!-- Map and Weather API display -->
             <div class="row col-md-5">
               <div class="well" id="googleAPI">
                 <h1 class="text-center">Google Maps</h1>
                 <div id="map"></div>
-                <div>
-                  <input type="text" name="enter address" id="google-input-zip" data-parsley-type="number" data-parsley-length="[5, 5]">
-                  <input id="google-add-zip" type="submit" value="submit">
-                </div>
-                <p>Select interest</p>
-                <select class="form-control choices">
-                  <option value="park">Parks</option>
-                  <option value="restaurant">Restaurants</option>
-                  <option value="movie_theater">Movie Theaters</option>
-                  <option value="museum">Museums</option>
-                  <option value="book_store">Book Stores</option>
-                  <option value="library">Library</option>
-                  <option value="cafe">Cafes</option>
-                </select>
-                <table id="address-table" width="100%">
-                  <th>Formatted Address</th>
-                  <th>Latitude</th>
-                  <th>Longitude</th>
-                </table>
-              </div>
-            </div> <!--/ Map and Weather API columns--> 
+                  <div>
+                    <input type="text" name="enter address" id="google-input-zip" data-parsley-type="number" data-parsley-length="[5, 5]">
+                    <input id="google-add-zip" type="submit" value="submit">
+                  </div>
+                  <p>Select interest</p>
+                  <select class="form-control choices">
+                    <option value="park">Parks</option>
+                    <option value="restaurant">Restaurants</option>
+                    <option value="movie_theater">Movie Theaters</option>
+                    <option value="museum">Museums</option>
+                    <option value="book_store">Book Stores</option>
+                    <option value="library">Library</option>
+                    <option value="cafe">Cafes</option>
+                  </select>
+                  <table id="address-table" width="100%">
+                    <th>Formatted Address</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                  </table>
+              </div> <!--googleAPI -->
+            </div> <!--/ col, Map and Weather API columns--> 
 
           </div> <!--/ Places API, Map, Weather API row-->    
         </div> <!--/ Places API, Map, Weather API col -->
@@ -188,100 +186,95 @@
       </div>
     </div>
 
-
    <!-- Sign up Modal -->
-<div id="signupModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Create a new account</h4>     
-      </div>
-      <div class="modal-body">
-        <div style="margin-bottom: 10px;">
-           <button type="button" class="btn btn-default" id="btnGoogleSignup">
-           Sign Up With Google
-          </button>
-        </div> 
-        <div> OR </div> 
-        <div id="signupDiv">
-          <input id="txtSignupUserName" type="text" placeholder="Name" required>
-          <input id="txtSignupZipcode" type="text" placeholder="Zip code" required
-          data-parsley-type="number" data-parsley-length="[5, 5]" data-parsley-trigger="keyup">
-          <input id="txtSignupEmail" type="email" placeholder="email" required data-parsley-type="email" data-parsley-trigger="keyup">
-          <input id="txtSignupPassword"  type="password" placeholder="password" required data-parsley-length="[6, 10]" data-parsley-trigger="keyup">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
-        </button>
-        <button type="button" class="btn btn-default" id="btnReset">Reset
-        </button>
-        <button type="button" id='btnSignupSubmit' class="btn btn-primary">Sign Up
-        </button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- Sign in Modal -->
-<div id="signinModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Sign In to your Account</h4>
-        
-      </div>
-      <div class="modal-body">
-        <div id="signinDiv">
-          <div style="margin-bottom: 10px;">
-            <button type="button" class="btn btn-default" id="btnGoogleSignin">
-             Sign in with Google
+  <div id="signupModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Create a new account</h4>     
+        </div> <!--modal header -->
+        <div class="modal-body">
+          <div id="signupDiv">
+            <div style="margin: 10px;">
+              <button type="button" class="btn btn-default" id="btnGoogleSignup">
+              Sign Up With Google
+              </button>
+            </div> 
+            <div> OR </div> 
+            <div>
+              <input id="txtSignupUserName" type="text" placeholder="Name" required>
+              <input id="txtSignupZipcode" type="text" placeholder="Zip code" required
+              data-parsley-type="number" data-parsley-length="[5, 5]" data-parsley-trigger="keyup">
+              <input id="txtSignupEmail" type="email" placeholder="email" required data-parsley-type="email" data-parsley-trigger="keyup">
+              <input id="txtSignupPassword"  type="password" placeholder="password" required data-parsley-length="[6, 10]" data-parsley-trigger="keyup">
+            </div>
+           </div> 
+        </div> <!-- modal body -->  
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
             </button>
-          </div>
-          <div> OR </div> 
-          <div>
-            <input id="txtSigninEmail" type="email" placeholder="Enter email" required data-parsley-type="email" data-parsley-trigger="keyup">
-            <input id="txtSigninPassword" type="password" placeholder="Enter password" required data-parsley-length="[6, 10]" data-parsley-trigger="keyup">
-          </div>
-          <div id="errorStatus" style="color:red"></div>
+            <button type="button" class="btn btn-default" id="btnReset">Reset
+            </button>
+            <button type="button" id='btnSignupSubmit' class="btn btn-primary">Sign Up
+            </button>
+        </div> <!-- modal footer -->
+      </div><!--modal content-->
+    </div> <!--modal dialog -->
+  </div> <!--signupModal -->
+
+  <!-- Sign in Modal -->
+  <div id="signinModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Sign In to your Account</h4>        
         </div>
+        <div class="modal-body">
+          <div id="signinDiv">
+            <div style="margin: 10px;">
+              <button type="button" class="btn btn-default" id="btnGoogleSignin">
+               Sign in with Google
+              </button>
+            </div>
+            <div> OR </div> 
+            <div>
+              <input id="txtSigninEmail" type="email" placeholder="Enter email" required data-parsley-type="email" data-parsley-trigger="keyup">
+              <input id="txtSigninPassword" type="password" placeholder="Enter password" required data-parsley-length="[6, 10]" data-parsley-trigger="keyup">
+            </div>
+            <!-- <div id="errorStatus" style="color:red"></div> -->
+          </div>
+        </div>  <!--modal body -->
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
           </button>
           <button type="button" id='btnSigninSubmit' class="btn btn-primary">Sign In
           </button>
         </div>
-    </div>
+      </div> <!--modal content -->
+    </div><!--modal dialog -->
+  </div> <!-- sign in modal -->
 
-  </div>
-</div>
-</div>
-<!-- profile modal-->
-<div id="profileModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-md">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" id="profile-close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Your Profile Information</h4>
-      </div>
-      <div class="modal-body">
-        <div id="profileDiv"></div>
-      </div>
-      <div class="modal-footer">
-        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>    -->
-      </div>
-    </div>
-  </div>
-</div>
+  <!-- profile modal-->
+  <div id="profileModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" id="profile-close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Your Profile Information</h4>
+        </div> <!--modal header -->
+        <div class="modal-body">
+          <div id="profileDiv"></div>
+        </div>
+        <div class="modal-footer"></div>
+      </div> <!--modal content -->
+    </div> <!-- modal dialog -->
+  </div> <!-- profileModal -->
 
-
-</div> <!--content div closing--> 
+ </div> <!--content div closing  -->
 
 <!-- JS files-->
-
 <!-- <script async defer
    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtUUj6f_bVbHbWpCow6r5pktW8QVcwXp8&callback=initMap&libraries=places">
 </script>
@@ -289,7 +282,6 @@
 <script src="assets/javascript/dbAuth.js"></script>
 <script src="assets/javascript/dbAPI.js"></script>
 <script src="./assets/javascript/famapp.js"></script>
-<!-- <script src="assets/javascript/googleAPI.js"></script>  -->
 
 </body>
 
