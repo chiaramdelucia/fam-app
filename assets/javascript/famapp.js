@@ -23,13 +23,13 @@ $(document).ready(function() {
             method: 'GET',
             datatype: "json"
         }).done(function(wonder) {
-            console.log(wonder)
-            console.log(wonder.current_observation.icon)
-            var icon_url = wonder.current_observation.icon_url
-            var icon = wonder.current_observation.icon
-            var degrees = Math.floor(wonder.current_observation.temp_f)
-            var city = wonder.current_observation.display_location.city
-            $(".weather-widget").html('<span><img src="' + icon_url + '"></span><span>' + degrees + '°F</span><br><span>' + city + '<span>')
+            console.log(wonder);
+            console.log(wonder.current_observation.icon);
+            var icon_url = wonder.current_observation.icon_url;
+            var icon = wonder.current_observation.icon;
+            var degrees = Math.floor(wonder.current_observation.temp_f);
+            var city = wonder.current_observation.display_location.city;
+            $(".weather-widget").html('<span><img src="' + icon_url + '"></span><span>' + degrees + '°F</span><br><span>' + city + '<span>');
 
         });
 

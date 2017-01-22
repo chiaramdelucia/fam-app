@@ -22,7 +22,7 @@ function initMap() {
         method: "POST"
       }).done(function(response) {
         console.log(response);
-        console.log(response.results[0].formatted_address)
+        console.log(response.results[0].formatted_address);
 
     var latitude = response.results[0].geometry.location.lat
     var longitude = response.results[0].geometry.location.lng
