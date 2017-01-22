@@ -90,7 +90,7 @@ $(document).ready(function() {
         newUserPromise.then(function(user) {
             console.log("firebaseSignup(), Signed up successfully", user);
             $('#signupModal').hide('hide');
-            location.reload();
+            // location.reload(); //refreshes before other actions are done??
             // add user info to database
             addToDatabase(user);
         });
@@ -161,7 +161,7 @@ $(document).ready(function() {
             $('#status').html("Not logged in");
         }
 
-        setCurrentUser(); //todo: this is a better
+        // setCurrentUser(); //todo: this is a better
     });
 
     //keep track of number of users
@@ -206,20 +206,20 @@ $(document).ready(function() {
         membersRef.child(displayName).set(member);
 
         updateUserInfo(user);
-        setCurrentUser();
+        // setCurrentUser();
     }
 
 
     function updateUserInfo(user) {
 
+        console.log("updateUserInfo(), User logged in ", user);
+
         if (user.displayName == null) {
-
-            console.log("updateUserInfo(), User logged in ", user.displayName);
-
+            console.log("updateUserInfo(user), display name is" + user.displayName);
             user.updateProfile({
                 displayName: $("#txtSignupUserName").val().trim()
             }).then(function() {
-                console.log("updateUserInfo(), User updated successfully with " + user.displayName);
+                console.log("updateUserInfo(), User updated successfully with ",  $("#txtSignupUserName").val().trim());
             }, function(error) {
                 console.log(error.message);
             });
@@ -240,6 +240,7 @@ $(document).ready(function() {
         } else {
             console.log('setCurrentUser(), No user logged in');
         }
+
     }
 
     //TODO 
@@ -257,7 +258,7 @@ $(document).ready(function() {
 
                 var profileDivSection = $("<div>");
                 profileDivSection.attr("class", "profileClass");
-                // profileDivSection.css("background-color", "#e9e9e9");
+                profileDivSection.css("background-color", "#e9e9e9");
                 profileDivSection.css("padding", "15px");
                 profileDivSection.css("color", "#000000");
                 profileDivSection.css("font-size", "20px");
@@ -271,34 +272,42 @@ $(document).ready(function() {
                 });
 
                 profileDivSection.html(userProfile);
-                // $("#profileDiv").append(profileDivSection);
+                $("#profileDiv").append(profileDivSection);
 
             });
 
         //reading  bookmarks from database
 
         bookmarksRef.child(user.displayName).once('value', function(bookmarksSnapshot) {
-            var bookmarksObj = bookmarksSnapshot.val();
-            console.log("bookmarks snapshot", bookmarksObj);
 
-            var bookmarkDivSection = $("<div>");
-                bookmarkDivSection.attr("class", "profileClass");
-                bookmarkDivSection.css("background-color", "#e9e9e9");
-                bookmarkDivSection.css("padding", "15px");
-                bookmarkDivSection.css("color", "#000000");
-                bookmarkDivSection.css("font-size", "20px");
-                bookmarkDivSection.css("border", "2px solid #000000");
-                bookmarkDivSection.css("margin-top", "10px");
+                var bookmarksObj = bookmarksSnapshot.val();
+                console.log("bookmarks snapshot", bookmarksObj);
 
-            var bookmarkP = '<p style="font-size: 24px; font-weight: bold;font-decoration: underline"> Your Bookmarks  </p>';
+                if(bookmarksObj != null){
 
-            Object.keys(bookmarksObj).forEach(function(key) {
-                bookmarkP += '<p>' + bookmarksObj[key] + '</p>';
-            });
-            bookmarkDivSection.html(bookmarkP);
+                    var bookmarkDivSection = $("<div>");
+                        bookmarkDivSection.attr("class", "profileClass");
+                        bookmarkDivSection.css("background-color", "#e9e9e9");
+                        bookmarkDivSection.css("padding", "15px");
+                        bookmarkDivSection.css("color", "#000000");
+                        bookmarkDivSection.css("font-size", "20px");
+                        bookmarkDivSection.css("border", "2px solid #000000");
+                        bookmarkDivSection.css("margin-top", "10px");
 
-            // $("#profileDiv").append(bookmarkDivSection);
+                    var bookmarkP = '<p style="font-size: 24px; font-weight: bold;font-decoration: underline"> Your Bookmarks  </p>';
+
+                    Object.keys(bookmarksObj).forEach(function(key) {
+                        bookmarkP += '<p>' + bookmarksObj[key] + '</p>';
+                    });
+                    bookmarkDivSection.html(bookmarkP);
+
+                    $("#profileDiv").append(bookmarkDivSection);
+
+                }else{
+                    console.log("No bookmarks for the user");
+                }
         });
+
 
     }
 
