@@ -9,8 +9,6 @@
 	text-align: center;
 	/*background-attachment: fixed;*/
 	overflow-y: hidden;
-	
-
 }
 
 
@@ -20,7 +18,6 @@
 	background: #2C3E50; /* fallback for old browsers */
     background: -webkit-linear-gradient(to left, #2C3E50 , #4CA1AF); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to left, #2C3E50 , #4CA1AF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-	
 }
 
 input.parsley-error {   
@@ -52,13 +49,10 @@ input.parsley-error:focus {
     font-weight: bold;
 }
 
-
 .places {
 	max-height: 300px;
 	overflow: auto;
 }
-
-
 
 .sticky {
 	position: fixed;
@@ -67,4 +61,35 @@ input.parsley-error:focus {
 	top: 0;
 }
 
+#signupModal, #signinModal {
+	text-align: center;
+}
 
+input{
+	padding: 5px 20px;
+	margin : 5px;
+	border:2px solid #dadada;
+    border-radius:7px;
+}
+
+input:focus { 
+    outline:none;
+    border-color:#9ecaed;
+    box-shadow:0 0 10px #9ecaed;
+}
+
+#btnGoogleSignup,
+#btnGoogleSignin
+{
+	background-color: #2C3E50;
+	border-radius: 8px;
+	color: #ffffff;
+	padding: 15px 25px;
+}
+
+#signupDiv,
+#signinDiv{
+	background-color: #e9e9e9;
+	padding : 15px;
+	border : 2px solid #000000;
+}

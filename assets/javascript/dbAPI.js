@@ -87,7 +87,7 @@ $(document).on('ready', function(){
           '<h3>' + response.data[i].name  + '    '+ bookmarkIcon + '</h3>'+ 
           '<p>' + 'City : ' + response.data[i].city + '</p>'+ 
           '<p>' + 'Meant for : ' + response.data[i].who + '</p>'+  
-          '<p class="link"><a href="' + response.data[i].link + '" >' + response.data[i].link + '</a></p>';
+          '<p class="link"><a target="_blank" href="' + response.data[i].link + '" >' + response.data[i].link + '</a></p>';
 
           outPutDivSection.html(outPutInformation);
 
@@ -121,9 +121,6 @@ $(document).on('ready', function(){
         console.log("The user is not logged in to favorite!");
       }
 
-
     });
-
-    
 
 });

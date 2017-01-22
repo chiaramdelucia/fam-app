@@ -1,19 +1,20 @@
 $(document).ready(function() {
 
-
 	$("#user-add-zip").click(function() {
         console.log("hello")
 	    $('html,body').animate({
 	        scrollTop: $("#content").offset().top},
 	        'slow');    
-
             getWeather();
             getAddress();
-
-
 	});
 
-
+    //review this
+    $(window).on('load', function(){
+        userZip = localStorage.getItem('userZip');
+        $('#user-input-zip').val(userZip);
+        $('#google-input-zip').val(userZip);
+    });
 
     function getWeather() {
         var address = $("#user-input-zip").val();
@@ -24,13 +25,13 @@ $(document).ready(function() {
             method: 'GET',
             datatype: "json"
         }).done(function(wonder) {
-            console.log(wonder)
-            console.log(wonder.current_observation.icon)
-            var icon_url = wonder.current_observation.icon_url
-            var icon = wonder.current_observation.icon
-            var degrees = Math.floor(wonder.current_observation.temp_f)
-            var city = wonder.current_observation.display_location.city
-            $(".weather-widget").html('<span><img src="' + icon_url + '"></span><span>' + degrees + '°F</span><br><span>' + city + '<span>')
+            console.log(wonder);
+            console.log(wonder.current_observation.icon);
+            var icon_url = wonder.current_observation.icon_url;
+            var icon = wonder.current_observation.icon;
+            var degrees = Math.floor(wonder.current_observation.temp_f);
+            var city = wonder.current_observation.display_location.city;
+            $(".weather-widget").html('<span><img src="' + icon_url + '"></span><span>' + degrees + '°F</span><br><span>' + city + '<span>');
 
         });
 
@@ -76,6 +77,5 @@ $(document).ready(function() {
             }
 
     win.scroll(sticky)
-
    
 });
