@@ -25,18 +25,20 @@ var currentUser = {}; //setting globally
 
 $(document).ready(function() {
 
-    $('input').parsley(); //parsleyJS library
+    // $('input').parsley(); //parsleyJS library
 
     $('#btnSignupSubmit').on('click', function() {
         var email = $('#txtSignupEmail').val().trim();
         var password = $('#txtSignupPassword').val().trim();
         firebaseSignup(email, password);
+      
     });
 
     $('#btnSigninSubmit').on('click', function() {
         var email = $('#txtSigninEmail').val().trim();
         var password = $('#txtSigninPassword').val().trim();
         firebaseSignin(email, password);
+        
     });
 
     $("#btnSignout").on('click', function() {
@@ -59,10 +61,12 @@ $(document).ready(function() {
 
     $("#btnGoogleSignup").click(function() {
         firebaseGoogleSignin();
+      
     });
 
     $("#btnProfile").click(function() {
         fetchUserProfile();
+        
     });
 
     $('#profile-close').on('click', function(){

@@ -150,9 +150,9 @@ $(document).on('ready', function(){
             datatype: "json"
         }).done(function(wonder) {
             console.log(wonder)
-            console.log(wonder.current_observation.icon)
-            var icon_url = wonder.current_observation.icon_url
-            var icon = wonder.current_observation.icon
+            console.log(wonder.current_observation.icon);
+            var icon_url = wonder.current_observation.icon_url;
+            var icon = wonder.current_observation.icon;
             var degrees = Math.floor(wonder.current_observation.temp_f)
             var city = wonder.current_observation.display_location.city
             $(".weather-widget").html('<span><img src="' + icon_url + '"></span><span>' + degrees + '°F</span><br><span>' + city + '<span>')
@@ -200,7 +200,7 @@ $(document).on('ready', function(){
           '<h3>' + response.data[i].name  + '    '+ bookmarkIcon + '</h3>'+ 
           '<p>' + 'City : ' + response.data[i].city + '</p>'+ 
           '<p>' + 'Meant for : ' + response.data[i].who + '</p>'+  
-          '<p class="link"><a href="' + response.data[i].link + '" >' + response.data[i].link + '</a></p>';
+          '<p class="link"><a target="_blank" href="' + response.data[i].link + '" >' + response.data[i].link + '</a></p>';
 
           outPutDivSection.html(outPutInformation);
 

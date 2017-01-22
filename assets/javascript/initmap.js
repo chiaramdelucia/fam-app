@@ -10,8 +10,7 @@ function initMap() {
         });
       }
   
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtUUj6f_bVbHbWpCow6r5pktW8QVcwXp8&callback=initMap&libraries=places">
-   
+    // <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtUUj6f_bVbHbWpCow6r5pktW8QVcwXp8&callback=initMap&libraries=places">  
    
   function getAddress(){
     var address = $("#address").val();
@@ -22,7 +21,7 @@ function initMap() {
         method: "POST"
       }).done(function(response) {
         console.log(response);
-        console.log(response.results[0].formatted_address)
+        console.log(response.results[0].formatted_address);
 
     var latitude = response.results[0].geometry.location.lat
     var longitude = response.results[0].geometry.location.lng
