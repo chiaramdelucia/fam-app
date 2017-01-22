@@ -13,41 +13,39 @@ $(document).on('ready', function(){
 
     //display map
     getGoogleCoordinates();
-    getWeather();
 
   });  
 
-  //if value is changed
-  $('#google-add-zip').on('click', function(){
+  // //if value is changed
+  // $('#google-add-zip').on('click', function(){
 
-    //change global variable
-    userZip = $("#google-input-zip").val();
-    console.log("Google map Zip =" , userZip);
-    localStorage.setItem("userZip", userZip);
+  //   //change global variable
+  //   userZip = $("#google-input-zip").val();
+  //   console.log("Google map Zip =" , userZip);
+  //   localStorage.setItem("userZip", userZip);
 
-    //display map
-    getGoogleCoordinates();
-    // getWeather();
-  }); 
+  //   //display map
+  //   getGoogleCoordinates();
+  //   // getWeather();
+  // }); 
 
-  function getGoogleCoordinates(){
+  // function getGoogleCoordinates(){
 
-    var addressZip = $("#google-input-zip").val();
-    console.log("getGoogleCoordinates()-Input address/zip = " + addressZip);
-
-    $.ajax({    
-      url: 'https://maps.googleapis.com/maps/api/geocode/json?address='+ 
-      addressZip +'&key=AIzaSyBtUUj6f_bVbHbWpCow6r5pktW8QVcwXp8',
-      method: "POST"
-    }).done(function(response){
+  //   var addressZip = $("#google-input-zip").val();
+  //   console.log("getGoogleCoordinates()-Input address/zip = " + addressZip);
+  //   $.ajax({    
+  //     url: 'https://maps.googleapis.com/maps/api/geocode/json?address='+ 
+  //     addressZip +'&key=AIzaSyBtUUj6f_bVbHbWpCow6r5pktW8QVcwXp8',
+  //     method: "POST"
+  //   }).done(function(response){
     
-    console.log("getGoogleCoordinates()- response", response);
-    console.log("getGoogleCoordinates()- address",  response.results[0].formatted_address);
+  //   console.log("getGoogleCoordinates()- response", response);
+  //   console.log("getGoogleCoordinates()- address",  response.results[0].formatted_address);
 
-    var latitude = response.results[0].geometry.location.lat;
-    var longitude = response.results[0].geometry.location.lng;
+  //   var latitude = response.results[0].geometry.location.lat;
+  //   var longitude = response.results[0].geometry.location.lng;
 
-    };
+  //   };
 
   //MEETUPS
 
