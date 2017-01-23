@@ -32,8 +32,6 @@
   <!-- Firebase Reference -->
   <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
 
-   <!--CSS file-->
-  <link href="https://fonts.googleapis.com/css?family=Eczar" rel="stylesheet">
   <!-- TODO: font above for testing only, remove -->
   <link rel="stylesheet" type="text/css" href="./assets/css/content.css">
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
@@ -83,11 +81,36 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <!-- left nav: categories-->
           <ul class="nav navbar-nav">
-            <li><a href="#">Outdoors</a></li>
-            <li><a href="#">Indoors</a></li>
-            <li><a href="#">Restaurants</a></li>
-            <li><a href="#" id="meetups">Meet ups</a></li>
-            <li class="dropdown">
+            <li><a href="#" id="outdoors" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Get Out!</a><span class="caret"></span>
+              <ul class="dropdown-menu">
+                <li><a href="#">Playgrounds</a></li>
+                <li><a href="#">Parks</a></li>
+                <li><a href="#">Pools</a></li>
+                <li><a href="#">Skating Rinks</a></li>
+                <li><a href="#">Theme Parks</a></li>
+                <li><a href="#">Zoos</a></li>
+              </ul>
+            </li>
+             <li><a href="#" id="indoors" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Stay Warm!</a><span class="caret"></span>
+              <ul class="dropdown-menu">
+                <li><a href="#">Movies</a></li>
+                <li><a href="#">Libraries</a></li>
+                <li><a href="#">Bowling</a></li>
+                <li><a href="#">Book stores</a></li>
+                <li><a href="#">Museums</a></li>
+              </ul>
+            </li>
+            <li><a href="#" id="restaurants" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Grab a bite!</a><span class="caret"></span>
+              <ul class="dropdown-menu">
+                <li><a href="#">Restaurants</a></li>
+                <li><a href="#">Cafes</a></li>
+                <li><a href="#">Icecream Parlors</a></li>
+                <li><a href="#">Fastfood joints</a></li>
+                <li><a href="#">Pizza places</a></li>
+              </ul>
+            </li>
+            <li><a href="#" id="meetups">Meet up!</a></li>
+            <!-- <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">category <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#">subCategory</a></li>
@@ -98,7 +121,7 @@
                 <li role="separator" class="divider"></li>
                 <li><a href="#">One more separated link</a></li>
               </ul>
-            </li>
+            </li> -->
           </ul>
           <!-- right nav: accounts -->
           <ul class="nav navbar-nav navbar-right">
