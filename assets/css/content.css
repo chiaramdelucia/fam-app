@@ -3,16 +3,9 @@
 	
 }
 
-.sticky {
-    position: fixed;
-    width: 100%;
-    z-index: 1;
-    top: 0;
-}
-
 @font-face {
     font-family: LillyBelle;
-    src: url(./images/LillyBelle.ttf);
+    src: url(./images/LillyBelle.ttf); 
 }
 
 

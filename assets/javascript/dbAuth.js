@@ -25,7 +25,7 @@ var currentUser = {}; //setting globally
 
 $(document).ready(function() {
 
-    // $('input').parsley(); //parsleyJS library
+   $('input').parsley(); //parsleyJS library
 
     $('#btnSignupSubmit').on('click', function() {
         var email = $('#txtSignupEmail').val().trim();

@@ -75,7 +75,6 @@ $(document).on('ready', function(){
         for(var i=0; i< 15; i++){
 
           var outPutDivSection = $('<div>');
-
           outPutDivSection.attr("class", "search-result");
           outPutDivSection.attr("id", "search-item" + i);
           outPutDivSection.css("background-color", "#e9e9e9");
