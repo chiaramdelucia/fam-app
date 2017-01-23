@@ -1,16 +1,16 @@
 $(document).ready(function() {
 
 	function whatTheYelp(){
-      var address = $("#google-input-zip").val();
+    var address = $("#google-input-zip").val();
       var choices = $(".choices").val();
-      console.log(address)
       console.log(choices)
+      console.log(address)
+      
+
       var auth = {
         consumerKey: "N79ok2kTPQxglbRUEq6nKg",
         consumerSecret: "bj6U9j64nKyEqBbCRvfm5eAcOYQ",
         accessToken: "U0Ya5mK-gWYd0w1f-qnv3hC_NJwB60KB",
-        // This example is a proof of concept, for how to use the Yelp v2 API with javascript.
-        // You wouldn't actually want to expose your access token secret like this in a real application.
         accessTokenSecret: "6AUtdcwquIItxXKO4DErbyZbb6I",
         serviceProvider: {
           signatureMethod: "HMAC-SHA1"
@@ -31,7 +31,7 @@ $(document).ready(function() {
       parameters.push(['location', near]);
       parameters.push(['radius', 5]);
       parameters.push(['limit_filter', 15]);
-      parameters.push(['sort', 0])
+      parameters.push(['sort', 1])
       parameters.push(['callback', 'cb']);
       parameters.push(['oauth_consumer_key', auth.consumerKey]);
       parameters.push(['oauth_consumer_secret', auth.consumerSecret]);
@@ -86,10 +86,8 @@ $(document).ready(function() {
           var initlong = data.region.center.longitude
           console.log("initlat "+initlat + "  initlong "+initlong)
           //start "here"
-		initMap(initlat, initlong);
-         
+          initMap(initlat, initlong);
 
-     
         for(i=0; i<=9; i= i+1) {
                     $("#resultsAPI").append("<p>");  
                     $("#resultsAPI").append('<a href ="' + data.businesses[i] + '">' + data.businesses[i].name +'</a>');
@@ -114,6 +112,7 @@ $(document).ready(function() {
           }; //for
         }//success
       });//ajax
+
 };// what the yelp
 
 //main process

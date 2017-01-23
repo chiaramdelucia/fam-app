@@ -49,6 +49,8 @@ $(document).ready(function() {
 
         var latitude = response.results[0].geometry.location.lat
         var longitude = response.results[0].geometry.location.lng
+        var formatted_address = response.results[0].formatted_address
+        $('#google-input-zip').val(formatted_address);
     
         function initMap() {
           var map = new google.maps.Map(document.getElementById('map'), {
