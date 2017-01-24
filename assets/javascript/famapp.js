@@ -87,6 +87,7 @@ $(document).ready(function() {
 
     }//get Address
 
+    //Sticky Nav Bar
     var win = $(window),
         nav = $('nav'),
 
@@ -99,6 +100,7 @@ $(document).ready(function() {
 
         win.scroll(sticky)
 
+    //Scroll in results-div, but not on window when mouse is in results-div
     $('#resultsAPI').on( 'mousewheel DOMMouseScroll', function (e) { 
 
             var e0 = e.originalEvent;
