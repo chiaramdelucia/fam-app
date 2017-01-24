@@ -149,7 +149,7 @@ $(document).ready(function(){
 
             var outPutInformation =
 
-            '<h3>' + data.businesses[i].name  + '    ' + bookmarkIcon + '</h3>'+ 
+            '<h3>' + data.businesses[i].name  + '    ' + bookmarkIcon + '</h2>'+ 
             '<p>' + 'Rating : ' + '<img src="' + data.businesses[i].rating_img_url +'" />' + '</p>'+ 
             '<p>' + 'Phone : ' + data.businesses[i].phone + '</p>'+ 
             '<p>' + 'Reviews : ' + data.businesses[i].review_count + '</p>'+   
