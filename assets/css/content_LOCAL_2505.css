@@ -3,9 +3,16 @@
 	
 }
 
+.sticky {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+}
+
 @font-face {
     font-family: LillyBelle;
-    src: url(./images/LillyBelle.ttf); 
+    src: url(./images/LillyBelle.ttf);
 }
 
 
@@ -20,8 +27,9 @@ h3 {
 	font-size: 30px;
 }
 
+
 #map {
-	height:400px;
+	height:300px;
 	width: 100%;
 }
 
@@ -34,11 +42,4 @@ a{
 .footer{
     border-top-style: solid;
 }
-
-.resultStyle {
-	text-align: center;
-	border-style: solid;
-}
-	
-
 

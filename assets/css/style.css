@@ -1,34 +1,38 @@
+
 #land {
 	width: 100%;
 	height: 700px;
+
 	/* image: url(./images/kids.png); */
+
 	background-repeat: no-repeat;
 	background-position: bottom right;
 	background-size: 70% 550px;
 	text-align: center;
 	/*background-attachment: fixed;*/
 	overflow-y: hidden;
+
 	font-family: 'Shadows Into Light Two', cursive;
 	background: #DAE2F8; /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #DAE2F8 , #D6A4A4); /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #DAE2F8 , #D6A4A4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-linear-gradient(to left, #DAE2F8 , #D6A4A4); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #DAE2F8 , #D6A4A4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 
 }
 
 image {
 	position: absolute;
-    top: 80px;
-    right: 0;
+  top: 80px;
+  right: 0;
 }
+
 
 #content {
 	width: 100%;
 	height: 1000px;
 	background: #2C3E50; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #2C3E50 , #4CA1AF); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #2C3E50 , #4CA1AF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-	
+  background: -webkit-linear-gradient(to left, #2C3E50 , #4CA1AF); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #2C3E50 , #4CA1AF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 input.parsley-error {   
@@ -43,11 +47,21 @@ input.parsley-error:focus {
 	box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #ce8483
 }
 
+.sticky {
+	position: fixed;
+	width: 100%;
+	z-index: 1;
+	top: 0;
+}
 
 #resultsAPI{
-	height: 900px;
-	overflow-y: auto;
+	max-height: 430px;
+	overflow-y: scroll;
 	overflow-x: hidden;
+}
+
+#results-div{
+	position: relative;
 }
 
 .profileTable td{
@@ -60,19 +74,62 @@ input.parsley-error:focus {
     font-weight: bold;
 }
 
-
 .places {
-	max-height: 300px;
+	max-height: 700px;
 	overflow: auto;
 }
 
-
-
-.sticky {
-	position: fixed;
-	width: 100%;
-	z-index: 1;
-	top: 0;
+#signupModal, #signinModal {
+	text-align: center;
 }
 
+input{
+	padding: 5px 20px;
+	margin : 5px;
+	border:2px solid #dadada;
+    border-radius:7px;
+}
 
+input:focus { 
+    outline:none;
+    border-color:#9ecaed;
+    box-shadow:0 0 10px #9ecaed;
+}
+
+#btnGoogleSignup,
+#btnGoogleSignin
+{
+	background-color: #2C3E50;
+	width: 200px;
+	border-radius: 8px;
+	color: #ffffff;
+	padding: 15px 25px;
+}
+
+#signupDiv,
+#signinDiv{
+	background-color: #e9e9e9;
+	padding : 15px;
+	border : 2px solid #000000;
+}
+
+#signinModal,
+#signupModal,
+#profileModal{
+	font-family: 'Eczar', serif; /* temporary */
+	font-size: 16px;
+}
+
+/* temporary additions */
+#user-input-zip{
+	color: #000000;
+}
+
+/*#user-add-zip{
+	width: 100px;
+	padding: 5px;
+	border-radius: 5px;
+	font-weight: bold;
+	/*background-color: #972D7A  ;
+	/*color: #ffffff;*/
+/*}*/

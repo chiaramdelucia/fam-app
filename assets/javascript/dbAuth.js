@@ -25,7 +25,7 @@ var currentUser = {}; //setting globally
 
 $(document).ready(function() {
 
-    // $('input').parsley(); //parsleyJS library
+   $('input').parsley(); //parsleyJS library
 
     $('#btnSignupSubmit').on('click', function() {
         var email = $('#txtSignupEmail').val().trim();
@@ -69,6 +69,10 @@ $(document).ready(function() {
         
     });
 
+    $('#profile-close').on('click', function(){
+        $("#profileDiv").empty();
+    })
+
 
     function firebaseSignup(email, password) {
         var newUserPromise =
@@ -89,10 +93,11 @@ $(document).ready(function() {
 
         newUserPromise.then(function(user) {
             console.log("firebaseSignup(), Signed up successfully", user);
-            $('#signupModal').hide('hide');
-            location.reload();
+            $('#signupModal').hide('hide');           
             // add user info to database
             addToDatabase(user);
+
+            // location.reload(); //refreshes before other actions are done??
         });
     }
 
@@ -161,7 +166,7 @@ $(document).ready(function() {
             $('#status').html("Not logged in");
         }
 
-        setCurrentUser(); //todo: this is a better
+        // setCurrentUser(); //todo: this is a better
     });
 
     //keep track of number of users
@@ -178,10 +183,8 @@ $(document).ready(function() {
     });
 
     currentUsersRef.on("value", function(snapshot) {
-
         console.log("Number of connections", snapshot.numChildren());
         $("#connected-viewers").html(snapshot.numChildren());
-
     });
 
 
@@ -208,34 +211,32 @@ $(document).ready(function() {
         membersRef.child(displayName).set(member);
 
         updateUserInfo(user);
-        setCurrentUser();
-
+        // setCurrentUser();
     }
 
 
     function updateUserInfo(user) {
 
+        console.log("updateUserInfo(), User logged in ", user);
+
         if (user.displayName == null) {
-
-            console.log("updateUserInfo(), User logged in ", user.displayName);
-
+            console.log("updateUserInfo(user), display name is" + user.displayName);
             user.updateProfile({
                 displayName: $("#txtSignupUserName").val().trim()
             }).then(function() {
-                console.log("updateUserInfo(), User updated successfully with " + user.displayName);
+                console.log("updateUserInfo(), User updated successfully with ",  $("#txtSignupUserName").val().trim());
+                location.reload();
             }, function(error) {
                 console.log(error.message);
             });
         } else {
             console.log('updateUserInfo(), User info not updated');
         }
-
     }
 
     //setting global variable of current user (why do I lose scope while bookmarking)
 
     function setCurrentUser() {
-
         currentUser = firebase.auth().currentUser; //set the global variable;   
         console.log("setCurrentUser(), current user=", currentUser);
 
@@ -265,13 +266,10 @@ $(document).ready(function() {
                 profileDivSection.css("padding", "15px");
                 profileDivSection.css("color", "#000000");
                 profileDivSection.css("font-size", "20px");
+                profileDivSection.css("border", "2px solid #000000");
                 profileDivSection.css("margin-top", "10px");
 
                 var userProfile = "<table class='profileTable'>";
-
-                // Object.keys(profileObj).forEach(function(key) {
-                //     userProfile += '<span class="capitalize">' + key + "</span>:<span style='margin-left: 20px'>" + profileObj[key] + '</span><br>';
-                // });
 
                  Object.keys(profileObj).forEach(function(key) {
                     userProfile += '<tr><td class="capitalize">' + key + "</td><td>" + profileObj[key] + '</td></tr>';
@@ -279,33 +277,41 @@ $(document).ready(function() {
 
                 profileDivSection.html(userProfile);
                 $("#profileDiv").append(profileDivSection);
+
             });
 
         //reading  bookmarks from database
 
-        bookmarksRef.child(user.displayName).on('value', function(bookmarksSnapshot) {
-            var bookmarksObj = bookmarksSnapshot.val();
-            console.log("bookmarks snapshot", bookmarksObj);
+        bookmarksRef.child(user.displayName).once('value', function(bookmarksSnapshot) {
 
-            var bookmarkDivSection = $("<div>");
-                bookmarkDivSection.attr("class", "profileClass");
-                bookmarkDivSection.css("background-color", "#e9e9e9");
-                bookmarkDivSection.css("padding", "15px");
-                bookmarkDivSection.css("color", "#000000");
-                bookmarkDivSection.css("font-size", "20px");
-                bookmarkDivSection.css("margin-top", "10px");
+                var bookmarksObj = bookmarksSnapshot.val();
+                console.log("bookmarks snapshot", bookmarksObj);
 
-            var bookmarkP = '<p style="font-weight: bold"> Your Bookmarks  </p>';
+                if(bookmarksObj != null){
 
-            Object.keys(bookmarksObj).forEach(function(key) {
-                bookmarkP += '<p>' + bookmarksObj[key] + '</p>';
-            });
-            bookmarkDivSection.html(bookmarkP);
+                    var bookmarkDivSection = $("<div>");
+                        bookmarkDivSection.attr("class", "profileClass");
+                        bookmarkDivSection.css("background-color", "#e9e9e9");
+                        bookmarkDivSection.css("padding", "15px");
+                        bookmarkDivSection.css("color", "#000000");
+                        bookmarkDivSection.css("font-size", "20px");
+                        bookmarkDivSection.css("border", "2px solid #000000");
+                        bookmarkDivSection.css("margin-top", "10px");
 
-            $("#profileDiv").append(bookmarkDivSection);
+                    var bookmarkP = '<p style="font-size: 24px; font-weight: bold;font-decoration: underline"> Your Bookmarks  </p>';
+
+                    Object.keys(bookmarksObj).forEach(function(key) {
+                        bookmarkP += '<p>' + bookmarksObj[key] + '</p>';
+                    });
+                    bookmarkDivSection.html(bookmarkP);
+
+                    $("#profileDiv").append(bookmarkDivSection);
+
+                }else{
+                    console.log("No bookmarks for the user");
+                }
         });
 
     }
-
 
 });
