@@ -83,30 +83,30 @@
           <ul class="nav navbar-nav">
             <li><a href="#" id="outdoors" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Get Out!</a><span class="caret"></span>
               <ul class="dropdown-menu">
-                <li><a href="#">Playgrounds</a></li>
-                <li><a href="#">Parks</a></li>
-                <li><a href="#">Pools</a></li>
-                <li><a href="#">Skating Rinks</a></li>
-                <li><a href="#">Theme Parks</a></li>
-                <li><a href="#">Zoos</a></li>
+                <li class="outdoorsLi" data-search="playground"><a href="#">Playgrounds</a></li>
+                <li class="outdoorsLi" data-search="park"><a href="#">Parks</a></li>
+                <li class="outdoorsLi" data-search="pools"><a href="#">Pools</a></li>
+                <li class="outdoorsLi" data-search="skating"><a href="#">Skating Rinks</a></li>
+                <li class="outdoorsLi" data-search="themepark"><a href="#">Theme Parks</a></li>
+                <li class="outdoorsLi" data-search="zoo"><a href="#">Zoos</a></li>
               </ul>
             </li>
              <li><a href="#" id="indoors" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Stay Warm!</a><span class="caret"></span>
               <ul class="dropdown-menu">
-                <li><a href="#">Movies</a></li>
-                <li><a href="#">Libraries</a></li>
-                <li><a href="#">Bowling</a></li>
-                <li><a href="#">Book stores</a></li>
-                <li><a href="#">Museums</a></li>
+                <li class="indoorsLi" data-search="Movies"><a href="#">Movies</a></li>
+                <li class="indoorsLi" data-search="Library"><a href="#">Libraries</a></li>
+                <li class="indoorsLi" data-search="Bowling"><a href="#">Bowling</a></li>
+                <li class="indoorsLi" data-search="Book store"><a href="#">Book stores</a></li>
+                <li class="indoorsLi" data-search="Museum"><a href="#">Museums</a></li>
               </ul>
             </li>
-            <li><a href="#" id="restaurants" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Grab a bite!</a><span class="caret"></span>
+            <li><a href="#" id="food" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Grab a bite!</a><span class="caret"></span>
               <ul class="dropdown-menu">
-                <li><a href="#">Restaurants</a></li>
-                <li><a href="#">Cafes</a></li>
-                <li><a href="#">Icecream Parlors</a></li>
-                <li><a href="#">Fastfood joints</a></li>
-                <li><a href="#">Pizza places</a></li>
+                <li class="foodLi" data-search="restaurant"><a href="#">Restaurants</a></li>
+                <li class="foodLi" data-search="cafe"><a href="#">Cafes</a></li>
+                <li class="foodLi" data-search="icecream"><a href="#">Icecream Parlors</a></li>
+                <li class="foodLi" data-search="fastfood"><a href="#">Fastfood joints</a></li>
+                <li class="foodLi" data-search="pizza"><a href="#">Pizza places</a></li>
               </ul>
             </li>
             <li><a href="#" id="meetups">Meet up!</a></li>
@@ -313,9 +313,10 @@
 </body><!-- JS files-->
 
 <script src="./assets/javascript/dbAuth.js"></script>
-<script src="./assets/javascript/dbAPI.js"></script>
+<!-- <script src="./assets/javascript/dbAPI.js"></script> -->
 <script src="./assets/javascript/famapp.js"></script>
-<script src="./assets/javascript/yelp/yelp.js"></script>
+<script src="./assets/javascript/nav.js"></script>
+<!-- <script src="./assets/javascript/yelp/yelp.js"></script> -->
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtUUj6f_bVbHbWpCow6r5pktW8QVcwXp8&callback=initMap"></script>
 
