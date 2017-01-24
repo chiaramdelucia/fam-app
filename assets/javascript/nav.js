@@ -212,7 +212,6 @@ function getMeetups(){
             '<p class="link"><a target="_blank" href="' + response.data[i].link + '" >' + response.data[i].link + '</a></p>';
 
             outPutDivSection.html(outPutInformation);
-
             $("#resultsAPI").append(outPutDivSection);
 
           }
