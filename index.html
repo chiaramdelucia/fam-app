@@ -16,6 +16,9 @@
    <!-- Font awesome -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+   <!-- Google Fonts  -->
+   <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two" rel="stylesheet">
+
   <!--moment.js-->
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
@@ -46,8 +49,8 @@
   <!--Landing page-->
   <div class ="row" id="land">
     <div class="col-md-12">
-      <h1>Got Bored?</h1>
-      <h2>Don't sit around. Find a place to bring the family!</h2>
+      <h1 style="font-weight: bold;">Got Bored?</h1>
+      <h2>An app that helps you find family-friendly activities in your neighborhood and beyond!</h2>
     </div>
     <div class="row">
       <h4>Enter your zip code to find the fun</h4>
@@ -56,6 +59,9 @@
     <div class="row">
       <button class="btn btn-default btn1" id="user-add-zip" type="submit" value="submit">Submit</button>
     </div>
+
+    <img src="assets/css/images/kids.png" alt="kids" style="width:600px;height:450px;">
+
   </div> <!--/#land-->
 
   <!--Main Content Area -->
@@ -174,7 +180,8 @@
               <div id="resultsAPI"></div>
             </div>
           </div>            
-            <!-- Map API display -->
+            
+          <!-- Map API display -->
           <div class="row col-md-5">
            <div class="well" id="googleAPI">
               <h1 class="text-center">Google Maps</h1>
@@ -182,6 +189,7 @@
               <div>
                 <input type="text" name="enter address" id="google-input-zip" data-parsley-type="number" data-parsley-length="[5, 5]">
                 <input id="google-add-zip" type="submit" value="submit">
+
               </div>
 
               <p>Select interest</p>
@@ -319,6 +327,10 @@
 <!-- <script src="./assets/javascript/yelp/yelp.js"></script> -->
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtUUj6f_bVbHbWpCow6r5pktW8QVcwXp8&callback=initMap"></script>
+
+<script async defer
+   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtUUj6f_bVbHbWpCow6r5pktW8QVcwXp8&callback=initMap&libraries=places">
+</script>
 
 </html>
 
