@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  var bookmarkIcon = '<span class="bookmark" style="float: right"><a href="#"><i class="fa fa-bookmark-o fa-lg" aria-hidden="true" style="color:blue"></i></a></span>';
 
 	function whatTheYelp(){
     var address = $("#google-input-zip").val();
@@ -88,7 +89,10 @@ $(document).ready(function() {
           //start "here"
           initMap(initlat, initlong);
 
+      
+
         for(i=0; i<=9; i= i+1) {
+           
                     $("#resultsAPI").append("<p>");  
                     $("#resultsAPI").append('<a href ="' + data.businesses[i] + '">' + data.businesses[i].name +'</a>');
                     $("#resultsAPI").append("      ");
@@ -99,8 +103,10 @@ $(document).ready(function() {
                     $("#resultsAPI").append(" Yelp Reviews: ");
                     $("#resultsAPI").append(data.businesses[i].review_count);
                     $("#resultsAPI").append("      ");
+                    $("#resultsAPI").append(bookmarkIcon)
                     $("#resultsAPI").append("</p>");  
 
+                    
                     var busLat = data.businesses[i].location.coordinate.latitude;
                     var busLong = data.businesses[i].location.coordinate.longitude;
                     var business = data.businesses[i];
@@ -122,5 +128,30 @@ $("#google-add-zip").on("click", function(){
   whatTheYelp();
   
 });
+
+//bookmark items
+$('#results-div').on('click', '.bookmark',function(){
+
+      var currentUser = firebase.auth().currentUser;        
+      var displayName = currentUser.displayName;
+
+      console.log("Bookmark an Item for currentUser=", currentUser);
+
+      var bookmarkLink = $(this).parent().siblings(".link").html();
+      
+      if(!jQuery.isEmptyObject(currentUser)){ //check for null condition
+        $(this).html("<i class='fa fa-bookmark fa-lg' aria-hidden='true' style='color:red'></i>");
+
+        if(displayName != null && bookmarksRef != null){          
+            bookmarksRef.child(displayName).push(bookmarkLink);
+        }else{
+            console.log("User displayname is Null");
+        }       
+
+      }else{
+        console.log("The user is not logged in to favorite!");
+      }
+
+    });
 
 });

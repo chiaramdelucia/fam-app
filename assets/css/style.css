@@ -1,7 +1,3 @@
-body{
-	/*font-family: 'Eczar', serif;  */
-	font-family: 'Satisfy', cursive;
-}
 
 #land {
 	width: 100%;
@@ -36,11 +32,21 @@ input.parsley-error:focus {
 	box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #ce8483
 }
 
+.sticky {
+	position: fixed;
+	width: 100%;
+	z-index: 1;
+	top: 0;
+}
 
 #resultsAPI{
-	height: 900px;
-	overflow-y: auto;
+	max-height: 430px;
+	overflow-y: scroll;
 	overflow-x: hidden;
+}
+
+#results-div{
+	position: relative;
 }
 
 .profileTable td{
@@ -56,13 +62,6 @@ input.parsley-error:focus {
 .places {
 	max-height: 700px;
 	overflow: auto;
-}
-
-.sticky {
-	position: fixed;
-	width: 100%;
-	z-index: 1;
-	top: 0;
 }
 
 #signupModal, #signinModal {
@@ -106,16 +105,16 @@ input:focus {
 	font-size: 16px;
 }
 
+/* temporary additions */
 #user-input-zip{
 	color: #000000;
-
 }
 
-#user-add-zip{
+/*#user-add-zip{
 	width: 100px;
 	padding: 5px;
 	border-radius: 5px;
 	font-weight: bold;
-	background-color: #972D7A  ;
-	color: #ffffff;
-}
+	/*background-color: #972D7A  ;
+	/*color: #ffffff;*/
+/*}*/

@@ -2,6 +2,7 @@ $(document).ready(function() {
 
     var userZip;
 
+    //scroll effect and functions for user's inital zip code input
 	$("#user-add-zip").click(function() {
         console.log("hello");
 	    $('html,body').animate({
@@ -51,6 +52,7 @@ $(document).ready(function() {
     };
 
     function getAddress(){
+
         var address = $("#user-input-zip").val();
         console.log("maps "+ address);
         
@@ -96,5 +98,14 @@ $(document).ready(function() {
         }
 
         win.scroll(sticky)
+
+        $('#resultsAPI').on( 'mousewheel DOMMouseScroll', function (e) { 
+
+            var e0 = e.originalEvent;
+            var delta = e0.wheelDelta || -e0.detail;
+
+            this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+            e.preventDefault();  
+        });
    
 });
