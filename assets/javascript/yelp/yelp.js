@@ -88,7 +88,10 @@ $(document).ready(function() {
           //start "here"
           initMap(initlat, initlong);
 
+      
+
         for(i=0; i<=9; i= i+1) {
+           
                     $("#resultsAPI").append("<p>");  
                     $("#resultsAPI").append('<a href ="' + data.businesses[i] + '">' + data.businesses[i].name +'</a>');
                     $("#resultsAPI").append("      ");
@@ -99,8 +102,10 @@ $(document).ready(function() {
                     $("#resultsAPI").append(" Yelp Reviews: ");
                     $("#resultsAPI").append(data.businesses[i].review_count);
                     $("#resultsAPI").append("      ");
-                    $("#resultsAPI").append("</p>");  
+                    $("#resultsAPI").append("</p>");
 
+
+                    
                     var busLat = data.businesses[i].location.coordinate.latitude;
                     var busLong = data.businesses[i].location.coordinate.longitude;
                     var business = data.businesses[i];
