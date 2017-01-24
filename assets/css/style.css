@@ -1,40 +1,3 @@
-
-#land {
-	width: 100%;
-	height: 700px;
-
-	/* image: url(./images/kids.png); */
-
-	background-repeat: no-repeat;
-	background-position: bottom right;
-	background-size: 70% 550px;
-	text-align: center;
-	/*background-attachment: fixed;*/
-	overflow-y: hidden;
-
-	font-family: 'Shadows Into Light Two', cursive;
-	background: #DAE2F8; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #DAE2F8 , #D6A4A4); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #DAE2F8 , #D6A4A4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
-}
-
-image {
-	position: absolute;
-  top: 80px;
-  right: 0;
-}
-
-
-#content {
-	width: 100%;
-	height: 1000px;
-	background: #2C3E50; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #2C3E50 , #4CA1AF); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #2C3E50 , #4CA1AF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
 input.parsley-error {   
 	color: red; 
 	border-color:#843534;
@@ -74,10 +37,6 @@ input.parsley-error:focus {
     font-weight: bold;
 }
 
-.places {
-	max-height: 700px;
-	overflow: auto;
-}
 
 #signupModal, #signinModal {
 	text-align: center;

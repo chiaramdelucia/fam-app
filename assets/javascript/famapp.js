@@ -87,7 +87,7 @@ $(document).ready(function() {
 
     }//get Address
 
-        var win = $(window),
+    var win = $(window),
         nav = $('nav'),
 
         pos = nav.offset().top,
@@ -99,7 +99,7 @@ $(document).ready(function() {
 
         win.scroll(sticky)
 
-        $('#resultsAPI').on( 'mousewheel DOMMouseScroll', function (e) { 
+    $('#resultsAPI').on( 'mousewheel DOMMouseScroll', function (e) { 
 
             var e0 = e.originalEvent;
             var delta = e0.wheelDelta || -e0.detail;
