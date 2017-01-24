@@ -11,51 +11,19 @@ $(document).on('ready', function(){
     // populate googlemaps API with zipcode
     $('#google-input-zip').val(userZip);
 
-    //display map
-    //getGoogleCoordinates();
-
   });  
 
-  // //if value is changed
-  // $('#google-add-zip').on('click', function(){
-
-  //   //change global variable
-  //   userZip = $("#google-input-zip").val();
-  //   console.log("Google map Zip =" , userZip);
-  //   localStorage.setItem("userZip", userZip);
-
-  //   //display map
-  //   getGoogleCoordinates();
-  //   // getWeather();
-  // }); 
-
-  // function getGoogleCoordinates(){
-
-  //   var addressZip = $("#google-input-zip").val();
-  //   console.log("getGoogleCoordinates()-Input address/zip = " + addressZip);
-  //   $.ajax({    
-  //     url: 'https://maps.googleapis.com/maps/api/geocode/json?address='+ 
-  //     addressZip +'&key=AIzaSyBtUUj6f_bVbHbWpCow6r5pktW8QVcwXp8',
-  //     method: "POST"
-  //   }).done(function(response){
-    
-  //   console.log("getGoogleCoordinates()- response", response);
-  //   console.log("getGoogleCoordinates()- address",  response.results[0].formatted_address);
-
-  //   var latitude = response.results[0].geometry.location.lat;
-  //   var longitude = response.results[0].geometry.location.lng;
-
-  //   };
 
   //MEETUPS
 
   $('#meetups').on('click', function(){
+    $("#results-div").empty();
       getMeetups();
   });
 
   //TODO
   function getMeetups(){
-
+    
     console.log('getMeetups() - zipcode', localStorage.getItem("userZip"));
     userZip = localStorage.getItem("userZip");
 
@@ -81,18 +49,22 @@ $(document).on('ready', function(){
           outPutDivSection.css("padding", "15px");
           outPutDivSection.css("margin-top", "10px");
 
-          var outPutInformation =
+          if(response.data.errors){
+            console.log("there are errors in meetups data")
+          }else{
+            var outPutInformation =
 
-          '<h3>' + response.data[i].name  + '    '+ bookmarkIcon + '</h3>'+ 
-          '<p>' + 'City : ' + response.data[i].city + '</p>'+ 
-          '<p>' + 'Meant for : ' + response.data[i].who + '</p>'+  
-          '<p class="link"><a target="_blank" href="' + response.data[i].link + '" >' + response.data[i].link + '</a></p>';
+            '<h3>' + response.data[i].name  + '    '+ bookmarkIcon + '</h3>'+ 
+            '<p>' + 'City : ' + response.data[i].city + '</p>'+ 
+            '<p>' + 'Meant for : ' + response.data[i].who + '</p>'+  
+            '<p class="link"><a target="_blank" href="' + response.data[i].link + '" >' + response.data[i].link + '</a></p>';
 
-          outPutDivSection.html(outPutInformation);
+            outPutDivSection.html(outPutInformation);
 
-          $("#results-div").append(outPutDivSection);
+            $("#results-div").append(outPutDivSection);
 
-      }
+          }
+        }
   
       });
   }
