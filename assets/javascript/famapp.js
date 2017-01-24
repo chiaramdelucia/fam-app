@@ -1,8 +1,10 @@
 $(document).ready(function() {
 
+    var userZip;
+
     //scroll effect and functions for user's inital zip code input
 	$("#user-add-zip").click(function() {
-        console.log("hello")
+        console.log("hello");
 	    $('html,body').animate({
 	        scrollTop: $("#content").offset().top},
 	        'slow');    
@@ -17,9 +19,20 @@ $(document).ready(function() {
         $('#google-input-zip').val(userZip);
     });
 
+    //store the zip
+    $('#user-add-zip').on('click', function(){
+        userZip = $('#user-input-zip').val();   //set as global variable  
+        console.log("famapp.js, User input Zip =" , userZip);
+        localStorage.setItem("userZip", userZip);
+
+        // populate googlemaps API with zipcode
+        $('#google-input-zip').val(userZip);
+
+    });  
+
     function getWeather() {
         var address = $("#user-input-zip").val();
-        console.log("weather " + address)
+        console.log("weather " + address);
         $.ajax({
 
             url: 'https://api.wunderground.com/api/7d4c2ccc48b6acd9/conditions/q/' + address + '.json',
@@ -37,60 +50,62 @@ $(document).ready(function() {
         });
 
     };
+
     function getAddress(){
-    var address = $("#user-input-zip").val();
-    console.log("maps "+ address)
-      $.ajax({
-    
-        url: 'https://maps.googleapis.com/maps/api/geocode/json?address='+ address +'&key=AIzaSyBtUUj6f_bVbHbWpCow6r5pktW8QVcwXp8',
-        method: "GET"
-      }).done(function(response) {
-        console.log(response);
-        console.log(response.results[0].formatted_address)
 
-        var latitude = response.results[0].geometry.location.lat
-        var longitude = response.results[0].geometry.location.lng
-        var formatted_address = response.results[0].formatted_address
-        $('#google-input-zip').val(formatted_address);
-    
-        function initMap() {
-          var map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: latitude, lng: longitude},
-            zoom: 15,
-            mapTypeId: 'roadmap',
-            });//var map
-           var marker = new google.maps.Marker({
-            position: {lat: latitude, lng: longitude},
-            map: map
-        });//var marker
-        };//initMap
-        initMap();
-      });//ajax
+        var address = $("#user-input-zip").val();
+        console.log("maps "+ address);
+        
+        $.ajax({
+            url: 'https://maps.googleapis.com/maps/api/geocode/json?address='+ address +'&key=AIzaSyBtUUj6f_bVbHbWpCow6r5pktW8QVcwXp8',
+            method: "GET"
+        }).done(function(response){
+            console.log(response);
+            console.log(response.results[0].formatted_address)
 
-  }//get Address
+            var latitude = response.results[0].geometry.location.lat
+            var longitude = response.results[0].geometry.location.lng
+            var formatted_address = response.results[0].formatted_address
+            
+            $('#google-input-zip').val(formatted_address);
 
-    //sticky nav bar on scroll
-    var win = $(window),
-            nav = $('nav'),
+            function initMap() {
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    center: {lat: latitude, lng: longitude},
+                    zoom: 15,
+                    mapTypeId: 'roadmap',
+                });//var map
+                
+                var marker = new google.maps.Marker({
+                    position: {lat: latitude, lng: longitude},
+                    map: map
+                });//var marker
+            };//initMap
 
-            pos = nav.offset().top,
-            sticky = function() {
-                win.scrollTop() > pos ?
-                    nav.addClass('sticky')
-                    : nav.removeClass('sticky')
-            }
+            initMap();
+        });//ajax
 
-    win.scroll(sticky)
+    }//get Address
 
-    $('#resultsAPI').on( 'mousewheel DOMMouseScroll', function (e) { 
+        var win = $(window),
+        nav = $('nav'),
 
-        var e0 = e.originalEvent;
-        var delta = e0.wheelDelta || -e0.detail;
+        pos = nav.offset().top,
+        sticky = function() {
+            win.scrollTop() > pos ?
+            nav.addClass('sticky')
+            : nav.removeClass('sticky')
+        }
 
-        this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-        e.preventDefault();  
-    });
+        win.scroll(sticky)
 
+        $('#resultsAPI').on( 'mousewheel DOMMouseScroll', function (e) { 
 
+            var e0 = e.originalEvent;
+            var delta = e0.wheelDelta || -e0.detail;
+
+            this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+            e.preventDefault();  
+        });
    
 });
