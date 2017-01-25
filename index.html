@@ -52,7 +52,9 @@
   <div class ="row" id="land">
     <div class ="row landText">
       <div class="col-md-5 col-md-offset-2">
-        <h1 style="font-weight: bold;">Got Bored?</h1>
+        <h1 style="font-weight: bold;">Got Bored <img src="assets/css/images/logoCrop.png" class="logoCrop" alt="logoCrop"></h1>
+        
+
         <h2>An app that helps you find family-friendly activities in your neighborhood and beyond!</h2>
       </div>
     </div>
@@ -74,18 +76,23 @@
     <nav class="navbar navbar-default">
       <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">
-          <!-- <img alt="Logo" src= "..."> -->
+      <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+           <a class="navbar-brand" href="#">
+        <img alt="logo" src="assets/css/images/logo.png" class="logo">
+      </a>
+
+       
+  
         </div>
         <!-- find a place for this -->
-        <div><span id="connected-viewers"></span> users online! </div> 
+        
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -137,6 +144,7 @@
           </ul>
           <!-- right nav: accounts -->
           <ul class="nav navbar-nav navbar-right">
+          <li> 
             <li>
               <a href="#" id='btnSignUp' data-toggle="modal" data-target="#signupModal">Join</a>    
             </li>
@@ -162,22 +170,29 @@
     </nav>
   </div> <!---div wrapper????? -- >
 
-    <!--Main Content Area-->
+     <!--Main Content Area-->
     <div class="container">
       <div class="row">
         <!--Helpful Resources Section-->
         <div class="col-md-2">
-          <h3>Helpful Resources</h3> 
+          <!-- <h3>Helpful Resources</h3> 
           <ul style="list-style-type:none">
             <li><a href="#">Commonsensemedia</a></li>
             <li><a href="#">Yelp</a></li>
             <li><a href="#">URL</a></li> 
-          </ul>  
+          </ul>   -->
+          <!-- <div> -->
+                <input type="text" name="enter address" id="google-input-zip" data-parsley-type="number" data-parsley-length="[5, 5]">
+                <input id="google-add-zip" type="submit" value="submit">
+
+                <div><span id="connected-viewers"></span> users online! </div> 
+          <!-- </div> -->
         </div>
+
+
         
         <!--Content Well and Map/Weather Well -->
         <div class="col-md-10" style ="padding-right:20px; border-left: 1px solid black;background">
-
           <div class="row">
             <!-- Places API display -->
           <!-- TODO: Modify the div below for API display /temporary div-->
@@ -193,13 +208,8 @@
            <div class="well" id="googleAPI">
               <h1 class="text-center">Google Maps</h1>
               <div id="map"></div>
-              <div>
-                <input type="text" name="enter address" id="google-input-zip" data-parsley-type="number" data-parsley-length="[5, 5]">
-                <input id="google-add-zip" type="submit" value="submit">
-
-              </div>
-
-              <p>Select interest</p>
+              
+              <!-- <p>Select interest</p>
               <select class="form-control choices">
                 <option value="park">Parks</option>
                 <option value="restaurant">Restaurants</option>
@@ -213,10 +223,9 @@
                 <th>Formatted Address</th>
                 <th>Latitude</th>
                 <th>Longitude</th>
-              </table>
+              </table> -->
            </div> <!--googleAPI -->
           </div> <!--/ col, Map and Weather API columns--> 
-
           </div> <!--/ Places API, Map, Weather API row-->    
         </div> <!--/ Places API, Map, Weather API col -->
       </div> <!--/ Main Content Area Row -->
