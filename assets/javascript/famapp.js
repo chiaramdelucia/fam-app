@@ -14,6 +14,7 @@ $(document).ready(function() {
 
     //review this
     $(window).on('load', function(){
+        event.preventDefault();
         userZip = localStorage.getItem('userZip');
         $('#user-input-zip').val(userZip);
         $('#google-input-zip').val(userZip);
@@ -21,6 +22,7 @@ $(document).ready(function() {
 
     //store the zip
     $('#user-add-zip').on('click', function(){
+        event.preventDefault();
         userZip = $('#user-input-zip').val();   //set as global variable  
         console.log("famapp.js, User input Zip =" , userZip);
         localStorage.setItem("userZip", userZip);
