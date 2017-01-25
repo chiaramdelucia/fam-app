@@ -1,3 +1,10 @@
+ /*temporary only*/ 
+ body{
+ 	margin: 0;
+ 	padding : 0;
+ 	font-family: 'Shadows Into Light Two', cursive; 
+ }
+
 #land {
 	height: 700px;
 	text-align: center;
@@ -46,17 +53,17 @@
     src: url(./images/LillyBelle.ttf); 
 }
 
-
-h3 {
+/* commenting out for now as it alters h3 all over 
+/*h3 {
     font-family: LillyBelle;
     font-size: 30px;
     text-align: center;
-}
+}*/
 
-.text-center{
+/*.text-center{
 	font-family: LillyBelle;
 	font-size: 30px;
-}
+}*/
 
 #map {
 	height:400px;
