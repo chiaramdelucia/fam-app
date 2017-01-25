@@ -47,7 +47,7 @@ $(document).ready(function() {
         console.log("weather " + address);
         $.ajax({
 
-            url: 'https://api.wunderground.com/api/7d4c2ccc48b6acd9/conditions/q/' + address + '.json',
+            url: 'https://cors-anywhere.herokuapp.com/' + 'https://api.wunderground.com/api/7d4c2ccc48b6acd9/conditions/q/' + address + '.json',
             method: 'GET',
             datatype: "json"
         }).done(function(wonder) {
