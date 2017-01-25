@@ -76,6 +76,7 @@ $(document).ready(function(){
 
       var near = address;
       console.log(address);
+
       var accessor = {
         consumerSecret: auth.consumerSecret,
         tokenSecret: auth.accessTokenSecret
@@ -128,6 +129,7 @@ $(document).ready(function(){
                  scaledSize: new google.maps.Size(20, 25)
               }
             });
+
             var bussinessName = data.businesses[i].name
               google.maps.event.addListener(marker, 'mouseover', function() {
               infoWindow.setContent(bussinessName);
@@ -161,6 +163,12 @@ $(document).ready(function(){
           //start "here"
           initMap(initlat, initlong);
 
+    console.log("whatTheYelp()- num of search results=",data.businesses.length);      
+
+    if(data.businesses.length <= numResults){
+      numResults = data.businesses.length;
+    }     
+
 		for(i=0; i< numResults; i= i+1) {
 			//commenting this out because of bookmarking error
 
@@ -183,6 +191,7 @@ $(document).ready(function(){
     	outPutDivSection.css("background-color", "#e9e9e9");
     	outPutDivSection.css("padding", "15px");
     	outPutDivSection.css("margin-top", "10px");
+
 
       var outPutInformation =
 
