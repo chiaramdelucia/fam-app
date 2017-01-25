@@ -27,7 +27,12 @@ $(document).ready(function() {
         userZip = localStorage.getItem('userZip');
         $('#user-input-zip').val(userZip);
         $('#google-input-zip').val(userZip);
-        getWeather();
+
+        if(!jQuery.isEmptyObject(userZip)){
+            getWeather();
+        }else{
+            console.log("User Zip is missing");
+        }
     });
 
     //store the zip
