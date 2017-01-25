@@ -75,13 +75,17 @@ input:focus {
 #signinModal,
 #signupModal,
 #profileModal{
-	font-family: 'Eczar', serif; /* temporary */
+	font-family: 'Shadows Into Light Two', cursive;
 	font-size: 16px;
 }
 
 /* temporary additions */
 #user-input-zip{
 	color: #000000;
+}
+
+#numResults{
+	font-size: 18px;
 }
 
 /*#user-add-zip{
