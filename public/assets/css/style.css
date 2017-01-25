@@ -1,0 +1,94 @@
+input.parsley-error {   
+	color: red; 
+	border-color:#843534;
+	box-shadow: none;
+}
+
+input.parsley-error:focus { 
+	color: red;   
+	border-color:#843534;
+	box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #ce8483
+}
+
+.sticky {
+	position: fixed;
+	width: 100%;
+	z-index: 1;
+	top: 0;
+}
+
+#resultsAPI{
+	max-height: 430px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+#results-div{
+	position: relative;
+}
+
+.profileTable td{
+	padding: 10px 20px;
+}
+
+.capitalize{
+    text-transform: capitalize;
+    padding-right: 30px;
+    font-weight: bold;
+}
+
+
+#signupModal, #signinModal {
+	text-align: center;
+}
+
+input{
+	padding: 5px 20px;
+	margin : 5px;
+	border:2px solid #dadada;
+    border-radius:7px;
+}
+
+input:focus { 
+    outline:none;
+    border-color:#9ecaed;
+    box-shadow:0 0 10px #9ecaed;
+}
+
+#btnGoogleSignup,
+#btnGoogleSignin
+{
+	background-color: #2C3E50;
+	width: 200px;
+	border-radius: 8px;
+	color: #ffffff;
+	padding: 15px 25px;
+}
+
+#signupDiv,
+#signinDiv{
+	background-color: #e9e9e9;
+	padding : 15px;
+	border : 2px solid #000000;
+}
+
+#signinModal,
+#signupModal,
+#profileModal{
+	font-family: 'Eczar', serif; /* temporary */
+	font-size: 16px;
+}
+
+/* temporary additions */
+#user-input-zip{
+	color: #000000;
+}
+
+/*#user-add-zip{
+	width: 100px;
+	padding: 5px;
+	border-radius: 5px;
+	font-weight: bold;
+	/*background-color: #972D7A  ;
+	/*color: #ffffff;*/
+/*}*/
