@@ -4,6 +4,7 @@ $(document).ready(function() {
 
     //scroll effect and functions for user's inital zip code input
 	$("#user-add-zip").click(function() {
+        event.preventDefault();
         console.log("hello");
 	    $('html,body').animate({
 	        scrollTop: $("#content").offset().top},
@@ -18,6 +19,7 @@ $(document).ready(function() {
         userZip = localStorage.getItem('userZip');
         $('#user-input-zip').val(userZip);
         $('#google-input-zip').val(userZip);
+        getWeather();
     });
 
     //store the zip
