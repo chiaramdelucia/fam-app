@@ -52,7 +52,7 @@ $(document).ready(function() {
         console.log("weather " + address);
         $.ajax({
 
-            url: 'https://cors-anywhere.herokuapp.com/' + 'https://api.wunderground.com/api/7d4c2ccc48b6acd9/conditions/q/' + address + '.json',
+            url: 'https://api.wunderground.com/api/7d4c2ccc48b6acd9/conditions/q/' + address + '.json',
             method: 'GET',
             datatype: "json"
         }).done(function(wonder) {
@@ -95,7 +95,12 @@ $(document).ready(function() {
                 
                 var marker = new google.maps.Marker({
                     position: {lat: latitude, lng: longitude},
-                    map: map
+                    map: map,
+                    icon: {
+                    url: '../assets/css/images/logo2.png',
+                    anchor: new google.maps.Point(10, 10),
+                    scaledSize: new google.maps.Size(40, 50)
+                },
                 });//var marker
             };//initMap
 
