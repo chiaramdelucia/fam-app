@@ -30,18 +30,18 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>  
 
   <!-- parsleyjs library -->
-  <script src="https://parsleyjs.org/dist/parsley.js"></script>
+  <script type="text/javascript" src="/assets/javascript/parsley.js"></script>
 
   <!-- Firebase Reference -->
-  <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+  <script type="text/javascript" src="//www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
 
   <!-- TODO: font above for testing only, remove -->
-  <link rel="stylesheet" type="text/css" href="./assets/css/content.css">
-  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/content.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 
   <!--yelp oauth files-->
-  <script type="text/javascript" src="./assets/javascript/yelp/oauth.js"></script>
-  <script type="text/javascript" src="./assets/javascript/yelp/sha1.js"></script>
+  <script type="text/javascript" src="/assets/javascript/yelp/oauth.js"></script>
+  <script type="text/javascript" src="/assets/javascript/yelp/sha1.js"></script>
 
 </head>
 
@@ -51,13 +51,13 @@
 
   <div class ="row" id="land">
     <div class ="row landText">
-      <div class="col-md-5 col-md-offset-2">
-        <h1 style="font-weight: bold;">Got Bored?</h1>
+      <div class="col-md-5 col-md-offset-6">
+        <h1 style="font-weight: bold;">Got Bored<img src="assets/css/images/logoCrop.png" class="logoCrop" alt="logoCrop"></h1>
         <h2>An app that helps you find family-friendly activities in your neighborhood and beyond!</h2>
       </div>
     </div>
     <div class="row landText">
-      <div class="col-md-5 col-md-offset-2">
+      <div class="col-md-5 col-md-offset-6">
         <h4>Enter your zip code to find the fun</h4>
          <input type="text" name="zip code" id="user-input-zip" placeholder="Zip Code" required data-parsley-type="number" data-parsley-length="[5, 5]">
           <button class="btn btn-default btn1" id="user-add-zip" type="submit" value="submit">Submit</button>
@@ -70,9 +70,9 @@
 
   <!--Main Content Area -->
   <div id="content"> 
-  <div id="wrapper">
+  
     <nav class="navbar navbar-default">
-      <div class="container-fluid">
+      <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -82,10 +82,9 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="#">
-          <!-- <img alt="Logo" src= "..."> -->
+            <img alt="logo" src="assets/css/images/logo.png" class="logo">
+          </a>
         </div>
-        <!-- find a place for this -->
-        <div><span id="connected-viewers"></span> users online! </div> 
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -93,50 +92,37 @@
           <ul class="nav navbar-nav">
             <li><a href="#" id="outdoors" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Get Out!</a><span class="caret"></span>
               <ul class="dropdown-menu">
-                 <li class="outdoorsLi" data-search="playgrounds, all"><a href="#">Playgrounds</a></li>
-                <li class="outdoorsLi" data-search="good for kids, parks"><a href="#">Parks</a></li>
-                <li class="outdoorsLi" data-search="swimmingpools, All"><a href="#">Pools</a></li>
-                <li class="outdoorsLi" data-search="skatingrinks, All"><a href="#">Skating Rinks</a></li>
-                <li class="outdoorsLi" data-search="amusementparks, All"><a href="#">Theme Parks</a></li>
-                <li class="outdoorsLi" data-search="zoos, All"><a href="#">Zoos</a></li>
-                <li class="outdoorsLi" data-search="kids_activites, outdoors"><a href="#">Outdoor Activities</a></li>
+                <li class="outdoorsLi" data-search="playground"><a href="#">Playgrounds</a></li>
+                <li class="outdoorsLi" data-search="park"><a href="#">Parks</a></li>
+                <li class="outdoorsLi" data-search="pools"><a href="#">Pools</a></li>
+                <li class="outdoorsLi" data-search="skating"><a href="#">Skating Rinks</a></li>
+                <li class="outdoorsLi" data-search="themepark"><a href="#">Theme Parks</a></li>
+                <li class="outdoorsLi" data-search="zoo"><a href="#">Zoos</a></li>
               </ul>
             </li>
              <li><a href="#" id="indoors" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Stay Warm!</a><span class="caret"></span>
               <ul class="dropdown-menu">
-                <li class="indoorsLi" data-search="movietheaters, all"><a href="#">Movies</a></li>
-                <li class="indoorsLi" data-search= "kids_activites, indoors"><a href="#">Indoor Activities</a></li>
-                <li class="indoorsLi" data-search="libraries"><a href="#">Libraries</a></li>
-                <li class="indoorsLi" data-search="bowling, all"><a href="#">Bowling</a></li>
-                <li class="indoorsLi" data-search="bookstores, all"><a href="#">Book stores</a></li>
+                <li class="indoorsLi" data-search="Movies"><a href="#">Movies</a></li>
+                <li class="indoorsLi" data-search="Library"><a href="#">Libraries</a></li>
+                <li class="indoorsLi" data-search="Bowling"><a href="#">Bowling</a></li>
+                <li class="indoorsLi" data-search="Book store"><a href="#">Book stores</a></li>
                 <li class="indoorsLi" data-search="Museum"><a href="#">Museums</a></li>
               </ul>
             </li>
             <li><a href="#" id="food" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Grab a bite!</a><span class="caret"></span>
               <ul class="dropdown-menu">
-                <li class="foodLi" data-search="good for kids, restaurants"><a href="#">Restaurants</a></li>
-                <li class="foodLi" data-search="good for kids, cafe"><a href="#">Cafes</a></li>
-                <li class="foodLi" data-search="icecream, All"><a href="#">Icecream Parlors</a></li>
-                <li class="foodLi" data-search="hotdogs, All"><a href="#">Fastfood joints</a></li>
-                <li class="foodLi" data-search="pizza, All"><a href="#">Pizza places</a></li>
+                <li class="foodLi" data-search="restaurant"><a href="#">Restaurants</a></li>
+                <li class="foodLi" data-search="cafe"><a href="#">Cafes</a></li>
+                <li class="foodLi" data-search="icecream"><a href="#">Icecream Parlors</a></li>
+                <li class="foodLi" data-search="fastfood"><a href="#">Fastfood joints</a></li>
+                <li class="foodLi" data-search="pizza"><a href="#">Pizza places</a></li>
               </ul>
             </li>
             <li><a href="#" id="meetups">Meet up!</a></li>
-            <!-- <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">category <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">subCategory</a></li>
-                <li><a href="#">subCategory</a></li>
-                <li><a href="#">subCategory</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li> -->
           </ul>
           <!-- right nav: accounts -->
           <ul class="nav navbar-nav navbar-right">
+
             <li>
               <a href="#" id='btnSignUp' data-toggle="modal" data-target="#signupModal">Join</a>    
             </li>
@@ -160,19 +146,16 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
-  </div> <!---div wrapper????? -- >
+  
 
-    <!--Main Content Area-->
-    <div class="container">
+ <!--Main Content Area-->
+    <div class="container" id="wrapper">
       <div class="row">
         <!--Helpful Resources Section-->
         <div class="col-md-2">
-          <h3>Helpful Resources</h3> 
-          <ul style="list-style-type:none">
-            <li><a href="#">Commonsensemedia</a></li>
-            <li><a href="#">Yelp</a></li>
-            <li><a href="#">URL</a></li> 
-          </ul>  
+          <input type="text" name="enter address" id="google-input-zip" data-parsley-type="number" data-parsley-length="[5, 5]">
+          <input id="google-add-zip" type="submit" value="submit">
+          <div><span id="connected-viewers"></span> users online! </div> 
         </div>
         
         <!--Content Well and Map/Weather Well -->
@@ -193,36 +176,29 @@
            <div class="well" id="googleAPI">
               <h1 class="text-center">Google Maps</h1>
               <div id="map"></div>
-              <div>
-                <input type="text" name="enter address" id="google-input-zip" data-parsley-type="number" data-parsley-length="[5, 5]">
-                <input id="google-add-zip" type="submit" value="submit">
+              
 
-              </div>
-
-              <p>Select interest</p>
-              <select class="form-control choices">
-                <option value="park">Parks</option>
-                <option value="restaurant">Restaurants</option>
-                <option value="movie_theater">Movie Theaters</option>
-                <option value="museum">Museums</option>
-                <option value="book_store">Book Stores</option>
-                <option value="library">Library</option>
-                <option value="cafe">Cafes</option>
-              </select>
-              <table id="address-table" width="100%">
-                <th>Formatted Address</th>
-                <th>Latitude</th>
-                <th>Longitude</th>
-              </table>
            </div> <!--googleAPI -->
           </div> <!--/ col, Map and Weather API columns--> 
 
           </div> <!--/ Places API, Map, Weather API row-->    
         </div> <!--/ Places API, Map, Weather API col -->
+
       </div> <!--/ Main Content Area Row -->
     </div> <!--/ Main Content Area container -->
 
-<!--original footer moved to the bottom-->
+    <!--Footer -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted" style ="text-align: center; color: black;">Got Bored © 2017</p>  
+            </div>
+        </footer>
+      </div>
+    </div>
+  </div>
 
    <!-- Sign up Modal -->
   <div id="signupModal" class="modal fade" role="dialog">
@@ -312,39 +288,18 @@
 
  </div> <!--content div closing  -->
 
-  <!--Footer -->
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <footer class="footer">
-            <div class="container">
-                <p class="text-muted" style ="text-align: center; color: black;">Got Bored © 2017</p>  
-            </div>
-        </footer>
-      </div>
-    </div>
-  </div>
+
 
 </body><!-- JS files-->
-<!-- <script type="text/javascript">
-  
-    $("#user-add-zip").click(function() {
-        console.log("hello");
-      $('html,body').animate({
-          scrollTop: $("#content").offset().top},
-          'slow');   
-            getWeather();
-            getAddress();
-  });
-</script> -->
-<script src="./assets/javascript/famapp.js"></script>
-<script src="./assets/javascript/nav.js"></script>
-<script src="./assets/javascript/dbAuth.js"></script>
+
+<script src="/assets/javascript/famapp.js"></script>
+<script src="/assets/javascript/nav.js"></script>
+<script src="/assets/javascript/dbAuth.js"></script>
 <!-- <script src="./assets/javascript/dbAPI.js"></script> -->
 
 <!-- <script src="./assets/javascript/yelp/yelp.js"></script> -->
 <script async defer
-   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtUUj6f_bVbHbWpCow6r5pktW8QVcwXp8&callback=initMap&libraries=places">
+   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtUUj6f_bVbHbWpCow6r5pktW8QVcwXp8&libraries=places">
 </script>
 
 </html>

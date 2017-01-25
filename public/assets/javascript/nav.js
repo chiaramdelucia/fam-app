@@ -1,7 +1,9 @@
 $(document).ready(function(){
   
   var choices;
+
   var cityState = $("google-input-zip").val();
+
   var bookmarkIcon = '<span class="bookmark" style="float: right"><a href="#"><i class="fa fa-bookmark-o fa-lg" aria-hidden="true" style="color:blue"></i></a></span>';
 
 	$('.outdoorsLi').on ('click', function(){
@@ -44,6 +46,7 @@ $(document).ready(function(){
 
   function whatTheYelp(){
     var address = $("#google-input-zip").val();
+      
       console.log("whatTheYelp() address ", address);
       
       var auth = {

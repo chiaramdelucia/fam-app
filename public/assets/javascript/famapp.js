@@ -1,17 +1,25 @@
 $(document).ready(function() {
+    $("#content").hide();
+    $( "#user-add-zip" ).click(function() {
+        $("#land").fadeOut('slow');
+        $("#content").show('slow');
+        getWeather();
+        getAddress();
+    });
+
 
     var userZip;
 
-    //scroll effect and functions for user's inital zip code input
-	$("#user-add-zip").click(function() {
-        event.preventDefault();
-        console.log("hello");
-	    $('html,body').animate({
-	        scrollTop: $("#content").offset().top},
-	        'slow');   
-            getWeather();
-            getAddress();
-	});
+ //    scroll effect and functions for user's inital zip code input
+	// $("#user-add-zip").click(function() {
+ //        event.preventDefault();
+ //        console.log("hello");
+	//     $('html,body').animate({
+	//         scrollTop: $("#content").offset().top},
+	//         'slow');   
+ //            getWeather();
+ //            getAddress();
+	// });
 
     //review this
     $(window).on('load', function(){
@@ -39,7 +47,7 @@ $(document).ready(function() {
         console.log("weather " + address);
         $.ajax({
 
-            url: 'https://api.wunderground.com/api/7d4c2ccc48b6acd9/conditions/q/' + address + '.json',
+            url: 'https://cors-anywhere.herokuapp.com/' + 'https://api.wunderground.com/api/7d4c2ccc48b6acd9/conditions/q/' + address + '.json',
             method: 'GET',
             datatype: "json"
         }).done(function(wonder) {
@@ -92,17 +100,17 @@ $(document).ready(function() {
     }//get Address
 
     //Sticky Nav Bar
-    var win = $(window),
-        nav = $('nav'),
+    // var win = $(window),
+    //     nav = $('nav'),
 
-        pos = nav.offset().top,
-        sticky = function() {
-            win.scrollTop() > pos ?
-            nav.addClass('sticky')
-            : nav.removeClass('sticky')
-        }
+    //     pos = nav.offset().top,
+    //     sticky = function() {
+    //         win.scrollTop() > pos ?
+    //         nav.addClass('sticky')
+    //         : nav.removeClass('sticky')
+    //     }
 
-        win.scroll(sticky)
+    //     win.scroll(sticky)
 
     //Scroll in results-div, but not on window when mouse is in results-div
     $('#resultsAPI').on( 'mousewheel DOMMouseScroll', function (e) { 
@@ -113,5 +121,9 @@ $(document).ready(function() {
             this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
             e.preventDefault();  
         });
+
+    window.onbeforeunload = function () {
+        window.scrollTo(0, 0);
+    }
    
 });
