@@ -5,24 +5,28 @@ $(document).ready(function(){
   var bookmarkIcon = '<span class="bookmark" style="float: right"><a href="#"><i class="fa fa-bookmark-o fa-lg" aria-hidden="true" style="color:blue"></i></a></span>';
 
 	$('.outdoorsLi').on ('click', function(){
+    event.preventDefault();
 		choices = $(this).data('search');
 		$("#resultsAPI").empty();
 		whatTheYelp();
 	});
 
 	$('.indoorsLi').on ('click', function(){
+    event.preventDefault();
 		choices = $(this).data('search');
 		$("#resultsAPI").empty();
 		whatTheYelp();
 	});
 
 	$('.foodLi').on ('click', function(){
+    event.preventDefault();
 		choices = $(this).data('search');
 		$("#resultsAPI").empty();
 		whatTheYelp();
 	});
 
 	$('#meetups').on('click', function(){
+    event.preventDefault();
 		$("#resultsAPI").empty();
 		getMeetups();
 	});
@@ -220,9 +224,9 @@ function getMeetups(){
       });
   }
 
-
 //bookmark items
 $('#resultsAPI').on('click', '.bookmark',function(){
+      event.preventDefault();
 
       var currentUser = firebase.auth().currentUser;        
       var displayName = currentUser.displayName;
