@@ -4,7 +4,7 @@ $(document).ready(function(){
 
   var cityState = $("google-input-zip").val();
 
-  var bookmarkIcon = '<span class="bookmark" style="float: right"><a href="#"><i class="fa fa-bookmark-o fa-lg" aria-hidden="true" style="color:blue"></i></a></span>';
+  var bookmarkIcon = '<span class="bookmark" style="float: right"><a class="bkTooltip" rel="tooltip" data-toggle="tooltip" data-placement="top" title="Bookmark Item" href="#"><i class="fa fa-bookmark-o fa-lg" aria-hidden="true" style="color:blue"></i></a></span>';
 
 	$('.outdoorsLi').on ('click', function(){
     event.preventDefault();
@@ -128,7 +128,7 @@ $(document).ready(function(){
 
           var initlat = data.region.center.latitude;
           var initlong = data.region.center.longitude;
-          console.log("initlat "+initlat + "  initlong "+initlong);
+          // console.log("initlat "+initlat + "  initlong "+initlong);
           //start "here"
           initMap(initlat, initlong);
 
@@ -149,23 +149,23 @@ $(document).ready(function(){
 			// $("#resultsAPI").append("</p>"); 
 
 			var outPutDivSection = $('<div>');
-          	outPutDivSection.attr("class", "search-result");
-          	outPutDivSection.attr("id", "search-item" + i);
-          	outPutDivSection.css("background-color", "#e9e9e9");
-          	outPutDivSection.css("padding", "15px");
-          	outPutDivSection.css("margin-top", "10px");
+    	outPutDivSection.attr("class", "search-result");
+    	outPutDivSection.attr("id", "search-item" + i);
+    	outPutDivSection.css("background-color", "#e9e9e9");
+    	outPutDivSection.css("padding", "15px");
+    	outPutDivSection.css("margin-top", "10px");
 
-            var outPutInformation =
+      var outPutInformation =
 
-            '<h3>' + data.businesses[i].name  + '    ' + bookmarkIcon + '</h2>'+ 
-            '<p>' + 'Rating : ' + '<img src="' + data.businesses[i].rating_img_url +'" />' + '</p>'+ 
-            '<p>' + 'Phone : ' + data.businesses[i].phone + '</p>'+ 
-            '<p>' + 'Reviews : ' + data.businesses[i].review_count + '</p>'+   
-            '<p class="link"><a target="_blank" href="' + data.businesses[i].url + '" > Link for ' + data.businesses[i].name + '</a></p>';
+      '<h3>' + data.businesses[i].name  + '    ' + bookmarkIcon + '</h2>'+ 
+      '<p>' + 'Rating : ' + '<img src="' + data.businesses[i].rating_img_url +'" />' + '</p>'+ 
+      '<p>' + 'Phone : ' + data.businesses[i].phone + '</p>'+ 
+      '<p>' + 'Reviews : ' + data.businesses[i].review_count + '</p>'+   
+      '<p class="link"><a target="_blank" style="text-decoration: underline; color: blue;" href="' + data.businesses[i].url + '" >' + data.businesses[i].name + '</a></p>';
 
-            outPutDivSection.html(outPutInformation);
+      outPutDivSection.html(outPutInformation);
 
-            $("#resultsAPI").append(outPutDivSection);
+      $("#resultsAPI").append(outPutDivSection);
 
 
 			var busLat = data.businesses[i].location.coordinate.latitude;
@@ -177,8 +177,8 @@ $(document).ready(function(){
 			console.log(busLat + "   "+busLong)
 
 		}; //for
-        }//success
-      });//ajax
+  }//success
+});//ajax
 
 };// what the yelp
 
@@ -217,7 +217,7 @@ function getMeetups(){
             '<h3>' + response.data[i].name  + '    '+ bookmarkIcon + '</h3>'+ 
             '<p>' + 'City : ' + response.data[i].city + '</p>'+ 
             '<p>' + 'Meant for : ' + response.data[i].who + '</p>'+  
-            '<p class="link"><a target="_blank" href="' + response.data[i].link + '" >' + response.data[i].link + '</a></p>';
+            '<p class="link"><a target="_blank" style="text-decoration: underline; color: blue;" href="' + response.data[i].link + '" >' + response.data[i].name + '</a></p>';
 
             outPutDivSection.html(outPutInformation);
             $("#resultsAPI").append(outPutDivSection);
@@ -228,31 +228,45 @@ function getMeetups(){
       });
   }
 
+
 //bookmark items
 $('#resultsAPI').on('click', '.bookmark',function(){
       event.preventDefault();
-
-      var currentUser = firebase.auth().currentUser;        
-      var displayName = currentUser.displayName;
+      var currentUser = firebase.auth().currentUser;       
+     
+    if(currentUser != null){
 
       console.log("Bookmark an Item for currentUser=", currentUser);
+      var displayName = currentUser.displayName;
 
       var bookmarkLink = $(this).parent().siblings(".link").html();
-      
+
       if(!jQuery.isEmptyObject(currentUser)){ //check for null condition
         $(this).html("<i class='fa fa-bookmark fa-lg' aria-hidden='true' style='color:red'></i>");
 
         if(displayName != null && bookmarksRef != null){          
-            bookmarksRef.child(displayName).push(bookmarkLink);
+          bookmarksRef.child(displayName).push(bookmarkLink);
         }else{
-            console.log("User displayname is Null");
+          console.log("User displayname is Null");
         }       
 
       }else{
-        console.log("The user is not logged in to favorite!");
+          // console.log("The user is not logged in to favorite!");
       }
+
+    }else{
+      console.log("The user is not logged in to favorite!");
+      $('#signinModal').modal('show');
+    }
 
     });
 
 });
 
+//tooltip for bookmark
+  $('#resultsAPI').tooltip({
+    selector: '[data-toggle="tooltip"]'
+  });
+
+
+// $(document.body).tooltip({ selector: "[title]" });//good to know
