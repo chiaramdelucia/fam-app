@@ -168,8 +168,15 @@
           <!-- TODO: Modify the div below for API display /temporary div-->
           <div class="col-md-7">
             <div class="well places">
-              <h3 id="results-div">Search Results</h3>
-              <div id="resultsAPI"></div>
+            <div id="results-div">
+              <h2>Search Results              
+              <select id="numResults"> 
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+              </select></h2>
+            </div>
+            <div id="resultsAPI"></div>
             </div>
           </div>            
             
@@ -178,8 +185,6 @@
            <div class="well" id="googleAPI">
               <h1 class="text-center">Google Maps</h1>
               <div id="map"></div>
-              
-
            </div> <!--googleAPI -->
           </div> <!--/ col, Map and Weather API columns--> 
 

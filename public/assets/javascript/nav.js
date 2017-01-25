@@ -47,12 +47,17 @@ $(document).ready(function(){
 		event.preventDefault();
 		localStorage.setItem("cityState", cityState);
 		$("#resultsAPI").empty();
+    getWeather();
 		whatTheYelp();	  
 	});
 
 
   function whatTheYelp(){
     var address = $("#google-input-zip").val();
+
+    var numResults = $("#numResults").val();
+    console.log("number of results to fetch", numResults);
+
       
       console.log("whatTheYelp() address ", address);
       
@@ -156,7 +161,7 @@ $(document).ready(function(){
           //start "here"
           initMap(initlat, initlong);
 
-		for(i=0; i<=9; i= i+1) {
+		for(i=0; i< numResults; i= i+1) {
 			//commenting this out because of bookmarking error
 
 			// $("#resultsAPI").append("<p class='link'>");  
@@ -210,6 +215,9 @@ function getMeetups(){
     
     console.log('getMeetups() - zipcode', localStorage.getItem("userZip"));
     userZip = localStorage.getItem("userZip");
+    var numResults = $("#numResults").val();
+
+    console.log("number of results to fetch", numResults);
 
     // var meetupsAPIKey = "32246d5033476b30277fe2c671b1b";
    
@@ -224,7 +232,7 @@ function getMeetups(){
       }).done(function(response) {
         console.log("getMeetups() ", response);
 
-        for(var i=0; i< 10; i++){
+        for(var i=0; i< numResults; i++){
 
           var outPutDivSection = $('<div>');
           outPutDivSection.attr("class", "search-result");
