@@ -1,7 +1,7 @@
 $(document).ready(function(){
   
   var choices;
-
+  var cityState = $("google-input-zip").val();
   var bookmarkIcon = '<span class="bookmark" style="float: right"><a href="#"><i class="fa fa-bookmark-o fa-lg" aria-hidden="true" style="color:blue"></i></a></span>';
 
 	$('.outdoorsLi').on ('click', function(){
@@ -36,7 +36,7 @@ $(document).ready(function(){
 
 	$("#google-add-zip").on("click", function(){
 		event.preventDefault();
-		localStorage.setItem("userZip", userZip);
+		localStorage.setItem("cityState", cityState);
 		$("#resultsAPI").empty();
 		whatTheYelp();	  
 	});
@@ -44,8 +44,6 @@ $(document).ready(function(){
 
   function whatTheYelp(){
     var address = $("#google-input-zip").val();
-      // var choices = $(".choices").val();
-      console.log("whatTheYelp() choices ", choices);
       console.log("whatTheYelp() address ", address);
       
       var auth = {
@@ -71,8 +69,8 @@ $(document).ready(function(){
       parameters = [];
       parameters.push(['term', terms]);
       parameters.push(['location', near]);
-      parameters.push(['radius', 5]);
-      parameters.push(['limit_filter', 15]);
+      parameters.push(['radius_filter', 8000]);
+      parameters.push(['limit', 10]);
       parameters.push(['sort', 1])
       parameters.push(['callback', 'cb']);
       parameters.push(['oauth_consumer_key', auth.consumerKey]);
@@ -118,7 +116,7 @@ $(document).ready(function(){
           function initMap(busLat, busLong) {
             map = new google.maps.Map(document.getElementById('map'), {
               center: {lat: busLat, lng: busLong},
-              zoom: 14,
+              zoom: 12,
               mapTypeId: 'roadmap',
               
             }); 
