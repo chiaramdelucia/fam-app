@@ -7,6 +7,7 @@ $(document).ready(function(){
 	$('.outdoorsLi').on ('click', function(){
     event.preventDefault();
 		choices = $(this).data('search');
+    console.log(choices)
 		$("#resultsAPI").empty();
 		whatTheYelp();
 	});
@@ -14,6 +15,7 @@ $(document).ready(function(){
 	$('.indoorsLi').on ('click', function(){
     event.preventDefault();
 		choices = $(this).data('search');
+    console.log(choices)
 		$("#resultsAPI").empty();
 		whatTheYelp();
 	});
@@ -21,6 +23,7 @@ $(document).ready(function(){
 	$('.foodLi').on ('click', function(){
     event.preventDefault();
 		choices = $(this).data('search');
+    console.log(choices)
 		$("#resultsAPI").empty();
 		whatTheYelp();
 	});
