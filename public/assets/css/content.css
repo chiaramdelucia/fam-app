@@ -73,10 +73,18 @@ a{
     border-top-style: solid;
 }
 
-/*.resultStyle {
-	text-align: center;
-	border-style: solid;
-}*/
-	
+#google-input-zip {
+	width: 100%;
+}
+
+.logo {
+	height: 60px;
+	width: 60px;
+}
+
+.logoCrop {
+	height: 50px;
+	width: 50px;
+}
 
 
