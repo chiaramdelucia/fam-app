@@ -161,9 +161,11 @@ $(document).ready(function() {
         if (firebaseUser) {
             console.log('onAuthStateChanged(), User logged in', firebaseUser);
             $('#status').html("Welcome " + firebaseUser.displayName);
+            $('#status').prop('disabled', false);
         } else {
             console.log("onAuthStateChanged(), not logged in");
             $('#status').html("Not logged in");
+            $('#status').prop('disabled', true);
         }
 
         // setCurrentUser(); //todo: this is a better
@@ -254,6 +256,8 @@ $(document).ready(function() {
 
         console.log("fetchUserProfile() for user=", user);
 
+        console.log("fetchUserProfile() membersRef", membersRef);
+
         membersRef.once("value")
             .then(function(membersSnapshot) {
                 var profileObj = membersSnapshot.child(user.displayName).val();
@@ -274,6 +278,8 @@ $(document).ready(function() {
                  Object.keys(profileObj).forEach(function(key) {
                     userProfile += '<tr><td class="capitalize">' + key + "</td><td>" + profileObj[key] + '</td></tr>';
                 });
+
+                 console.log(userProfile);
 
                 profileDivSection.html(userProfile);
                 $("#profileDiv").append(profileDivSection);

@@ -1,6 +1,7 @@
 $(document).ready(function(){
   
   var choices;
+  var categories;
 
   var cityState = $("google-input-zip").val();
 
@@ -8,24 +9,30 @@ $(document).ready(function(){
 
 	$('.outdoorsLi').on ('click', function(){
     event.preventDefault();
-		choices = $(this).data('search');
-    console.log(choices)
+		choices = $(this).data('term');
+    categories = $(this).data('search');
+    console.log(categories);
+    console.log(choices);
 		$("#resultsAPI").empty();
 		whatTheYelp();
 	});
 
 	$('.indoorsLi').on ('click', function(){
     event.preventDefault();
-		choices = $(this).data('search');
-    console.log(choices)
+		choices = $(this).data('term');
+    categories = $(this).data('search');
+    console.log(categories);
+    console.log(choices);
 		$("#resultsAPI").empty();
 		whatTheYelp();
 	});
 
 	$('.foodLi').on ('click', function(){
     event.preventDefault();
-		choices = $(this).data('search');
-    console.log(choices)
+		choices = $(this).data('term');
+    categories = $(this).data('search');
+    console.log(categories);
+    console.log(choices);
 		$("#resultsAPI").empty();
 		whatTheYelp();
 	});
@@ -59,7 +66,7 @@ $(document).ready(function(){
         }
       };
 
-      var terms = choices;
+      var terms = categories;
       console.log(choices);
 
       var near = address;
@@ -70,11 +77,12 @@ $(document).ready(function(){
       };
 
       parameters = [];
-      parameters.push(['term', terms]);
+      parameters.push(['term', choices])
       parameters.push(['location', near]);
-      parameters.push(['radius_filter', 8000]);
       parameters.push(['limit', 10]);
-      parameters.push(['sort', 1])
+      parameters.push(['sort', 1]);
+      parameters.push(['category_filter', categories]);
+      parameters.push(['radius_filter', 8000]);
       parameters.push(['callback', 'cb']);
       parameters.push(['oauth_consumer_key', auth.consumerKey]);
       parameters.push(['oauth_consumer_secret', auth.consumerSecret]);
@@ -108,21 +116,37 @@ $(document).ready(function(){
             var marker = new google.maps.Marker({
               map: map,
               position: {lat: business_latitude, lng: busLong},
-              icon: {
-                url: 'https://developers.google.com/maps/documentation/javascript/images/circle.png',
-                anchor: new google.maps.Point(10, 10),
-                scaledSize: new google.maps.Size(10, 17)
+               icon: {
+                 url: '../assets/css/images/logo2.png',
+              //'https://developers.google.com/maps/documentation/javascript/images/circle.png',
+                 anchor: new google.maps.Point(10, 10),
+                 scaledSize: new google.maps.Size(20, 25)
               }
+            });
+            var bussinessName = data.businesses[i].name
+              google.maps.event.addListener(marker, 'mouseover', function() {
+              infoWindow.setContent(bussinessName);
+              infoWindow.open(map, marker);
             });
           };
 
           function initMap(busLat, busLong) {
+            var styledMapType = new google.maps.StyledMapType(
+          [{
+              featureType: 'poi',
+              elementType: 'labels.icon',
+              stylers: [{visibility: 'off'}],
+            }],
+            {name: 'Styled Map'});
             map = new google.maps.Map(document.getElementById('map'), {
               center: {lat: busLat, lng: busLong},
               zoom: 12,
               mapTypeId: 'roadmap',
               
-            }); 
+            });
+            infoWindow = new google.maps.InfoWindow(); 
+            map.mapTypes.set('styled_map', styledMapType);
+            map.setMapTypeId('styled_map');
 
           };
 
