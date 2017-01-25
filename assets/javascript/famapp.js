@@ -7,7 +7,7 @@ $(document).ready(function() {
         console.log("hello");
 	    $('html,body').animate({
 	        scrollTop: $("#content").offset().top},
-	        'slow');    
+	        'slow');   
             getWeather();
             getAddress();
 	});

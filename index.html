@@ -324,6 +324,17 @@
   </div>
 
 </body><!-- JS files-->
+<script type="text/javascript">
+  
+    $("#user-add-zip").click(function() {
+        console.log("hello");
+      $('html,body').animate({
+          scrollTop: $("#content").offset().top},
+          'slow');   
+            getWeather();
+            getAddress();
+  });
+</script>
 
 <script src="./assets/javascript/dbAuth.js"></script>
 <!-- <script src="./assets/javascript/dbAPI.js"></script> -->
