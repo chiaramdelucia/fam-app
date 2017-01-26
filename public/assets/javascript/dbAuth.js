@@ -292,6 +292,8 @@ $(document).ready(function() {
 
                 var bookmarksObj = bookmarksSnapshot.val();
                 console.log("bookmarks snapshot", bookmarksObj);
+                
+                var trashIcon = '<span class="trash" style="float: right"><a href="#"><i class="fa fa-trash-o fa-lg" aria-hidden="true" style="color:red"></i></a></span>';
 
                 if(bookmarksObj != null){
 
@@ -307,7 +309,7 @@ $(document).ready(function() {
                     var bookmarkP = '<p style="font-size: 24px; font-weight: bold;font-decoration: underline"> Your Bookmarks  </p>';
 
                     Object.keys(bookmarksObj).forEach(function(key) {
-                        bookmarkP += '<p>' + bookmarksObj[key] + '</p>';
+                        bookmarkP += '<p>' + bookmarksObj[key] + '' + trashIcon + '</p>';
                     });
                     bookmarkDivSection.html(bookmarkP);
 
@@ -320,4 +322,34 @@ $(document).ready(function() {
 
     }
 
+    //working on this still
+
+    $('#profileDiv').on('click', '.trash',function(){
+        event.preventDefault();
+        var currentUser = firebase.auth().currentUser;       
+
+        if(currentUser != null){
+
+            console.log("Delete the bookmark Item for currentUser=", currentUser);
+            var displayName = currentUser.displayName;
+
+
+            if(!jQuery.isEmptyObject(currentUser)){ //check for null condition
+                $(this).html("");
+
+                if(displayName != null && bookmarksRef != null){          
+                    bookmarksRef.child(displayName).remove();
+                }else{
+                    console.log("User displayname is Null");
+                }       
+
+             }else{
+                 // console.log("The user is not logged in to favorite!");
+             }
+
+         }
+
+    });
+
 });
+

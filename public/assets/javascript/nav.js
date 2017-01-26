@@ -41,6 +41,7 @@ $(document).ready(function(){
 	$('#meetups').on('click', function(){
     event.preventDefault();
 		$("#resultsAPI").empty();
+    $('#searched-Item').html("You searched for Meetups");
 		getMeetups();
 	});
 
@@ -51,6 +52,11 @@ $(document).ready(function(){
  //    getWeather();
 	// 	whatTheYelp();	  
 	// });
+
+  $('.navbar-select-items li').on('click', function(){
+     console.log("Nav item selected = ", $(this).text()); // gets text contents of clicked li
+     $('#searched-Item').html("You searched for " + $(this).text());
+  });
 
 
   function whatTheYelp(){
@@ -192,11 +198,12 @@ $(document).ready(function(){
     	outPutDivSection.css("background-color", "#e9e9e9");
     	outPutDivSection.css("padding", "15px");
     	outPutDivSection.css("margin-top", "10px");
+      outPutDivSection.css("border", "1px solid #000000");
 
 
       var outPutInformation =
 
-      '<h3>' + data.businesses[i].name  + '    ' + bookmarkIcon + '</h2>'+ 
+      '<h2>' + data.businesses[i].name  + '    ' + bookmarkIcon + '</h2>'+ 
       '<p>' + 'Rating : ' + '<img src="' + data.businesses[i].rating_img_url +'" />' + '</p>'+ 
       '<p>' + 'Phone : ' + data.businesses[i].display_phone + '</p>'+ 
       '<p>' + 'Reviews : ' + data.businesses[i].review_count + '</p>'+   
@@ -250,13 +257,14 @@ function getMeetups(){
           outPutDivSection.css("background-color", "#e9e9e9");
           outPutDivSection.css("padding", "15px");
           outPutDivSection.css("margin-top", "10px");
+          outPutDivSection.css("border", "1px solid #000000");
 
           if(response.data.errors){
             console.log("there are errors in meetups data")
           }else{
             var outPutInformation =
 
-            '<h3>' + response.data[i].name  + '    '+ bookmarkIcon + '</h3>'+ 
+            '<h2>' + response.data[i].name  + '    '+ bookmarkIcon + '</h2>'+ 
             '<p>' + 'City : ' + response.data[i].city + '</p>'+ 
             '<p>' + 'Meant for : ' + response.data[i].who + '</p>'+  
             '<p class="link"><a target="_blank" style="text-decoration: underline; color: blue;" href="' + response.data[i].link + '" >' + response.data[i].name + '</a></p>';
