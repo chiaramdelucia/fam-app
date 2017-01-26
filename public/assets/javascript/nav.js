@@ -131,7 +131,7 @@ $(document).ready(function(){
               }
             });
 
-            var bussinessName = data.businesses[i].name
+            var bussinessName = '<div id="window">' + data.businesses[i].name + '</div>'
               google.maps.event.addListener(marker, 'mouseover', function() {
               infoWindow.setContent(bussinessName);
               infoWindow.open(map, marker);
@@ -198,7 +198,7 @@ $(document).ready(function(){
 
       '<h3>' + data.businesses[i].name  + '    ' + bookmarkIcon + '</h2>'+ 
       '<p>' + 'Rating : ' + '<img src="' + data.businesses[i].rating_img_url +'" />' + '</p>'+ 
-      '<p>' + 'Phone : ' + data.businesses[i].phone + '</p>'+ 
+      '<p>' + 'Phone : ' + data.businesses[i].display_phone + '</p>'+ 
       '<p>' + 'Reviews : ' + data.businesses[i].review_count + '</p>'+   
       '<p class="link"><a target="_blank" style="text-decoration: underline; color: blue;" href="' + data.businesses[i].url + '" >' + data.businesses[i].name + '</a></p>';
 
