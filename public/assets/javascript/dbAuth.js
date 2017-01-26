@@ -322,6 +322,7 @@ $(document).ready(function() {
 
     }
 
+    //working on this still
 
     $('#profileDiv').on('click', '.trash',function(){
         event.preventDefault();
