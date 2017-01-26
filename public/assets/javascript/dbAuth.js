@@ -249,14 +249,11 @@ $(document).ready(function() {
         }
     }
 
-    //TODO 
     function fetchUserProfile() {
 
         var user = firebase.auth().currentUser;
 
         console.log("fetchUserProfile() for user=", user);
-
-        console.log("fetchUserProfile() membersRef", membersRef);
 
         membersRef.once("value")
             .then(function(membersSnapshot) {
@@ -279,21 +276,17 @@ $(document).ready(function() {
                     userProfile += '<tr><td class="capitalize">' + key + "</td><td>" + profileObj[key] + '</td></tr>';
                 });
 
-                 console.log(userProfile);
-
                 profileDivSection.html(userProfile);
                 $("#profileDiv").append(profileDivSection);
 
             });
 
-        //reading  bookmarks from database
+            //reading  bookmarks from database
 
-        bookmarksRef.child(user.displayName).once('value', function(bookmarksSnapshot) {
+            bookmarksRef.child(user.displayName).once('value', function(bookmarksSnapshot) {
 
                 var bookmarksObj = bookmarksSnapshot.val();
                 console.log("bookmarks snapshot", bookmarksObj);
-                
-                var trashIcon = '<span class="trash" style="float: right"><a href="#"><i class="fa fa-trash-o fa-lg" aria-hidden="true" style="color:red"></i></a></span>';
 
                 if(bookmarksObj != null){
 
@@ -309,7 +302,7 @@ $(document).ready(function() {
                     var bookmarkP = '<p style="font-size: 24px; font-weight: bold;font-decoration: underline"> Your Bookmarks  </p>';
 
                     Object.keys(bookmarksObj).forEach(function(key) {
-                        bookmarkP += '<p>' + bookmarksObj[key] + '' + trashIcon + '</p>';
+                        bookmarkP += '<p>' + bookmarksObj[key] + '</p>';
                     });
                     bookmarkDivSection.html(bookmarkP);
 
@@ -318,38 +311,127 @@ $(document).ready(function() {
                 }else{
                     console.log("No bookmarks for the user");
                 }
-        });
+            });
 
     }
 
-    //working on this still
 
-    $('#profileDiv').on('click', '.trash',function(){
-        event.preventDefault();
-        var currentUser = firebase.auth().currentUser;       
+    //TODO 
+    // function fetchUserProfile() {
 
-        if(currentUser != null){
+    //     var user = firebase.auth().currentUser;
 
-            console.log("Delete the bookmark Item for currentUser=", currentUser);
-            var displayName = currentUser.displayName;
+    //     console.log("fetchUserProfile() for user=", user);
+
+    //     console.log("fetchUserProfile() membersRef", membersRef);
+
+    //     membersRef.once("value")
+    //         .then(function(membersSnapshot) {
+    //             var profileObj = membersSnapshot.child(user.displayName).val();
+
+    //             console.log("fetchUserProfile()", profileObj);
+
+    //             var profileDivSection = $("<div>");
+    //             profileDivSection.attr("class", "profileClass");
+    //             profileDivSection.css("background-color", "#e9e9e9");
+    //             profileDivSection.css("padding", "15px");
+    //             profileDivSection.css("color", "#000000");
+    //             profileDivSection.css("font-size", "20px");
+    //             profileDivSection.css("border", "2px solid #000000");
+    //             profileDivSection.css("margin-top", "10px");
+
+    //             var userProfile = "<table class='profileTable'>";
+
+    //              Object.keys(profileObj).forEach(function(key) {
+    //                 userProfile += '<tr><td class="capitalize">' + key + "</td><td>" + profileObj[key] + '</td></tr>';
+    //             });
+
+    //              console.log(userProfile);
+
+    //             profileDivSection.html(userProfile);
+    //             $("#profileDiv").append(profileDivSection);
+
+    //         });
+
+    //     //reading  bookmarks from database
+
+    //     bookmarksRef.child(user.displayName).once('value', function(bookmarksSnapshot) {
+
+    //         var bookmarksObj = bookmarksSnapshot.val();
+    //         console.log("bookmarks snapshot", bookmarksObj);
+            
+    //         var trashIcon = '<span class="trash" style="float: right"><a href="#"><i class="fa fa-trash-o fa-lg" aria-hidden="true" style="color:red"></i></a></span>';
+
+    //         if(bookmarksObj != null){
+
+    //             var bookmarkDivSection = $("<div>");
+    //                 bookmarkDivSection.attr("class", "profileClass");
+    //                 bookmarkDivSection.css("background-color", "#e9e9e9");
+    //                 bookmarkDivSection.css("padding", "15px");
+    //                 bookmarkDivSection.css("color", "#000000");
+    //                 bookmarkDivSection.css("font-size", "20px");
+    //                 bookmarkDivSection.css("border", "2px solid #000000");
+    //                 bookmarkDivSection.css("margin-top", "10px");
 
 
-            if(!jQuery.isEmptyObject(currentUser)){ //check for null condition
-                $(this).html("");
+    //             var bookmarkP = [];
 
-                if(displayName != null && bookmarksRef != null){          
-                    bookmarksRef.child(displayName).remove();
-                }else{
-                    console.log("User displayname is Null");
-                }       
+    //             bookmarkP.push('<p style="font-size: 24px; font-weight: bold;font-decoration: underline"> Your Bookmarks  </p>');
 
-             }else{
-                 // console.log("The user is not logged in to favorite!");
-             }
+    //             Object.keys(bookmarksObj).forEach(function(key) {
+    //                 bookmarkP.push('<p>' + bookmarksObj[key] + '' + trashIcon + '</p>');
+    //             });
 
-         }
+    //             // console.log("Appending bookmarks - ", bookmarkP);
 
-    });
+    //             bookmarkDivSection.html(bookmarkP);
+    //             $("#profileDiv").append(bookmarkDivSection);
+
+    //         }else{
+    //             console.log("No bookmarks for the user");
+    //         }
+    //     });
+
+    // }
+
+    // //working on this still
+
+    // $('#profileDiv').on('click', '.trash',function(){       
+    //     var i = $('.trash').index(this);
+    //     console.log('index=', i);
+        
+    //     event.preventDefault();
+    //     var currentUser = firebase.auth().currentUser;       
+
+    //     if(currentUser != null){
+
+    //         console.log("Delete the bookmark Item for currentUser=", currentUser);
+    //         var displayName = currentUser.displayName;
+
+    //         if(!jQuery.isEmptyObject(currentUser)){ //check for null condition
+    //             // $(this).html("");
+
+    //             bookmarksRef.child(displayName).once('value', function(snap){
+    //                 console.log("bookmarks snapshot", snap.val());
+    //             });
+
+
+                
+    //             // if(displayName != null && bookmarksRef != null){     
+    //             //     console.log( bookmarksRef.child(displayName)) ; 
+    //             //     // ref.child(key).remove();  
+    //             //     bookmarksRef.child(displayName).remove();
+    //             // }else{
+    //             //     console.log("User displayname is Null");
+    //             // }       
+
+    //          }else{
+    //              // console.log("The user is not logged in to favorite!");
+    //          }
+
+    //      }
+
+    // });
 
 });
 
