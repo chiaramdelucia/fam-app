@@ -3,7 +3,8 @@ $(document).ready(function(){
   var choices;
   var categories;
 
-  var cityState = $("google-input-zip").val();
+  var cityState;
+  // $("google-input-zip").val();
 
   var bookmarkIcon = '<span class="bookmark" style="float: right"><a class="bkTooltip" rel="tooltip" data-toggle="tooltip" data-placement="top" title="Bookmark Item" href="#"><i class="fa fa-bookmark-o fa-lg" aria-hidden="true" style="color:blue"></i></a></span>';
 
@@ -43,13 +44,13 @@ $(document).ready(function(){
 		getMeetups();
 	});
 
-	$("#google-add-zip").on("click", function(){
-		event.preventDefault();
-		localStorage.setItem("cityState", cityState);
-		$("#resultsAPI").empty();
-    getWeather();
-		whatTheYelp();	  
-	});
+	// $("#google-add-zip").on("click", function(){
+	// 	event.preventDefault();
+	// 	localStorage.setItem("cityState", cityState);
+	// 	$("#resultsAPI").empty();
+ //    getWeather();
+	// 	whatTheYelp();	  
+	// });
 
 
   function whatTheYelp(){
@@ -222,8 +223,8 @@ $(document).ready(function(){
 
 function getMeetups(){
     
-    console.log('getMeetups() - zipcode', localStorage.getItem("userZip"));
-    userZip = localStorage.getItem("userZip");
+    console.log('getMeetups() - zipcode', localStorage.getItem("cityState"));
+    cityState = localStorage.getItem("cityState");
     var numResults = $("#numResults").val();
 
     console.log("number of results to fetch", numResults);
@@ -231,7 +232,7 @@ function getMeetups(){
     // var meetupsAPIKey = "32246d5033476b30277fe2c671b1b";
    
     var URL = "https://api.meetup.com/find/groups?photo-host=public&zip=" +
-    userZip + "&page=25&sig_id=215984186&radius=10&topic_id=10333&category=25&sig=1136ea8f75e616421d23203df6988a0e83546ef7";
+    cityState + "&page=25&sig_id=215984186&radius=10&topic_id=10333&category=25&sig=1136ea8f75e616421d23203df6988a0e83546ef7";
 
      $.ajax({    
           url: URL,

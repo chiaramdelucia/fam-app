@@ -1,14 +1,11 @@
 $(document).ready(function() {
     $("#content").hide();
+
     $( "#user-add-zip" ).click(function() {
         $("#land").fadeOut('slow');
         $("#content").show('slow');
-        getWeather();
-        getAddress();
     });
-
-
-    var userZip;
+   
 
  //    scroll effect and functions for user's inital zip code input
 	// $("#user-add-zip").click(function() {
@@ -21,37 +18,61 @@ $(document).ready(function() {
  //            getAddress();
 	// });
 
+    var cityState;
+
     //review this
     $(window).on('load', function(){
         event.preventDefault();
-        userZip = localStorage.getItem('userZip');
-        $('#user-input-zip').val(userZip);
-        $('#google-input-zip').val(userZip);
+        
+        cityState = localStorage.getItem('cityState');
+        
+        $('#user-input-zip').val(cityState);
+        $('#google-input-zip').val(cityState);
 
-        if(!jQuery.isEmptyObject(userZip)){
+        if(!jQuery.isEmptyObject(cityState)){
             getWeather();
         }else{
-            console.log("User Zip is missing");
+            console.log("Window onload()-cityStateZip is missing");
         }
     });
 
     //store the zip
     $('#user-add-zip').on('click', function(){
         event.preventDefault();
-        userZip = $('#user-input-zip').val();   //set as global variable  
-        console.log("famapp.js, User input Zip =" , userZip);
-        localStorage.setItem("userZip", userZip);
 
+        cityState = $('#user-input-zip').val();   //set as global variable  
+        console.log("famapp.js, #user-add-zip.onclick=" , cityState);
+
+        localStorage.setItem("cityState", cityState);
         // populate googlemaps API with zipcode
-        $('#google-input-zip').val(userZip);
+
+        $('#google-input-zip').val(cityState);
+
+        getWeather();
+        getAddress();
 
     });  
 
-    function getWeather() {
-        var address = $("#user-input-zip").val();
-        console.log("weather " + address);
-        $.ajax({
+    $("#google-add-zip").on("click", function(){
+        event.preventDefault();
+        
+        cityState = $("#google-input-zip").val();
+        console.log("famapp.js, #google-add-zip.onclick=" , cityState);
 
+        localStorage.setItem("cityState", cityState);
+
+        $("#resultsAPI").empty();
+
+        getWeather();
+        getAddress();   
+    });
+
+
+    function getWeather() {
+        // var address = $("#user-input-zip").val();
+        var address = localStorage.getItem("cityState");
+        console.log("getWeather() " + address);
+        $.ajax({
             url: 'https://api.wunderground.com/api/7d4c2ccc48b6acd9/conditions/q/' + address + '.json',
             method: 'GET',
             datatype: "json"
@@ -70,7 +91,8 @@ $(document).ready(function() {
 
     function getAddress(){
 
-        var address = $("#user-input-zip").val();
+        // var address = $("#user-input-zip").val();
+        var address = localStorage.getItem("cityState");
         console.log("maps "+ address);
         
         $.ajax({
