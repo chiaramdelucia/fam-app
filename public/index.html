@@ -131,7 +131,7 @@
               <a href="#" id='btnSignUp' data-toggle="modal" data-target="#signupModal">Join</a>    
             </li>
             <li>
-              <a href="#" id='btnSignIn' data-toggle="modal" data-target="#signinModal">Sign in</a>
+              <a href="#" target="_blank" id='btnSignIn' data-toggle="modal" data-target="#signinModal">Sign in</a>
             </li>             
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="status" disabled='disabled'>Account 
@@ -216,7 +216,7 @@
         <div class="modal-body">
           <div id="signupDiv">
             <div style="margin: 10px;">
-              <button type="button" class="btn btn-default" id="btnGoogleSignup">
+              <button type="button" class="btn btn-default" data-toggle="modal" data-target="#signupModal"id="btnGoogleSignup">
               Sign up with Google
               </button>
             </div> 
@@ -235,7 +235,7 @@
             </button>
             <button type="button" class="btn btn-default" id="btnReset">Reset
             </button>
-            <button type="button" id='btnSignupSubmit' class="btn btn-primary">Sign up
+            <button type="button" id='btnSignupSubmit' class="btn btn-primary" data-toggle="modal" data-target="#signupModal">Sign up
             </button>
         </div> <!-- modal footer -->
       </div><!--modal content-->
@@ -253,7 +253,7 @@
         <div class="modal-body">
           <div id="signinDiv">
             <div style="margin: 10px;">
-              <button type="button" class="btn btn-default" id="btnGoogleSignin">
+              <button type="button" class="btn btn-default" data-toggle="modal" data-target="#signinModal" id="btnGoogleSignin">
                Sign in with Google
               </button>
             </div>
@@ -268,7 +268,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
           </button>
-          <button type="button" id='btnSigninSubmit' class="btn btn-primary">Sign In
+          <button type="button" id='btnSigninSubmit' class="btn btn-primary" data-toggle="modal" data-target="#signinModal">Sign In
           </button>
         </div>
       </div> <!--modal content -->
@@ -292,8 +292,6 @@
   </div> <!-- profileModal -->
 
  </div> <!--content div closing  -->
-
-
 
 </body><!-- JS files-->
 

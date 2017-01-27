@@ -126,7 +126,9 @@ $(document).ready(function() {
         userObjPromise.then(function(user) {
             console.log("firebaseSignin(), Signed in successfully", user);
             $('#signinModal').hide('hide');
-            location.reload();
+            
+            //quick fix to resolve reload, review again
+            // location.reload();
         });
     }
 
@@ -153,7 +155,7 @@ $(document).ready(function() {
             $('#signinModal').hide('hide');
             $('#signupModal').hide('hide');
 
-            location.reload();
+            // location.reload();
 
         });
 
@@ -238,8 +240,9 @@ $(document).ready(function() {
             user.updateProfile({
                 displayName: $("#txtSignupUserName").val().trim()
             }).then(function() {
+                $('#status').html("Welcome " + user.displayName); //check again, quickhack
                 console.log("updateUserInfo(), User updated successfully with ",  $("#txtSignupUserName").val().trim());
-                location.reload();
+                // location.reload();
             }, function(error) {
                 console.log(error.message);
             });
@@ -328,6 +331,7 @@ $(document).ready(function() {
     }
 
 
+
     //TODO 
     // function fetchUserProfile() {
 
@@ -406,11 +410,11 @@ $(document).ready(function() {
 
     // }
 
+
     // //working on this still
 
     // $('#profileDiv').on('click', '.trash',function(){       
-    //     var i = $('.trash').index(this);
-    //     console.log('index=', i);
+    //     var index = $('.trash').index(this);
         
     //     event.preventDefault();
     //     var currentUser = firebase.auth().currentUser;       
