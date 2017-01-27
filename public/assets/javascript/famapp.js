@@ -1,57 +1,36 @@
-$(document).ready(function() {
-    $("#content").hide();
-
-    $( "#user-add-zip" ).click(function() {
-        $("#land").fadeOut('slow');
-        $("#content").show('slow');
-    });
-   
-
- //    scroll effect and functions for user's inital zip code input
-	// $("#user-add-zip").click(function() {
- //        event.preventDefault();
- //        console.log("hello");
-	//     $('html,body').animate({
-	//         scrollTop: $("#content").offset().top},
-	//         'slow');   
- //            getWeather();
- //            getAddress();
-	// });
-
+$(document).ready(function() {    
     var cityState;
-
-    //review this
-    $(window).on('load', function(){
-        event.preventDefault();
-        
-        cityState = localStorage.getItem('cityState');
-        
-        $('#user-input-zip').val(cityState);
-        $('#google-input-zip').val(cityState);
-
-        if(!jQuery.isEmptyObject(cityState)){
-            getWeather();
-        }else{
-            console.log("Window onload()-cityStateZip is missing");
-        }
-    });
-
+    
+     // $("#content").hide();
+    
     //store the zip
     $('#user-add-zip').on('click', function(){
         event.preventDefault();
 
+        $('html,body').animate({
+        scrollTop: $("#content").offset().top
+        },'slow'); 
+
+        $("#land").fadeOut('slow');
+        $("#content").show('slow');
+
         cityState = $('#user-input-zip').val();   //set as global variable  
         console.log("famapp.js, #user-add-zip.onclick=" , cityState);
-
+        
         localStorage.setItem("cityState", cityState);
-        // populate googlemaps API with zipcode
 
+        // populate googlemaps API with zipcode
         $('#google-input-zip').val(cityState);
 
-        getWeather();
-        getAddress();
+        if(!jQuery.isEmptyObject(cityState)){
+            getWeather();
+            getAddress();
+        }else{
+            console.log("famapp.js, #user-add-zip.onclick=-cityStateZip is missing");
+        }
 
     });  
+    
 
     $("#google-add-zip").on("click", function(){
         event.preventDefault();
@@ -157,5 +136,49 @@ $(document).ready(function() {
     window.onbeforeunload = function () {
         window.scrollTo(0, 0);
     }
+
+      //original code to revert back to
+    // $( "#user-add-zip" ).click(function() {
+    //     localStorage.setItem('loaded', true);
+
+    //     $("#land").fadeOut('slow');
+    //     $("#content").show('slow');
+    // });
+   
+    //commented out code
+ //    scroll effect and functions for user's inital zip code input
+    // $("#user-add-zip").click(function() {
+ //        event.preventDefault();
+ //        console.log("hello");
+    //     $('html,body').animate({
+    //         scrollTop: $("#content").offset().top},
+    //         'slow');   
+ //            getWeather();
+ //            getAddress();
+    // });
+
+    // var cityState;
+
+    //review this - original code to revert back to 
+    // $(window).on('load', function(){
+    //     event.preventDefault();
+    //     console.log('loaded?' , localStorage.getItem('loaded'));
+    //     cityState = localStorage.getItem('cityState');
+
+    //     if(localStorage.getItem('loaded')){
+    //         $("#land").hide('slow');
+    //         $("#content").show('slow');
+    //     }
+        
+    //     $('#user-input-zip').val(cityState);
+    //     $('#google-input-zip').val(cityState);
+
+    //     if(!jQuery.isEmptyObject(cityState)){
+    //         getWeather();
+    //         getAddress();
+    //     }else{
+    //         console.log("Window onload()-cityStateZip is missing");
+    //     }
+    // });
    
 });
