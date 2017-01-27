@@ -18,9 +18,7 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
    <!-- Google Fonts  -->
-   <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css?family=Farsan" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
   <!--moment.js-->
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
@@ -155,25 +153,14 @@
   
 
  <!--Main Results Area-->
-    <div class="container" id="wrapper">
+    <!-- <div class="container" id="wrapper"> -->
       <div class="row">
-        <!--Helpful Resources Section-->
-        <div class="col-md-2">
-          <input type="text" name="enter address" id="google-input-zip" data-parsley-type="number" data-parsley-length="[5, 5]">
-          <input id="google-add-zip" type="submit" value="submit">
-          <div style="font-weight: bold; font-size: 12px;">
-            <span id="connected-viewers"></span> users online! 
-          </div> 
-        </div>
-        
         <!--Content Well and Map/Weather Well, Places API display -->
-        <div class="col-md-10"">
-          <div class="row">
-            <div class="col-md-7">
+        <div class="col-md-6" id="resultsSpace">
               <div class="well">
                 <div id="results-div">
                   <h2>Neighborhood Hangouts!            
-                  <select id="numResults" style="margin-left: 20px;"> 
+                  <select id="numResults"> 
                     <option value="5">5</option>
                     <option value="10">10</option>
                     <option value="15">15</option>
@@ -184,19 +171,26 @@
               </div>
             </div>            
             
-            <!-- Map API display -->
-            <div class="col-md-5">
-             <div class="well" id="googleAPI">
-                <h2> Google Maps</h2>
+            <!-- Map API + User display -->
+            <div class="col-md-6 col-md-push-1">
+              <div class="well" id="googleAPI">
                 <div id="map"></div>
-             </div> <!--googleAPI -->
-            </div> <!--/ col, Map and Weather API columns--> 
+              <div class="row">
+                <div class="col-md-12">
+                  <input type="text" name="enter address" id="google-input-zip" data-parsley-type="number" data-parsley-length="[5, 5]">
+                  <input id="google-add-zip" type="submit" value="submit">
+                  <div>
+                    <span id="connected-viewers"></span> users online! 
+                  </div> 
+                </div>
+              </div>
+            </div> <!-- /Api+User Display Row -->
 
           </div> <!--/ Places API, Map, Weather API row-->    
         </div> <!--/ Places API, Map, Weather API col -->
 
       </div> <!--/ Main Content Area Row -->
-    </div> <!--/ Main Content Area container -->
+    <!-- </div> --> <!--/ Main Content Area container -->
 
     <!--Footer -->
   <div class="container">
@@ -286,7 +280,7 @@
     <div class="modal-dialog modal-md">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" id="profile-close" data-dismiss="modal">&times;</button>
+          <button type="button" class="profile-close" id="profile-close" data-dismiss="modal">&times;</button>
           <h3 class="modal-title">YOUR PROFILE INFORMATION</h3>
         </div> <!--modal header -->
         <div class="modal-body">

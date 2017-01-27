@@ -18,12 +18,10 @@ input.parsley-error:focus {
 	opacity: 0.8;
 }
 
-#resultsAPI p{
-	font-size : 14px;
-}
-
 #results-div{
 	position: relative;
+	left: 0;
+	top:0;
 }
 
 .profileTable td{

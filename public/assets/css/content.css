@@ -1,9 +1,7 @@
  /*temporary only*/ 
  body{
  	margin: 0;
-/*  	padding : 0; */
- 	/*font-family: 'Shadows Into Light Two', cursive; */
- 	font-family: 'Architects Daughter', cursive; /*testing*/
+ 	font-family:'Signika', sans-serif;
  	color: #17202A;
  	width: 100%;
  }
@@ -12,7 +10,7 @@
 	height: 700px;
 	text-align: center;
 	overflow-y: hidden;
-	font-family: 'Shadows Into Light Two', cursive;
+/*	font-family: 'Shadows Into Light Two', cursive;*/
 	background: #DAE2F8; /* fallback for old browsers */
 	background: -webkit-linear-gradient(to left, #DAE2F8 , #D6A4A4); /* Chrome 10-25, Safari 5.1-6 */
 	background: linear-gradient(to left, #DAE2F8 , #D6A4A4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -23,20 +21,19 @@
 	top: 180px;
 }
 
-.sticky {
+/*.sticky {
 	position: fixed;
 	width: 100%;
 	z-index: 1;
 	top: 0;
-}
-
+}*/
 
 .kids {
 	position: fixed;
 	bottom: 0;
 	left: 0;
 	width: 900px;
-	height: auto;
+	height: 500px;
 	-moz-transform: scaleX(-1);
     -o-transform: scaleX(-1);
     -webkit-transform: scaleX(-1);
@@ -46,94 +43,59 @@
 
 }
 
-/*.dropdown-menu {
-	background-color: #ffffff;
-	opacity: 1;
-    filter: alpha(opacity=60);  For IE8 and earlier 
-    font-weight: 900;
-    z-index: 1;
-    /*color: #000000;*/
-/*}*/
+#content {
+	margin: 0;
+	padding : 0;
+	width: 100%;
+	height: 680px;
+	background: #2C3E50; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to left, #2C3E50 , #4CA1AF); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to left, #2C3E50 , #4CA1AF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
 
 .navbar {
 	height: 80px;
 	width: 100%;
 	left: 0;
 	right:0;
+	top: 20px;
 	font-size: 20px;
-    background-color: #ffffff;
-    opacity: 0.8;
-    filter: alpha(opacity=60); /* For IE8 and earlier */
+   	background-color: rgba(255,255,255,0);
     font-weight: bold;
     z-index: 1;
-    /*color: #000000;*/
-}
+    color:rgb(0,0,0);
+    border-style: none;
 
+}
 
 
 .well {
-	background-color: #ffffff;
-    opacity: 0.9;
-    filter: alpha(opacity=60); /* For IE8 and earlier */
-    font-weight: bold;
-    	
-    /*color: #000000;*/
+	background-color: rgba(255,255,255,0); /* For IE8 and earlier */
+	font-weight: bold;
+	border-style: none;
 }
 
-#content {
-	margin: 0;
-	padding : 0;
-	width: 100%;
-	height: 700px;
-	background: #2C3E50; /* fallback for old browsers */
-	background: -webkit-linear-gradient(to left, #2C3E50 , #4CA1AF); /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to left, #2C3E50 , #4CA1AF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+#resultsSpace {
+	position: relative;
+	top: 0;
+	left: 10px;
+	text-align: center;
 }
 
-/* this styling is also in style.css */
-/*#resultsAPI {
-	font-family: 'Farsan', cursive;
-	font-size: 20px;
-	opacity: 0.8;
-	
-}*/
 
-
-
-/*@font-face {
-    font-family: LillyBelle;
-    src: url(./images/LillyBelle.ttf); 
-}
-*/
-/* commenting out for now as it alters h3 all over 
-/*h3 {
-    font-family: LillyBelle;
-    font-size: 30px;
-    text-align: center;
-}*/
-
-/*.text-center{
-	font-family: LillyBelle;
-	font-size: 30px;
-}*/
 
 #map {
-	height:460px;
-	width: 100%;
+	height:350px;
+	width: 350px;
+	position: relative;
+	right: 50px;
+	top: 20px;
 }
 
-/*a{
-	color: black;
-	text-align: left;
-	size: 20px;
-}*/
-
-.footer{
-    /*border-top-style: solid;*/
-}
 
 #google-input-zip {
-	width: 100%;
+	width: 50%;
 }
 
 .logo {
@@ -144,12 +106,6 @@
 .logoCrop {
 	height: 50px;
 	width: 50px;
-}
-
-#window {
-	font-family: 'Farsan', cursive;
-	font-size: 20px;
-
 }
 
 
