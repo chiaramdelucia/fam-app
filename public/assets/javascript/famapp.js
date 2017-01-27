@@ -1,9 +1,6 @@
 $(document).ready(function() {    
-
     var cityState;
-    
-     // $("#content").hide();
-    
+        
     //store the zip
     $('#user-add-zip').on('click', function(){
         event.preventDefault();
@@ -40,7 +37,6 @@ $(document).ready(function() {
         console.log("famapp.js, #google-add-zip.onclick=" , cityState);
 
         localStorage.setItem("cityState", cityState);
-
         $("#resultsAPI").empty();
 
         getWeather();
@@ -111,18 +107,6 @@ $(document).ready(function() {
 
     }//get Address
 
-    //Sticky Nav Bar
-    // var win = $(window),
-    //     nav = $('nav'),
-
-    //     pos = nav.offset().top,
-    //     sticky = function() {
-    //         win.scrollTop() > pos ?
-    //         nav.addClass('sticky')
-    //         : nav.removeClass('sticky')
-    //     }
-
-    //     win.scroll(sticky)
 
     //Scroll in results-div, but not on window when mouse is in results-div
     $('#resultsAPI').on( 'mousewheel DOMMouseScroll', function (e) { 
@@ -137,50 +121,5 @@ $(document).ready(function() {
     window.onbeforeunload = function () {
         window.scrollTo(0, 0);
     }
-
-      //original code to revert back to
-    // $( "#user-add-zip" ).click(function() {
-    //     localStorage.setItem('loaded', true);
-
-    //     $("#land").fadeOut('slow');
-    //     $("#content").show('slow');
-    // });
-   
-    //commented out code
- //    scroll effect and functions for user's inital zip code input
-    // $("#user-add-zip").click(function() {
- //        event.preventDefault();
- //        console.log("hello");
-    //     $('html,body').animate({
-    //         scrollTop: $("#content").offset().top},
-    //         'slow');   
- //            getWeather();
- //            getAddress();
-    // });
-
-    // var cityState;
-
-    //review this - original code to revert back to 
-    // $(window).on('load', function(){
-    //     event.preventDefault();
-    //     console.log('loaded?' , localStorage.getItem('loaded'));
-    //     cityState = localStorage.getItem('cityState');
-
-    //     if(localStorage.getItem('loaded')){
-    //         $("#land").hide('slow');
-    //         $("#content").show('slow');
-    //     }
-        
-    //     $('#user-input-zip').val(cityState);
-    //     $('#google-input-zip').val(cityState);
-
-    //     if(!jQuery.isEmptyObject(cityState)){
-    //         getWeather();
-    //         getAddress();
-    //     }else{
-    //         console.log("Window onload()-cityStateZip is missing");
-    //     }
-    // });
-
    
 });

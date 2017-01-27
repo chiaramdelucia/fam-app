@@ -1,8 +1,8 @@
-// Initialize Firebase
+/*Firebase Initialization code Snippet */
+
 var config = {
     apiKey: "AIzaSyCRfzoY76tvHoB3RUbvU5pJoHylG4L3hI8",
     authDomain: "fam-app-94e72.firebaseapp.com",
-    // authDomain: "http://127.0.0.1:8080", // this should match the one on your firebase console
     databaseURL: "https://fam-app-94e72.firebaseio.com",
     storageBucket: "fam-app-94e72.appspot.com",
     messagingSenderId: "665693601471"
@@ -19,7 +19,7 @@ var connectedRef = database.ref(".info/connected");
 
 var membersRef = database.ref("/members"); //members data
 var currentUsersRef = database.ref("/currentUsers"); //to count number of ppl online
-var bookmarksRef = database.ref("/bookmarks");
+var bookmarksRef = database.ref("/bookmarks"); //bookmarking search items
 
 var currentUser = {}; //setting globally
 
@@ -27,33 +27,26 @@ $(document).ready(function() {
 
    $('input').parsley(); //parsleyJS library
 
-    $('#btnSignupSubmit').on('click', function() {
-        
+    $('#btnSignupSubmit').on('click', function() {        
         var email = $('#txtSignupEmail').val().trim();
         var password = $('#txtSignupPassword').val().trim();
         firebaseSignup(email, password);
         
     });
 
-    $('#btnSigninSubmit').on('click', function() {
-        
+    $('#btnSigninSubmit').on('click', function() {        
         var email = $('#txtSigninEmail').val().trim();
         var password = $('#txtSigninPassword').val().trim();
-        firebaseSignin(email, password);
-       
-        
+        firebaseSignin(email, password);               
     });
 
-    $("#btnSignout").on('click', function() {
-        
+    $("#btnSignout").on('click', function() {        
         firebase.auth().signOut().then(function() {
             console.log("Signedout successfully");
         }, function(error) {
             console.log(error.message);
         });
-
-        location.reload();
-        
+        location.reload();        
     });
 
     $("#btnReset").click(function() {
@@ -62,28 +55,22 @@ $(document).ready(function() {
     });
 
     $("#btnGoogleSignin").click(function() {
-        firebaseGoogleSignin();
-        
+        firebaseGoogleSignin();        
     });
 
     $("#btnGoogleSignup").click(function() {
-        firebaseGoogleSignin();
-        
-    
-      
+        firebaseGoogleSignin();      
     });
 
     $("#btnProfile").click(function() {
-        fetchUserProfile();
-       
-        
+        fetchUserProfile();               
     });
 
     $('#profile-close').on('click', function(){
-        $("#profileDiv").empty();
-        
-    })
+        $("#profileDiv").empty();       
+    });
 
+    // Firebase new user Signup using Email/password
 
     function firebaseSignup(email, password) {
         var newUserPromise =
@@ -108,11 +95,10 @@ $(document).ready(function() {
 
             // add user info to database
             addToDatabase(user);
-
-            // location.reload(); //refreshes before other actions are done??
         });
     }
 
+    //Firebase Existing user Sign in using Email/Password
 
     function firebaseSignin(email, password) {
         var userObjPromise = firebase.auth().signInWithEmailAndPassword(email, password);
@@ -126,11 +112,10 @@ $(document).ready(function() {
         userObjPromise.then(function(user) {
             console.log("firebaseSignin(), Signed in successfully", user);
             $('#signinModal').hide('hide');
-            
-            //quick fix to resolve reload, review again
-            // location.reload();
         });
     }
+
+    //Google Authentication of User
 
     function firebaseGoogleSignin() {
         console.log("in firebaseGoogleSignin()");
@@ -154,8 +139,6 @@ $(document).ready(function() {
 
             $('#signinModal').hide('hide');
             $('#signupModal').hide('hide');
-
-            // location.reload();
 
         });
 
@@ -181,11 +164,9 @@ $(document).ready(function() {
             $('#status').html("Not logged in");
             $('#status').prop('disabled', true);
         }
-
-        // setCurrentUser(); //todo: this is a better
     });
 
-    //keep track of number of users
+    //keeping track of number of users
     connectedRef.on("value", function(snapshot) {
         if (snapshot.val() === true) {
             console.log("New connection to the database");
@@ -203,7 +184,7 @@ $(document).ready(function() {
         $("#connected-viewers").html(snapshot.numChildren());
     });
 
-
+    //Persisiting User in the database
     function addToDatabase(user) {
 
         console.log("addToDatabase(), adding user to database", user.displayName, user.email);
@@ -227,10 +208,9 @@ $(document).ready(function() {
         membersRef.child(displayName).set(member);
 
         updateUserInfo(user);
-        // setCurrentUser();
     }
 
-
+    //Updating user info because Email/password does not update Userprofile info
     function updateUserInfo(user) {
 
         console.log("updateUserInfo(), User logged in ", user);
@@ -251,19 +231,7 @@ $(document).ready(function() {
         }
     }
 
-    //setting global variable of current user (why do I lose scope while bookmarking)
-
-    function setCurrentUser() {
-        currentUser = firebase.auth().currentUser; //set the global variable;   
-        console.log("setCurrentUser(), current user=", currentUser);
-
-        if (currentUser) {
-            console.log("setCurrentUser(), User logged in ", currentUser.displayName);
-        } else {
-            console.log('setCurrentUser(), No user logged in');
-        }
-    }
-
+    // Displaying Profile information and Bookmark Info for the user.
     function fetchUserProfile() {
 
         var user = firebase.auth().currentUser;
@@ -329,125 +297,6 @@ $(document).ready(function() {
             });
 
     }
-
-
-
-    //TODO 
-    // function fetchUserProfile() {
-
-    //     var user = firebase.auth().currentUser;
-
-    //     console.log("fetchUserProfile() for user=", user);
-
-    //     console.log("fetchUserProfile() membersRef", membersRef);
-
-    //     membersRef.once("value")
-    //         .then(function(membersSnapshot) {
-    //             var profileObj = membersSnapshot.child(user.displayName).val();
-
-    //             console.log("fetchUserProfile()", profileObj);
-
-    //             var profileDivSection = $("<div>");
-    //             profileDivSection.attr("class", "profileClass");
-    //             profileDivSection.css("background-color", "#e9e9e9");
-    //             profileDivSection.css("padding", "15px");
-    //             profileDivSection.css("color", "#000000");
-    //             profileDivSection.css("font-size", "20px");
-    //             profileDivSection.css("border", "2px solid #000000");
-    //             profileDivSection.css("margin-top", "10px");
-
-    //             var userProfile = "<table class='profileTable'>";
-
-    //              Object.keys(profileObj).forEach(function(key) {
-    //                 userProfile += '<tr><td class="capitalize">' + key + "</td><td>" + profileObj[key] + '</td></tr>';
-    //             });
-
-    //              console.log(userProfile);
-
-    //             profileDivSection.html(userProfile);
-    //             $("#profileDiv").append(profileDivSection);
-
-    //         });
-
-    //     //reading  bookmarks from database
-
-    //     bookmarksRef.child(user.displayName).once('value', function(bookmarksSnapshot) {
-
-    //         var bookmarksObj = bookmarksSnapshot.val();
-    //         console.log("bookmarks snapshot", bookmarksObj);
-            
-    //         var trashIcon = '<span class="trash" style="float: right"><a href="#"><i class="fa fa-trash-o fa-lg" aria-hidden="true" style="color:red"></i></a></span>';
-
-    //         if(bookmarksObj != null){
-
-    //             var bookmarkDivSection = $("<div>");
-    //                 bookmarkDivSection.attr("class", "profileClass");
-    //                 bookmarkDivSection.css("background-color", "#e9e9e9");
-    //                 bookmarkDivSection.css("padding", "15px");
-    //                 bookmarkDivSection.css("color", "#000000");
-    //                 bookmarkDivSection.css("font-size", "20px");
-    //                 bookmarkDivSection.css("border", "2px solid #000000");
-    //                 bookmarkDivSection.css("margin-top", "10px");
-
-
-    //             var bookmarkP = [];
-
-    //             bookmarkP.push('<p style="font-size: 24px; font-weight: bold;font-decoration: underline"> Your Bookmarks  </p>');
-
-    //             Object.keys(bookmarksObj).forEach(function(key) {
-    //                 bookmarkP.push('<p>' + bookmarksObj[key] + '' + trashIcon + '</p>');
-    //             });
-
-    //             // console.log("Appending bookmarks - ", bookmarkP);
-
-    //             bookmarkDivSection.html(bookmarkP);
-    //             $("#profileDiv").append(bookmarkDivSection);
-
-    //         }else{
-    //             console.log("No bookmarks for the user");
-    //         }
-    //     });
-
-    // }
-
-
-    // //working on this still
-
-    // $('#profileDiv').on('click', '.trash',function(){       
-    //     var index = $('.trash').index(this);
-        
-    //     event.preventDefault();
-    //     var currentUser = firebase.auth().currentUser;       
-
-    //     if(currentUser != null){
-
-    //         console.log("Delete the bookmark Item for currentUser=", currentUser);
-    //         var displayName = currentUser.displayName;
-
-    //         if(!jQuery.isEmptyObject(currentUser)){ //check for null condition
-    //             // $(this).html("");
-
-    //             bookmarksRef.child(displayName).once('value', function(snap){
-    //                 console.log("bookmarks snapshot", snap.val());
-    //             });
-
-
-                
-    //             // if(displayName != null && bookmarksRef != null){     
-    //             //     console.log( bookmarksRef.child(displayName)) ; 
-    //             //     // ref.child(key).remove();  
-    //             //     bookmarksRef.child(displayName).remove();
-    //             // }else{
-    //             //     console.log("User displayname is Null");
-    //             // }       
-
-    //          }else{
-    //              // console.log("The user is not logged in to favorite!");
-    //          }
-
-    //      }
-
-    // });
 
 });
 
