@@ -2,10 +2,20 @@ $(document).ready(function() {
     $("#content").hide();
 
     $( "#user-add-zip" ).click(function() {
+        event.preventDefault();
         $("#land").fadeOut('slow');
         $("#content").show('slow');
     });
    
+   $('#btnSignUp').on('click', function() {
+        event.preventDefault();
+        console.log(event.type);
+   })
+
+   $("#btnGoogleSignup").on('click', function(){
+    event.preventDefault();
+    console.log(event.type);
+   })
 
  //    scroll effect and functions for user's inital zip code input
 	// $("#user-add-zip").click(function() {
@@ -154,8 +164,8 @@ $(document).ready(function() {
             e.preventDefault();  
         });
 
-    window.onbeforeunload = function () {
-        window.scrollTo(0, 0);
-    }
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        }
    
 });

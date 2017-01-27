@@ -28,20 +28,24 @@ $(document).ready(function() {
    $('input').parsley(); //parsleyJS library
 
     $('#btnSignupSubmit').on('click', function() {
+        
         var email = $('#txtSignupEmail').val().trim();
         var password = $('#txtSignupPassword').val().trim();
         firebaseSignup(email, password);
-      
+        
     });
 
     $('#btnSigninSubmit').on('click', function() {
+        
         var email = $('#txtSigninEmail').val().trim();
         var password = $('#txtSigninPassword').val().trim();
         firebaseSignin(email, password);
+       
         
     });
 
     $("#btnSignout").on('click', function() {
+        
         firebase.auth().signOut().then(function() {
             console.log("Signedout successfully");
         }, function(error) {
@@ -49,28 +53,35 @@ $(document).ready(function() {
         });
 
         location.reload();
+        
     });
 
     $("#btnReset").click(function() {
         $(':input', '#signupDiv').val("");
+        
     });
 
     $("#btnGoogleSignin").click(function() {
         firebaseGoogleSignin();
+        
     });
 
     $("#btnGoogleSignup").click(function() {
         firebaseGoogleSignin();
+        
+    
       
     });
 
     $("#btnProfile").click(function() {
         fetchUserProfile();
+       
         
     });
 
     $('#profile-close').on('click', function(){
         $("#profileDiv").empty();
+        
     })
 
 
@@ -93,7 +104,8 @@ $(document).ready(function() {
 
         newUserPromise.then(function(user) {
             console.log("firebaseSignup(), Signed up successfully", user);
-            $('#signupModal').hide('hide');           
+            $('#signupModal').hide('hide');
+
             // add user info to database
             addToDatabase(user);
 
