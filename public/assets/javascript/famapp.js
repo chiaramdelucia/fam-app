@@ -1,4 +1,5 @@
 $(document).ready(function() {    
+
     var cityState;
     
      // $("#content").hide();
@@ -133,11 +134,6 @@ $(document).ready(function() {
             e.preventDefault();  
         });
 
-<<<<<<< HEAD
-        window.onbeforeunload = function () {
-            window.scrollTo(0, 0);
-        }
-=======
     window.onbeforeunload = function () {
         window.scrollTo(0, 0);
     }
@@ -185,6 +181,6 @@ $(document).ready(function() {
     //         console.log("Window onload()-cityStateZip is missing");
     //     }
     // });
->>>>>>> master
+
    
 });
