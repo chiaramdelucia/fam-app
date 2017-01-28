@@ -19,6 +19,7 @@ $(document).ready(function() {
         
         localStorage.setItem("cityState", cityState);
 
+
         // populate googlemaps API with zipcode
         $('#google-input-zip').val(cityState);
 
@@ -83,6 +84,9 @@ $(document).ready(function() {
             var latitude = response.results[0].geometry.location.lat
             var longitude = response.results[0].geometry.location.lng
             var formatted_address = response.results[0].formatted_address
+
+            localStorage.setItem('mulat', latitude);
+            localStorage.setItem('mulong', longitude);
             
             $('#google-input-zip').val(formatted_address);
 
