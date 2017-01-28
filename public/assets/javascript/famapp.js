@@ -1,5 +1,4 @@
 $(document).ready(function() {    
-
     var cityState;
     
      $("#content").hide();
@@ -24,7 +23,7 @@ $(document).ready(function() {
         $('#google-input-zip').val(cityState);
 
         if(!jQuery.isEmptyObject(cityState)){
-            // getWeather();
+            getWeather();
             getAddress();
         }else{
             console.log("famapp.js, #user-add-zip.onclick=-cityStateZip is missing");
@@ -40,34 +39,33 @@ $(document).ready(function() {
         console.log("famapp.js, #google-add-zip.onclick=" , cityState);
 
         localStorage.setItem("cityState", cityState);
-
         $("#resultsAPI").empty();
 
-        // getWeather();
+        getWeather();
         getAddress();   
     });
 
 
-    // function getWeather() {
-        // var address = $("#user-input-zip").val();
-    //     var address = localStorage.getItem("cityState");
-    //     console.log("getWeather() " + address);
-    //     $.ajax({
-    //         url: 'https://api.wunderground.com/api/7d4c2ccc48b6acd9/conditions/q/' + address + '.json',
-    //         method: 'GET',
-    //         datatype: "json"
-    //     }).done(function(wonder) {
-    //         console.log(wonder);
-    //         console.log(wonder.current_observation.icon);
-    //         var icon_url = wonder.current_observation.icon_url;
-    //         var icon = wonder.current_observation.icon;
-    //         var degrees = Math.floor(wonder.current_observation.temp_f);
-    //         var city = wonder.current_observation.display_location.city;
-    //         $(".weather-widget").html('<span><img src="' + icon_url + '"></span><span>' + degrees + '°F</span><br><span>' + city + '<span>');
+    function getWeather() {
+        var address = $("#user-input-zip").val();
+        var address = localStorage.getItem("cityState");
+        console.log("getWeather() " + address);
+        $.ajax({
+            url: 'https://api.wunderground.com/api/7d4c2ccc48b6acd9/conditions/q/' + address + '.json',
+            method: 'GET',
+            datatype: "json"
+        }).done(function(wonder) {
+            console.log(wonder);
+            console.log(wonder.current_observation.icon);
+            var icon_url = wonder.current_observation.icon_url;
+            var icon = wonder.current_observation.icon;
+            var degrees = Math.floor(wonder.current_observation.temp_f);
+            var city = wonder.current_observation.display_location.city;
+            $(".weather-widget").html('<span><img src="' + icon_url + '"></span><span>' + degrees + '°F</span><br><span>' + city + '<span>');
 
-    //     });
+        });
 
-    // };
+    };
 
     function getAddress(){
 
@@ -111,18 +109,6 @@ $(document).ready(function() {
 
     }//get Address
 
-    //Sticky Nav Bar
-    // var win = $(window),
-    //     nav = $('nav'),
-
-    //     pos = nav.offset().top,
-    //     sticky = function() {
-    //         win.scrollTop() > pos ?
-    //         nav.addClass('sticky')
-    //         : nav.removeClass('sticky')
-    //     }
-
-    //     win.scroll(sticky)
 
     //Scroll in results-div, but not on window when mouse is in results-div
     $('#resultsAPI').on( 'mousewheel DOMMouseScroll', function (e) { 
@@ -137,50 +123,5 @@ $(document).ready(function() {
     window.onbeforeunload = function () {
         window.scrollTo(0, 0);
     }
-
-      //original code to revert back to
-    // $( "#user-add-zip" ).click(function() {
-    //     localStorage.setItem('loaded', true);
-
-    //     $("#land").fadeOut('slow');
-    //     $("#content").show('slow');
-    // });
-   
-    //commented out code
- //    scroll effect and functions for user's inital zip code input
-    // $("#user-add-zip").click(function() {
- //        event.preventDefault();
- //        console.log("hello");
-    //     $('html,body').animate({
-    //         scrollTop: $("#content").offset().top},
-    //         'slow');   
- //            getWeather();
- //            getAddress();
-    // });
-
-    // var cityState;
-
-    //review this - original code to revert back to 
-    // $(window).on('load', function(){
-    //     event.preventDefault();
-    //     console.log('loaded?' , localStorage.getItem('loaded'));
-    //     cityState = localStorage.getItem('cityState');
-
-    //     if(localStorage.getItem('loaded')){
-    //         $("#land").hide('slow');
-    //         $("#content").show('slow');
-    //     }
-        
-    //     $('#user-input-zip').val(cityState);
-    //     $('#google-input-zip').val(cityState);
-
-    //     if(!jQuery.isEmptyObject(cityState)){
-    //         getWeather();
-    //         getAddress();
-    //     }else{
-    //         console.log("Window onload()-cityStateZip is missing");
-    //     }
-    // });
-
    
 });

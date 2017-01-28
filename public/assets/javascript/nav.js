@@ -2,9 +2,8 @@ $(document).ready(function(){
   
   var choices;
   var categories;
-
   var cityState;
-  // $("google-input-zip").val();
+
 
   var bookmarkIcon = '<span class="bookmark" style="float: right"><a class="bkTooltip" rel="tooltip" data-toggle="tooltip" data-placement="top" title="Bookmark Item" href="#"><i class="fa fa-bookmark-o fa-lg" aria-hidden="true" style="color:blue"></i></a></span>';
 
@@ -45,14 +44,6 @@ $(document).ready(function(){
 		getMeetups();
 	});
 
-	// $("#google-add-zip").on("click", function(){
-	// 	event.preventDefault();
-	// 	localStorage.setItem("cityState", cityState);
-	// 	$("#resultsAPI").empty();
- //    getWeather();
-	// 	whatTheYelp();	  
-	// });
-
   $('.navbar-select-items li').on('click', function(){
      console.log("Nav item selected = ", $(this).text()); // gets text contents of clicked li
      $('#searched-Item').html("You searched for " + $(this).text());
@@ -64,7 +55,6 @@ $(document).ready(function(){
 
     var numResults = $("#numResults").val();
     console.log("number of results to fetch", numResults);
-
       
       console.log("whatTheYelp() address ", address);
       
@@ -318,5 +308,5 @@ $('#resultsAPI').on('click', '.bookmark',function(){
     selector: '[data-toggle="tooltip"]'
   });
 
-
 // $(document.body).tooltip({ selector: "[title]" });//good to know
+
