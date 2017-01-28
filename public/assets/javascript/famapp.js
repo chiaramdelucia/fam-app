@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     var cityState;
     
-     // $("#content").hide();
+     $("#content").hide();
     
     //store the zip
     $('#user-add-zip').on('click', function(){
@@ -24,7 +24,7 @@ $(document).ready(function() {
         $('#google-input-zip').val(cityState);
 
         if(!jQuery.isEmptyObject(cityState)){
-            getWeather();
+            // getWeather();
             getAddress();
         }else{
             console.log("famapp.js, #user-add-zip.onclick=-cityStateZip is missing");
@@ -43,31 +43,31 @@ $(document).ready(function() {
 
         $("#resultsAPI").empty();
 
-        getWeather();
+        // getWeather();
         getAddress();   
     });
 
 
-    function getWeather() {
+    // function getWeather() {
         // var address = $("#user-input-zip").val();
-        var address = localStorage.getItem("cityState");
-        console.log("getWeather() " + address);
-        $.ajax({
-            url: 'https://api.wunderground.com/api/7d4c2ccc48b6acd9/conditions/q/' + address + '.json',
-            method: 'GET',
-            datatype: "json"
-        }).done(function(wonder) {
-            console.log(wonder);
-            console.log(wonder.current_observation.icon);
-            var icon_url = wonder.current_observation.icon_url;
-            var icon = wonder.current_observation.icon;
-            var degrees = Math.floor(wonder.current_observation.temp_f);
-            var city = wonder.current_observation.display_location.city;
-            $(".weather-widget").html('<span><img src="' + icon_url + '"></span><span>' + degrees + '°F</span><br><span>' + city + '<span>');
+    //     var address = localStorage.getItem("cityState");
+    //     console.log("getWeather() " + address);
+    //     $.ajax({
+    //         url: 'https://api.wunderground.com/api/7d4c2ccc48b6acd9/conditions/q/' + address + '.json',
+    //         method: 'GET',
+    //         datatype: "json"
+    //     }).done(function(wonder) {
+    //         console.log(wonder);
+    //         console.log(wonder.current_observation.icon);
+    //         var icon_url = wonder.current_observation.icon_url;
+    //         var icon = wonder.current_observation.icon;
+    //         var degrees = Math.floor(wonder.current_observation.temp_f);
+    //         var city = wonder.current_observation.display_location.city;
+    //         $(".weather-widget").html('<span><img src="' + icon_url + '"></span><span>' + degrees + '°F</span><br><span>' + city + '<span>');
 
-        });
+    //     });
 
-    };
+    // };
 
     function getAddress(){
 
