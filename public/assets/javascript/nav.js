@@ -186,7 +186,7 @@ $(document).ready(function(){
     	outPutDivSection.attr("class", "search-result");
     	outPutDivSection.attr("id", "search-item" + i);
     	outPutDivSection.css("background-color", "#e9e9e9");
-    	outPutDivSection.css("padding", "15px");
+    	outPutDivSection.css("padding", "10px");
     	outPutDivSection.css("margin-top", "10px");
       outPutDivSection.css("border", "1px solid #000000");
 
