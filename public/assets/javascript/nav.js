@@ -225,7 +225,7 @@ function geocoder (){
       console.log(mulong);
 
       $.ajax({
-            url: 'http://api.geonames.org/findNearbyPostalCodesJSON?lat='+mulat+'&lng='+ mulong + '&country=US&radius=10&username=cpsavva', 
+            url: 'cors-anywhere.herokuapp.com' + 'https://api.geonames.org/findNearbyPostalCodesJSON?lat='+mulat+'&lng='+ mulong + '&country=US&radius=10&username=cpsavva', 
             // url: 'http://api.geonames.org/postalCodeSearchJSON?placename='+ cityState+'&country=US&maxRows=10&username=cpsavva',
             method: "GET"
             }).done(function(response){
