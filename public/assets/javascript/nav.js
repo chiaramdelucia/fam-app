@@ -41,7 +41,7 @@ $(document).ready(function(){
     event.preventDefault();
 		$("#resultsAPI").empty();
     $('#searched-Item').html("You searched for Meetups");
-		getMeetups();
+		geocoder();
 	});
 
   $('.navbar-select-items li').on('click', function(){
@@ -218,19 +218,45 @@ $(document).ready(function(){
 
 };// what the yelp
 
-function getMeetups(){
-    
-    console.log('getMeetups() - zipcode', localStorage.getItem("cityState"));
-    cityState = localStorage.getItem("cityState");
-    var numResults = $("#numResults").val();
+function geocoder (){
+      var mulat = localStorage.getItem('mulat');
+      var mulong = localStorage.getItem('mulong');
+      console.log(mulat);
+      console.log(mulong);
 
-    console.log("number of results to fetch", numResults);
+      $.ajax({
+            url: 'http://api.geonames.org/findNearbyPostalCodesJSON?lat='+mulat+'&lng='+ mulong + '&country=US&radius=10&username=cpsavva', 
+            // url: 'http://api.geonames.org/postalCodeSearchJSON?placename='+ cityState+'&country=US&maxRows=10&username=cpsavva',
+            method: "GET"
+            }).done(function(response){
+              console.log(response)
+              
+              //list needed for api
+              //category = 25
+              var city = response.postalCodes[0].placeName
+              var country = response.postalCodes[0].countryCode
+              var lat = response.postalCodes[0].lat
+              var lng = response.postalCodes[0].lng
+              var state = response.postalCodes[0].adminCode1
+              //&text=family kids mom dad toddlers babies
+              //&topic = parents
+              var zipcode = response.postalCodes[0].postalCode
+              console.log(zipcode);
+              console.log(city);
+              console.log(state);
+              console.log(country);
+              console.log(lat);
+              console.log(lng);
 
-    // var meetupsAPIKey = "32246d5033476b30277fe2c671b1b";
-   
-    var URL = "https://api.meetup.com/find/groups?photo-host=public&zip=" +
-    cityState + "&page=25&sig_id=215984186&radius=10&topic_id=10333&category=25&sig=1136ea8f75e616421d23203df6988a0e83546ef7";
 
+
+    var URL = 'https://api.meetup.com/2/open_events?zip='+ zipcode + 
+              '&and_text=False&country='+ country + '&offset=0&city='+ city +
+              '&format=json&lon='+ lng + 
+              '&limited_events=False&topic=parents&text=family+kids+mom+dad+toddlers+babies' +
+              '&state='+ state + '&photo-host=public&page=20&radius=10&category=25&lat='
+              + lat + '&desc=False&status=upcoming&sig_id=216265865&sig=f750f3c25081c44e545cae4b1e3ffb99f886cb20' + 
+              '&sign=true&key=6a454ba562f402be763a6332275c2e&callback=gotIt'
      $.ajax({    
           url: URL,
           method: "GET",
@@ -238,37 +264,45 @@ function getMeetups(){
 
       }).done(function(response) {
         console.log("getMeetups() ", response);
+        var numberOfEvents = response.meta.count;
+            console.log(numberOfEvents)
+            
+          for(var i=0; i< numberOfEvents; i++){
+            
 
-        for(var i=0; i< numResults; i++){
+            var groupName = response.results[i].group.name;
+            var eventName = response.results[i].name;
+            var eventURL = response.results[i].event_url;
+            console.log(groupName);
+            console.log(eventName);
+            console.log(eventURL);
 
+            
           var outPutDivSection = $('<div>');
           outPutDivSection.attr("class", "search-result");
           outPutDivSection.attr("id", "search-item" + i);
           outPutDivSection.css("background-color", "#e9e9e9");
-          outPutDivSection.css("margin-right", "50px");
-          outPutDivSection.css("margin-left", "10px");
+          outPutDivSection.css("padding", "15px");
           outPutDivSection.css("margin-top", "10px");
-          outPutDivSection.css("padding", "5px");
           outPutDivSection.css("border", "1px solid #000000");
 
-          if(response.data.errors){
-            console.log("there are errors in meetups data")
-          }else{
+            
             var outPutInformation =
 
-            '<h2>' + response.data[i].name  + '    '+ bookmarkIcon + '</h2>'+ 
-            '<p>' + 'City : ' + response.data[i].city + '</p>'+ 
-            '<p>' + 'Meant for : ' + response.data[i].who + '</p>'+  
-            '<p class="link"><a target="_blank" style="text-decoration: underline; color: blue;" href="' + response.data[i].link + '" >' + response.data[i].name + '</a></p>';
+            '<h2>' + 'Group : ' + groupName  + '    '+ bookmarkIcon + '</h2>'+ 
+            '<p>' + 'Event : ' + eventName + '</p>'+ 
+            '<p class="link"><a target="_blank" style="text-decoration: underline; color: blue;" href="' + eventURL + '" >Details</a></p>';
 
             outPutDivSection.html(outPutInformation);
             $("#resultsAPI").append(outPutDivSection);
 
-          }
-        }
-  
-      });
-  }
+           } //for
+              
+            });//meetup ajax
+
+  });//geoname ajax
+            
+      }; //geocoder
 
 
 //bookmark items
