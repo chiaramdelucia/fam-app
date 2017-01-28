@@ -17,11 +17,13 @@ input.parsley-error:focus {
 	font-size: 15px;
 	opacity: 0.7;
 	color: #2B2B77;
-	left-margin: 30px;
+	margin-right: 10px;
+	margin-left: 20px;
 }
 
 #results-div{
-	left-margin: 30px;
+	margin-right: 10px;
+	margin-left: 20px;
 	color: #2B2B77;
 }
 
@@ -73,13 +75,13 @@ input:focus {
 #signinModal,
 #signupModal,
 #profileModal{
-	/*font-family: 'Shadows Into Light Two', cursive;*/
 	font-size: 16px;
 }
 
 /* temporary additions */
 #user-input-zip{
 	color: #000000;
+	width: 70%;
 }
 
 #numResults{
@@ -93,11 +95,3 @@ input:focus {
 	color: #DAE2F8;
 }
 
-/*#user-add-zip{
-	width: 100px;
-	padding: 5px;
-	border-radius: 5px;
-	font-weight: bold;
-	/*background-color: #972D7A  ;
-	/*color: #ffffff;*/
-/*}*/

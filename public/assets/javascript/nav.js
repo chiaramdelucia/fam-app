@@ -245,8 +245,10 @@ function getMeetups(){
           outPutDivSection.attr("class", "search-result");
           outPutDivSection.attr("id", "search-item" + i);
           outPutDivSection.css("background-color", "#e9e9e9");
-          outPutDivSection.css("padding", "15px");
+          outPutDivSection.css("margin-right", "50px");
+          outPutDivSection.css("margin-left", "10px");
           outPutDivSection.css("margin-top", "10px");
+          outPutDivSection.css("padding", "5px");
           outPutDivSection.css("border", "1px solid #000000");
 
           if(response.data.errors){

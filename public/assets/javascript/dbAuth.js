@@ -159,9 +159,11 @@ $(document).ready(function() {
             console.log('onAuthStateChanged(), User logged in', firebaseUser);
             $('#status').html("Welcome " + firebaseUser.displayName);
             $('#status').prop('disabled', false);
+            $('#btnSignIn').hide();
+            $('#btnSignUp').hide();
         } else {
             console.log("onAuthStateChanged(), not logged in");
-            $('#status').html("Not logged in");
+            $('#status').html(" ");
             $('#status').prop('disabled', true);
         }
     });
