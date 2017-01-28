@@ -19,6 +19,7 @@
 
    <!-- Google Fonts  -->
   <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <!--moment.js-->
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
@@ -46,33 +47,39 @@
 </head>
 
 <body>
-  <!--Landing page-->   
-  <img src="assets/css/images/kids.png" class="kids" alt="kids">
+  <!--Landing page--> 
 
-  <div class ="row" id="land">
-    <div class ="row landText">
-      <div class="col-md-5 col-md-offset-6">
-        <h1 style="font-weight: bold;">Got Bored<img src="assets/css/images/logoCrop.png" class="logoCrop" alt="logoCrop"></h1>
-        <h2>An app that helps you find family-friendly activities in your neighborhood and beyond!</h2>
+  <div class ="container-fluid" id="land">
+    <div class ="well">
+
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Got Bored<img src="assets/css/images/logoCrop.png" class="logoCrop" alt="logoCrop"></h1>
+        </div>
       </div>
-    </div>
-    <div class="row landText">
-      <div class="col-md-5 col-md-offset-6">
-        <h4>Enter your zip code to find the fun</h4>
-         <input type="text" name="zip code" id="user-input-zip" placeholder="Zip Code" required data-parsley-type="number" data-parsley-length="[5, 5]">
-          <button class="btn btn-default btn1" id="user-add-zip" type="submit" value="submit">Submit</button>
-       </div>
-       
-     </div>
-    
 
+      <div class="row landText">
+        <div class="col-md-6 col-md-offset-5">
+          <h2>An app to help you find family-friendly activities in your neighborhood and beyond!</h2>
+        </div>
+      </div>
+
+      <div class="row landText">
+        <div class="col-md-3 col-md-offset-7">
+          <p class="bold">ENTER YOUR ZIP CODE TO ENTER THE FUN</p>
+           <input type="text" name="zip code" id="user-input-zip" placeholder="Zip Code" required data-parsley-type="number" data-parsley-length="[5, 5]">
+            <button class="btn btn-default btn1" id="user-add-zip" type="submit" value="submit">Submit</button>
+        </div>
+      </div> 
+
+    </div>
   </div> <!--/#land-->
 
   <!--Main Content Area -->
   <div id="content"> 
 
     <nav class="navbar navbar-default">
-      <div class="container">
+      <!-- <div class="container"> -->
       <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -91,7 +98,6 @@
           <!-- left nav: categories-->
           <ul class="nav navbar-nav">
             <li><a href="#" id="outdoors" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Get Out!</a>
-            <span class="caret"></span>
               <ul class="dropdown-menu  navbar-select-items">
                 <li class="outdoorsLi" data-term="playgrounds, outdoors" data-search="playgrounds"><a href="#">Playgrounds</a></li>
                 <li class="outdoorsLi" data-term="public parks" data-search="parks"><a href="#">Parks</a></li>
@@ -102,8 +108,7 @@
                 <li class="outdoorsLi" data-term="outdoors" data-search="kids_activities"><a href="#">Outdoor Activities</a></li>
               </ul>
             </li>
-             <li><a href="#" id="indoors" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Stay Warm!</a>
-              <span class="caret"></span>
+            <li><a href="#" id="indoors" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Stay Warm!</a>
               <ul class="dropdown-menu navbar-select-items">
                 <li class="indoorsLi" data-term="movie theaters" data-search="movietheaters"><a href="#">Movies</a></li>
                 <li class="indoorsLi" data-term="indoors" data-search= "kids_activities"><a href="#">Indoor Activities</a></li>
@@ -114,7 +119,6 @@
               </ul>
             </li>
             <li><a href="#" id="food" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Grab a bite!</a>
-              <span class="caret"></span>
               <ul class="dropdown-menu navbar-select-items">
                 <li class="foodLi" data-term="family-friendly, restaurants" data-search="restaurants"><a href="#">Restaurants</a></li>
                 <li class="foodLi" data-term="family-friendly, cafes" data-search="cafes"><a href="#">Cafes</a></li>
@@ -134,8 +138,7 @@
               <a href="#" target="_blank" id='btnSignIn' data-toggle="modal" data-target="#signinModal">Sign in</a>
             </li>             
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="status" disabled='disabled'>Account 
-              <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="status" disabled='disabled'>Account<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#" id='btnProfile' data-toggle="modal" data-target=" #profileModal">Profile</a>
                 </li>
@@ -148,62 +151,61 @@
           </ul>
 
         </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
+      <!-- </div> --><!-- /.container-fluid -->
     </nav>
   
 
- <!--Main Results Area-->
-    <!-- <div class="container" id="wrapper"> -->
+ <!--Main Results/Map Area-->
       <div class="row">
-        <!--Content Well and Map/Weather Well, Places API display -->
-        <div class="col-md-6" id="resultsSpace">
-              <div class="well">
-                <div id="results-div">
-                  <h2>Neighborhood Hangouts!            
-                  <select id="numResults"> 
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="15">15</option>
-                  </select></h2>
-                  <h4 id="searched-Item"></h4>
-                </div>
-                <div id="resultsAPI"></div>
-              </div>
-            </div>            
-            
-            <!-- Map API + User display -->
-            <div class="col-md-6 col-md-push-1">
-              <div class="well" id="googleAPI">
-                <div id="map"></div>
-              <div class="row">
-                <div class="col-md-12">
-                  <input type="text" name="enter address" id="google-input-zip" data-parsley-type="number" data-parsley-length="[5, 5]">
-                  <input id="google-add-zip" type="submit" value="submit">
-                  <div>
-                    <span id="connected-viewers"></span> users online! 
-                  </div> 
-                </div>
-              </div>
-            </div> <!-- /Api+User Display Row -->
 
-          </div> <!--/ Places API, Map, Weather API row-->    
-        </div> <!--/ Places API, Map, Weather API col -->
+        <!--Content Well and Map/Weather Well, Places API display -->
+        <div class="row">
+
+        <div class="col-md-5">
+          <div class="well" id="results-div">
+               <h2 id="neighborhood">Neighborhood Hangouts!            
+                <select id="numResults"> 
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                </select></h2>
+                <h4 id="searched-Item"></h4>
+                <div id="resultsAPI">
+                  Choose a category and find the places!
+                </div>
+          </div>
+        </div>     
+            
+          <!-- Map API + User display -->
+        <div class="col-md-7" id="googleAPI">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <input type="text" name="enter address" id="google-input-zip" data-parsley-type="number" data-parsley-length="[5, 5]">
+              <input id="google-add-zip" type="submit" value="submit">
+              <span id="connected-viewers"> users online!</span>
+            </div>
+            <div class="panel-body" id="map"></div>
+          </div>
+        </div>
+
+        </div>
+
+      <!-- Footer -->
+        <div class="row">
+          <div class="col-md-6 col-md-offset-5">
+            <div class="footer">
+               Made with
+               <i class="fa fa-heart"></i>
+               by
+              <a href="https://github.com/chiaramdelucia/fam-app" target="blank">The Git Girls</a>
+              #noconflicts
+            </div>
+          </div>
+        </div>
 
       </div> <!--/ Main Content Area Row -->
-    <!-- </div> --> <!--/ Main Content Area container -->
 
-    <!--Footer -->
-  <div class="container">
-    <div class="row" id="navbar">
-      <div class="col-md-12">
-        <footer class="footer">
-            <div class="container">
-                <p class="text-muted" style ="text-align: center; color: black;">Got Bored © 2017</p>  
-            </div>
-        </footer>
-      </div>
-    </div>
-  </div>
+
 
    <!-- Sign up Modal -->
   <div id="signupModal" class="modal fade" role="dialog">
@@ -291,9 +293,16 @@
     </div> <!-- modal dialog -->
   </div> <!-- profileModal -->
 
+
+
+
  </div> <!--content div closing  -->
 
-</body><!-- JS files-->
+
+
+</body>
+
+<!-- JS files-->
 
 <script src="/assets/javascript/famapp.js"></script>
 <script src="/assets/javascript/nav.js"></script>

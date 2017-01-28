@@ -181,7 +181,7 @@ $(document).ready(function() {
 
     currentUsersRef.on("value", function(snapshot) {
         console.log("Number of connections", snapshot.numChildren());
-        $("#connected-viewers").html(snapshot.numChildren());
+        $("#connected-viewers").prepend(snapshot.numChildren());
     });
 
     //Persisiting User in the database

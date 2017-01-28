@@ -1,6 +1,8 @@
 $(document).ready(function() {    
     var cityState;
-        
+    
+     $("#content").hide();
+    
     //store the zip
     $('#user-add-zip').on('click', function(){
         event.preventDefault();
@@ -45,7 +47,7 @@ $(document).ready(function() {
 
 
     function getWeather() {
-        // var address = $("#user-input-zip").val();
+        var address = $("#user-input-zip").val();
         var address = localStorage.getItem("cityState");
         console.log("getWeather() " + address);
         $.ajax({
